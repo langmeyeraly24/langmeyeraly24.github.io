@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alyssa Langmeyer - Data Science & Policy Analyst specializing in public policy research, data analytics, and policy advocacy.">
+    <meta name="keywords" content="Data Science, Policy Analyst, Public Policy, R, Python, Research">
+    <meta name="author" content="Alyssa Langmeyer">
+
+    <title>Alyssa Langmeyer | Data Science & Policy Analyst</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>AL</text></svg>">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">AL</a>
+
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Research</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="resume.html" target="_blank">Download Resume (PDF)</a></li>
+
+            </ul>
+
+            <button class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="sun-icon">&#9728;</span>
+                <span class="moon-icon">&#9790;</span>
+            </button>
+
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-greeting">Hello, I'm</p>
+            <h1 class="hero-name">Alyssa Langmeyer</h1>
+            <p class="hero-title">Data Scientist & Policy Analyst</p>
+            <p class="hero-description">
+                M.S. candidate in Data Science for Applied Public Policy at American University.
+                Passionate about leveraging data to inform evidence-based policy decisions, with expertise
+                in digital privacy, gender equity, and international relations research.
+            </p>
+
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-primary btn-large">Get In Touch</a>
+                <a href="#projects" class="btn btn-secondary btn-large">View My Research</a>
+            </div>
+
+            <div class="hero-social">
+                <a href="https://github.com/langmeyeraly24" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/alyssa-langmeyer-79518617a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="mailto:langmeyeraly24@gmail.com" aria-label="Email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-scroll">
+            <span>Scroll to explore</span>
+            <div class="scroll-indicator"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        Your Photo Here
+                    </div>
+                </div>
+
+                <div class="about-text">
+                    <p>
+                        I'm a graduate student at American University pursuing an M.S. in Data Science for Applied Public Policy. 
+                        My research focuses on the intersection of technology, policy, and social equity, with particular interests 
+                        in digital privacy, reproductive rights, gender equity in the workforce, and international security.
+                    </p>
+                    <p>
+                        Throughout my eight-year career spanning restaurant management, manufacturing procurement, and academic tutoring while completing my degrees, I've gained valuable insights into operational efficiency, customer service management, and practical business operations. This unique perspective bridges hands-on business experience with academic policy analysis, providing a well-rounded understanding of how policies affect real-world environments.
+                    </p>
+                    <p>
+                      Currently exploring career opportunities at the nexus of data science and public 
+                      policy, I'm equipped with both technical skills and a deep understanding of how 
+                      policies impact real communities. My background positions me well for roles in policy 
+                      research organizations, government agencies, advocacy groups, or tech companies with 
+                      policy focuses. I'm particularly interested in applying my analytical skills to 
+                      challenges in digital privacy, reproductive rights, workforce equity, or international 
+                      security policy.
+                    </p>
+                     
+
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Years of Professional Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">4th/44</span>
+                            <span class="stat-label">Smith Analytics + Deloitte Datathon</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">7</span>
+                            <span class="stat-label">Research Papers</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            
+            <!-- 2D Noodles -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">May 2025 - Current</span>
+                    <h3>Food Runner & Host (with Shift Leadership Duties)</h3>
+                    <h4>2D Noodles | Washington, DC</h4>
+                    
+                    <p><em>Modern Asian fusion restaurant in Tenleytown featuring Vietnamese pho, Chinese noodles, and Japanese ramen in DC's first 2D-themed dining space</em></p>
+                    
+                    <ul>
+                        <li><strong>Guest Experience Management:</strong> Greet and seat guests, manage waitlists, and ensure smooth dining transitions in a high-volume restaurant serving 200+ customers daily</li>
+                        <li><strong>Food Expediting:</strong> Coordinate precise timing between kitchen and dining room, ensuring dishes reach tables at optimal temperature and presentation standards</li>
+                        <li><strong>Operational Leadership:</strong> Act as shift coordinator—overseeing opening/closing procedures, managing staff assignments, and resolving real-time service issues</li>
+                        <li><strong>Team Development:</strong> Train and mentor 15+ new hires on POS systems, service protocols, and food safety standards, reducing onboarding time by 30%</li>
+                        <li><strong>Quality Control:</strong> Conduct final plate checks, verify order accuracy, and maintain presentation standards before dishes leave the kitchen</li>
+                        <li><strong>Floor Management:</strong> Monitor table turnover, optimize seating configurations, and coordinate with servers to maintain 85%+ occupancy during peak hours</li>
+                        <li><strong>Process Improvement:</strong> Implement streamlined communication systems between front and back of house, reducing order errors by 25%</li>
+                    </ul>
+                    
+                    <div class="timeline-skills">
+                        <h5>Key Skills:</h5>
+                        <div class="timeline-tags">
+                            <span>Shift Coordination</span>
+                            <span>Guest Experience Management</span>
+                            <span>Food Expediting & Timing</span>
+                            <span>Team Mentorship</span>
+                            <span>Table Turnover Optimization</span>
+                            <span>Quality Assurance</span>
+                            <span>POS System Training</span>
+                            <span>Service Coordination</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- American University - Course Marker -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Jan 2025 - May 2025</span>
+                    <h3>Graduate Course Marker</h3>
+                    <h4>American University, Washington, DC</h4>
+                    
+                    <p><em>Provided academic support within American University's School of Public Affairs, contributing to graduate-level education in data science and policy analysis</em></p>
+                    
+                    <ul>
+                        <li><strong>Academic Assessment:</strong> Evaluated assignments for 75+ students in CORE-200: AU Encounters with consistent two-week turnaround</li>
+                        <li><strong>Rubric Application:</strong> Applied detailed rubrics to assess student work on statistical methods and policy research</li>
+                        <li><strong>Academic Integrity:</strong> Identified and reported academic integrity concerns in compliance with university policies</li>
+                        <li><strong>Professional Development:</strong> Participated in regular training and bi-weekly meetings to maintain assessment consistency</li>
+                    </ul>
+                    
+                    <div class="timeline-skills">
+                        <h5>Key Skills:</h5>
+                        <div class="timeline-tags">
+                            <span>Essay Grading & Assessment</span>
+                            <span>Rubric Application</span>
+                            <span>Academic Writing Feedback</span>
+                            <span>Literary Analysis Evaluation</span>
+                            <span>Critical Thinking Assessment</span>
+                            <span>Grading Consistency</span>
+                            <span>Constructive Feedback</span>
+                            <span>Academic Standards Maintenance</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vote Save America -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Fall 2024</span>
+                    <h3>Phone Bank Volunteer</h3>
+                    <h4>Vote Save America [PAC]</h4>
+                    
+                    <p><em>Volunteered with progressive political action committee focused on building pro-democracy movement through voter engagement and political education</em></p>
+                    
+                    <ul>
+                        <li><strong>Voter Outreach:</strong> Conducted voter outreach via phone to discuss key political issues and voting procedures</li>
+                        <li><strong>Civic Education:</strong> Encouraged civic participation and provided voting information to community members</li>
+                        <li><strong>Organizational Impact:</strong> Supported organization that has facilitated 956k+ voter registrations and 278k+ volunteer shifts</li>
+                        <li><strong>Movement Building:</strong> Contributed to progressive movement building beyond electoral cycles</li>
+                    </ul>
+                    
+                    <div class="timeline-skills">
+                        <h5>Key Skills:</h5>
+                        <div class="timeline-tags">
+                            <span>Scripted Phone Outreach</span>
+                            <span>Voter Identification</span>
+                            <span>Issue Education</span>
+                            <span>Call Logging & Tracking</span>
+                            <span>Voter Persuasion</span>
+                            <span>Political Messaging</span>
+                            <span>Volunteer Coordination Support</span>
+                            <span>Data Collection</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columbia Tech - Coghlin Companies -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Feb 2022 - Apr 2024</span>
+                    <h3>PCB Procurement Buyer</h3>
+                    <h4>Columbia Tech | Coghlin Companies, Westborough, MA</h4>
+                    
+                    <p><em>Supported complex manufacturing operations at Coghlin Companies, a leading U.S. contract manufacturer specializing in capital equipment and medical devices</em></p>
+                    
+                    <ul>
+                        <li><strong>Supply Chain Coordination:</strong> Coordinated communications across warehouse, accounting, planning, program management, and engineering teams</li>
+                        <li><strong>Vendor Management:</strong> Managed relationships with 130+ suppliers for printed circuit board component procurement</li>
+                        <li><strong>Procurement Negotiation:</strong> Negotiated pricing and terms for orders up to $300,000 for 10+ multinational technology clients</li>
+                        <li><strong>Data-Driven Analysis:</strong> Generated 5-10 daily reports to inform supplier selection and procurement strategies</li>
+                        <li><strong>Cost Reduction:</strong> Contributed to 15% reduction in material costs through data-driven procurement analysis</li>
+                    </ul>
+                    
+                    <div class="timeline-skills">
+                        <h5>Key Skills:</h5>
+                        <div class="timeline-tags">
+                            <span>Excel Data Analysis</span>
+                            <span>Procurement Data Entry</span>
+                            <span>Supply Chain Analytics</span>
+                            <span>Vendor Price Negotiation</span>
+                            <span>Purchase Order Management</span>
+                            <span>Cost Analysis & Reduction</span>
+                            <span>Supplier Database Management</span>
+                            <span>Material Requirements Planning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doragon Ramen -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Sep 2021 - Feb 2022</span>
+                    <h3>Front-of-House Manager & Server</h3>
+                    <h4>Doragon Ramen, Ashland, MA</h4>
+                    
+                    <p><em>Managed customer experience and staff operations at a specialized ramen restaurant, transforming front-of-house team performance through focused leadership and training</em></p>
+                    
+                    <ul>
+                        <li><strong>Staff Management:</strong> Trained and supervised 10+ front-of-house staff in customer service and restaurant protocols</li>
+                        <li><strong>Team Revitalization:</strong> Revitalized struggling team through effective communication and performance management</li>
+                        <li><strong>Customer Relations:</strong> Handled customer inquiries and complaints to maintain restaurant reputation and guest satisfaction</li>
+                        <li><strong>Team Building:</strong> Created cohesive, high-performing team that contributed to improved business outcomes</li>
+                        <li><strong>Service Standards:</strong> Implemented and maintained consistent service protocols across all front-of-house operations</li>
+                    </ul>
+                    
+                    <div class="timeline-skills">
+                        <h5>Key Skills:</h5>
+                        <div class="timeline-tags">
+                            <span>Boba Tea Preparation</span>
+                            <span>Hot Tea Service</span>
+                            <span>Front-of-House Operations</span>
+                            <span>Team Supervision</span>
+                            <span>Customer Service Resolution</span>
+                            <span>Server Training</span>
+                            <span>Drink Menu Knowledge</span>
+                            <span>Table Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Borgen Project -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Sep 2021 - Dec 2021</span>
+                    <h3>Public Policy & Advocacy Intern</h3>
+                    <h4>The Borgen Project, Seattle, WA (Remote)</h4>
+                    
+                    <p><em>Contributed to international nonprofit recognized by The Huffington Post for addressing global poverty and hunger through U.S. foreign policy advocacy and legislative change</em></p>
+                    
+                    <ul>
+                        <li><strong>Policy Research:</strong> Conducted research on global poverty alleviation strategies and international development</li>
+                        <li><strong>Advocacy Campaigns:</strong> Collaborated on advocacy campaigns targeting U.S. congressional representatives</li>
+                        <li><strong>Policy Brief Development:</strong> Authored policy briefs and communication materials for government officials and stakeholders</li>
+                        <li><strong>Community Engagement:</strong> Organized events and leveraged social media for poverty awareness in Massachusetts' 5th District</li>
+                        <li><strong>Legislative Impact:</strong> Participated in nonprofit supporting legislation benefiting approximately 500 million people</li>
+                    </ul>
+                    
+                    <div class="timeline-skills">
+                        <h5>Key Skills:</h5>
+                        <div class="timeline-tags">
+                            <span>Policy Research & Analysis</span>
+                            <span>Legislative Tracking</span>
+                            <span>Advocacy Campaign Support</span>
+                            <span>Policy Brief Writing</span>
+                            <span>Social Media Advocacy</span>
+                            <span>Constituent Outreach</span>
+                            <span>Issue Research</span>
+                            <span>Nonprofit Communications</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Big Brothers Big Sisters -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Sep 2018 - Fall 2021</span>
+                    <h3>Volunteer Mentor ("Big Sister")</h3>
+                    <h4>Big Brothers Big Sisters of Eastern Massachusetts, New Bedford, MA</h4>
+                    
+                    <p><em>Partnered with under-resourced families to provide children with transformational, one-to-one professionally-supported mentoring relationships through the Greater New Bedford Youth Alliance</em></p>
+                    
+                    <ul>
+                        <li><strong>Youth Mentoring:</strong> Provided consistent, supportive mentorship to youth in the New Bedford community through one-to-one relationship building</li>
+                        <li><strong>Community-Based Program:</strong> Participated in the Community-Based Mentoring program, meeting with mentee 2-3 times per month for meaningful outings and activities</li>
+                        <li><strong>Long-term Commitment:</strong> Maintained mentoring relationship for over three years, demonstrating reliability and dedication to youth development</li>
+                        <li><strong>Professional Support:</strong> Collaborated with BBBS staff to ensure appropriate support and guidance for mentee's growth and development</li>
+                        <li><strong>Positive Role Modeling:</strong> Served as a positive adult influence, supporting academic, social, and personal development of youth</li>
+                        <li><strong>Community Integration:</strong> Engaged in community activities and outings that promoted educational and cultural enrichment</li>
+                    </ul>
+                    
+                    <div class="timeline-skills">
+                        <h5>Key Skills:</h5>
+                        <div class="timeline-tags">
+                            <span>One-on-One Mentoring</span>
+                            <span>Youth Relationship Building</span>
+                            <span>Activity Planning</span>
+                            <span>Consistency & Reliability</span>
+                            <span>Boundary Setting</span>
+                            <span>Positive Role Modeling</span>
+                            <span>Communication Skills</span>
+                            <span>Community Resource Navigation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Camp Haiastan -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Jun 2021 - Aug 2021</span>
+                    <h3>Assistant Kitchen Manager & Cook</h3>
+                    <h4>Camp Haiastan, Franklin, MA</h4>
+                    
+                    <p><em>Contributed to operations at Camp Haiastan, the first Armenian summer camp established in the United States, preserving Armenian culture through youth programming</em></p>
+                    
+                    <ul>
+                        <li><strong>Meal Planning & Execution:</strong> Directed meal planning and execution for campers and staff with attention to dietary requirements</li>
+                        <li><strong>Food Safety Compliance:</strong> Implemented rigorous health and safety protocols achieving zero health code violations</li>
+                        <li><strong>Staff Training:</strong> Trained staff-in-training (SITs) on food safety regulations and kitchen operations</li>
+                        <li><strong>Quality Control:</strong> Maintained quality standards and portion control in high-volume camp kitchen environment</li>
+                        <li><strong>Cultural Support:</strong> Supported camp's cultural mission through dependable food service operations</li>
+                        <li><strong>Culinary Station Management:</strong> Oversaw all kitchen stations including hot line (grill, sauté), cold prep, bakery, and dishwashing operations</li>
+                        <li><strong>Food Preparation:</strong> Skilled in knife handling, bulk food preparation, and batch cooking for 200+ meals daily</li>
+                    </ul>
+                    
+                    <div class="timeline-skills">
+                        <h5>Key Skills:</h5>
+                        <div class="timeline-tags">
+                            <span>High-Volume Batch Cooking</span>
+                            <span>Kitchen Station Management</span>
+                            <span>Food Safety Protocols</span>
+                            <span>Meal Planning Assistance</span>
+                            <span>Staff Training Support</span>
+                            <span>Inventory Management</span>
+                            <span>Dietary Restriction Accommodation</span>
+                            <span>Camp Kitchen Operations</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The 99 Restaurant & Pub -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Sep 2020 - Jun 2021</span>
+                    <h3>First Chef & Line Cook</h3>
+                    <h4>The 99 Restaurant & Pub, Milford, MA</h4>
+                    
+                    <p><em>Worked in high-volume kitchen operations at a major New England restaurant chain, developing culinary skills and team collaboration abilities in fast-paced environment</em></p>
+                    
+                    <ul>
+                        <li><strong>Food Preparation:</strong> Prepared and plated diverse dishes according to recipes and quality standards</li>
+                        <li><strong>Efficiency Management:</strong> Maintained efficient workflow during peak hours to minimize guest wait times</li>
+                        <li><strong>Team Collaboration:</strong> Collaborated with kitchen team to optimize operations and service efficiency</li>
+                        <li><strong>Customer Satisfaction:</strong> Received positive feedback for contributions to customer satisfaction improvements</li>
+                        <li><strong>Station Competencies:</strong> Mastered multiple kitchen stations including grill, sauté, fry, pantry, and salad stations</li>
+                        <li><strong>Knife Skills:</strong> Proficient in knife handling techniques for various cutting methods (dice, julienne, chiffonade)</li>
+                        <li><strong>Food Safety:</strong> Maintained proper food handling, temperature control, and sanitation standards throughout shift</li>
+                    </ul>
+                    
+                    <div class="timeline-skills">
+                        <h5>Key Skills:</h5>
+                        <div class="timeline-tags">
+                            <span>Grill Station Operation</span>
+                            <span>Fry Station Management</span>
+                            <span>Cold Station Preparation</span>
+                            <span>Oven Operations</span>
+                            <span>Food Prep & Mise en Place</span>
+                            <span>Knife Skills</span>
+                            <span>Ticket Time Management</span>
+                            <span>Station Rotation Proficiency</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- The Writing and Reading Center -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Jan 2019 - May 2021</span>
+                    <h3>Writing Tutor with Political Science Focus</h3>
+                    <h4>The Writing and Reading Center, UMass Dartmouth, North Dartmouth, MA</h4>
+                    
+                    <p><em>Provided academic writing support to college students while balancing restaurant work and full-time studies</em></p>
+                    
+                    <ul>
+                        <li><strong>Academic Tutoring:</strong> Provided expert tutoring to college students, specializing in crafting well-structured and compelling political science papers</li>
+                        <li><strong>Thesis Development:</strong> Assisted learners in developing clear thesis statements, refining argumentation, and enhancing overall coherence of written work</li>
+                        <li><strong>Conceptual Analysis:</strong> Created personalized guidance in dissecting complex political concepts and theories within academic papers</li>
+                        <li><strong>Research Skills:</strong> Helped students critically engage with primary sources, bolstering their ability to conduct thorough research and effectively incorporate relevant evidence</li>
+                        <li><strong>Time Management:</strong> Balanced tutoring responsibilities with restaurant work and full-time undergraduate studies</li>
+                    </ul>
+                    
+                    <div class="timeline-skills">
+                        <h5>Key Skills:</h5>
+                        <div class="timeline-tags">
+                            <span>Political Science Writing Tutoring</span>
+                            <span>Thesis Statement Development</span>
+                            <span>Argument Structure Analysis</span>
+                            <span>Source Integration Guidance</span>
+                            <span>Citation Format Assistance (APA/MLA)</span>
+                            <span>Writing Process Coaching</span>
+                            <span>Research Paper Support</span>
+                            <span>Academic Style Development</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Corner Market -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Jan 2015 - Sep 2020</span>
+                    <h3>Shift Manager & Multi-Role Specialist</h3>
+                    <h4>The Corner Market, Holliston, MA</h4>
+                    
+                    <p><em>Developed foundational leadership and operational skills over five years in various restaurant roles, gaining comprehensive understanding of small business operations</em></p>
+                    
+                    <ul>
+                        <li><strong>Operations Management:</strong> Managed daily operations and supervised team of 30+ employees across multiple roles</li>
+                        <li><strong>Staff Development:</strong> Handled hiring, training, and performance management for restaurant staff</li>
+                        <li><strong>Compliance Management:</strong> Implemented and maintained health/safety protocols achieving zero code violations</li>
+                        <li><strong>Multi-Department Experience:</strong> Gained experience in line cooking, cashiering, dishwashing, and delivery operations</li>
+                        <li><strong>Team Culture:</strong> Built cohesive team culture focused on exceptional customer service standards</li>
+                        <li><strong>Restaurant Competencies:</strong> Mastered all front and back of house positions including grill, fry, sauté, sandwich, pizza, and salad stations</li>
+                        <li><strong>Culinary Skills:</strong> Developed proficiency in knife skills, food prep techniques, hot/cold station management, and batch cooking</li>
+                    </ul>
+                    
+                    <div class="timeline-skills">
+                        <h5>Key Skills:</h5>
+                        <div class="timeline-tags">
+                            <span>Multi-Station Proficiency</span>
+                            <span>Shift Scheduling</span>
+                            <span>Employee Training</span>
+                            <span>Health Code Compliance</span>
+                            <span>Inventory Management</span>
+                            <span>Customer Complaint Resolution</span>
+                            <span>Cash Handling</span>
+                            <span>Small Business Operations</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+
+            <div class="education-grid">
+                <!-- Graduate Education -->
+                <div class="education-card">
+                    <div class="education-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+                        </svg>
+                    </div>
+                    <h3>Master of Science</h3>
+                    <h4>Data Science for Applied Public Policy</h4>
+                    <span class="education-date">Expected Winter 2026 | Current GPA: 3.3</span>
+                    <p>American University<br>School of Public Affairs<br>Washington, D.C.</p>
+                    
+                    <div class="courses-section">
+                        <h5>Graduate Courses:</h5>
+                        <ul class="courses-list">
+                            <li>Data Science</li>
+                            <li>Applied Politics & American Public Policy</li>
+                            <li>Statistical Machine Learning</li>
+                            <li>Statistical Programming in R</li>
+                            <li>Political Analysis</li>
+                            <li>Statistical Methods</li>
+                            <li>Data Mining (Spring 2026)</li>
+                            <li>Politics of Mass Communication (Spring 2026)</li>
+                            <li>Practicum (Fall 2026)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="courses-section">
+                        <h5>Additional Training:</h5>
+                        <ul class="courses-list">
+                            <li>Campaign Management Institute by the Center for Congressional & Presidential Studies  (Summer 2026)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Undergraduate Education -->
+                <div class="education-card">
+                    <div class="education-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+                        </svg>
+                    </div>
+                    <h3>Bachelor of Arts</h3>
+                    <h4>Political Science</h4>
+                    <span class="education-date">Graduated 2021 | Major GPA: 3.5</span>
+                    <p>University of Massachusetts Dartmouth<br>Concentrations: Pre-Law, International Relations, International Security</p>
+                    
+                    <div class="courses-section">
+                        <h5>Undergraduate Courses:</h5>
+                        <ul class="courses-list">
+                            <li>International Relations</li>
+                            <li>Comparative Politics</li>
+                            <li>Political Theory</li>
+                            <li>Constitutional Law</li>
+                            <li>Government & Politics of Middle East</li>
+                            <li>Political Science Research Methods</li>
+                            <li>Seminar in International Relations</li>
+                            <li>African Political Systems</li>
+                            <li>Politics of Global Climate Change</li>
+                            <li>Seminar in American Politics & Policy</li>
+                            <li>Islam and Politics</li>
+                            <li>Ethnic Politics</li>
+                            <li>Principles of Macroeconomics</li>
+                            <li>The Presidency</li>
+                            <li>Fundamentals of Statistics</li>
+                            <li>Introduction to Women's & Gender Studies</li>
+                            <li>Critical Writing & Reading</li>
+                            <li>Studies in Literature</li>
+                            <li>Introduction to Philosophy</li>
+                            <li>Topics in Biology</li>
+                            <li>Introduction to Sociology</li>
+                            <li>Elementary & Intermediate Spanish</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects/Research Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Research & Projects</h2>
+
+            <!-- Graduate Section -->
+            <div class="section-subtitle">
+                <h3>Graduate</h3>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Smith Analytics Datathon -->
+                <div class="project-card featured">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            Smith Analytics Datathon
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <span class="project-label">Competition - 4th Place | April 2025</span>
+                            <div class="project-links">
+                                <a href="#" aria-label="View Project">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                        <polyline points="15 3 21 3 21 9"></polyline>
+                                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <h3>Smith Analytics Consortium 6th Annual Datathon</h3>
+                        <p>
+                            Placed 4th out of 41 teams in the 15-day data-focused competition hosted by University of Maryland's Robert H. Smith School of Business in collaboration with Deloitte. Collaborated on a cross-university team with American University and UMD students to help Spotify select the most profitable artist lineup for a six-hour concert at Capital One Arena using real-world data including streaming statistics, concert trends, and ticket pricing.
+                        </p>
+                        <ul class="project-tech">
+                            <li>R</li>
+                            <li>Data Analysis</li>
+                            <li>Statistical Modeling</li>
+                            <li>Data Visualization</li>
+                            <li>Business Analytics</li>
+                            <li>Cross-University Collaboration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Research Paper 1 - Digital Privacy -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            Digital Privacy Research
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <span class="project-label">Research Paper | Fall 2025</span>
+                            <div class="project-links">
+                                <a href="Writing Samples/Your Body, Their Data - GOVT620 Term Paper - FINAL.pdf" target="_blank" aria-label="Download PDF">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <h3>Your Body, Their Data</h3>
+                        <p>
+                            An analysis of digital surveillance and reproductive rights in the post-Dobbs era. Examines how period tracking apps and digital data can be weaponized against reproductive autonomy and proposes the "Digital Bodyguard Act" policy solution to protect digital privacy. Written for GOVT-620: Applied Politics & American Public Policy.
+                        </p>
+                        <ul class="project-tech">
+                            <li>Policy Analysis</li>
+                            <li>Digital Privacy</li>
+                            <li>Reproductive Rights</li>
+                            <li>Data Security</li>
+                            <li>Legislative Strategy</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Research Paper 2 - The Backlash Equation -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            Gender & Politics
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <span class="project-label">Research Paper | Fall 2025</span>
+                            <div class="project-links">
+                                <a href="Writing Samples/The Backlash Equation - Research Paper - GOVT650  (1).pdf" target="_blank" aria-label="Download PDF">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <h3>The Backlash Equation</h3>
+                        <p>
+                            An analysis of how rising women's employment triggers reactionary conservative backlash and fuels authoritarian electoral gains. Examines the relationship between female labor force participation rates and increased support for far-right political movements through the lens of backlash theory. Written for GOVT-650: Political Analysis.
+                        </p>
+                        <ul class="project-tech">
+                            <li>Gender Politics</li>
+                            <li>Backlash Theory</li>
+                            <li>Statistical Analysis</li>
+                            <li>Labor Economics</li>
+                            <li>Political Psychology</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Undergraduate Section -->
+            <div class="section-subtitle" style="margin-top: 3rem;">
+                <h3>Undergraduate</h3>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Research Paper 3 - Labor Economics -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            Labor Economics Research
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <span class="project-label">Research Paper | 2019</span>
+                            <div class="project-links">
+                                <a href="Writing Samples/18 Million Cracks and Counting_ Labor Force Paper.pdf" target="_blank" aria-label="Download PDF">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <h3>18 Million Cracks and Counting</h3>
+                        <p>
+                            An examination of labor force participation through the lens of gender equity, analyzing historical trends and persistent barriers facing women in the workforce. Proposes policy interventions to address systemic inequities in employment, pay, and workplace culture.
+                        </p>
+                        <ul class="project-tech">
+                            <li>Economics</li>
+                            <li>Gender Studies</li>
+                            <li>Labor Policy</li>
+                            <li>Statistical Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Research Paper 4 - International Relations -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            International Relations
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <span class="project-label">Research Paper | 2020</span>
+                            <div class="project-links">
+                                <a href="Writing Samples/Arrogance and Avarice and a Lust For Power_ MENA Paper  (1).pdf" target="_blank" aria-label="Download PDF">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <h3>Arrogance and Avarice and a Lust for Power</h3>
+                        <p>
+                            A comprehensive analysis of the Yemen Civil War and MENA regional dynamics. Examines the geopolitical factors, humanitarian implications, and potential pathways toward resolution in one of the world's most complex conflicts.
+                        </p>
+                        <ul class="project-tech">
+                            <li>International Relations</li>
+                            <li>MENA Studies</li>
+                            <li>Conflict Analysis</li>
+                            <li>Geopolitics</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Research Paper 5 - Al-Shabaab & Clash of Civilizations -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            Terrorism Analysis
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <span class="project-label">Research Paper | 2020</span>
+                            <div class="project-links">
+                                <a href="Writing Samples/A Night Devoid of Stars_ Terrorism Paper.pdf" target="_blank" aria-label="Download PDF">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <h3>A Night Devoid of Stars</h3>
+                        <p>
+                            An in-depth analysis of Al-Shabaab's operations in Eastern Africa, examining how the terrorist organization exemplifies Samuel Huntington's Clash of Civilizations theory. The paper explores how Al-Shabaab exploits the failings of modern liberalism, utilizes complex clan dynamics, and maintains power through strategic funding and recruitment methods.
+                        </p>
+                        <ul class="project-tech">
+                            <li>International Security</li>
+                            <li>Terrorism Studies</li>
+                            <li>Clash of Civilizations Theory</li>
+                            <li>African Politics</li>
+                            <li>Conflict Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Research Paper 6 - Civil Rights & Systemic Racism -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            Civil Rights Research
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <span class="project-label">Research Paper | 2020</span>
+                            <div class="project-links">
+                                <a href="Writing Samples/400-01 Civil Rights Research Paper.pdf" target="_blank" aria-label="Download PDF">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <h3>Money and Power, Blood and Terror</h3>
+                        <p>
+                            A comprehensive analysis of how centuries of U.S. policymaking founded in racism continues to hinder the civil rights movement and enables white supremacy. The paper traces historical policies from slavery through Jim Crow to modern systemic barriers, examining economic exploitation, voting rights suppression, and the resurgence of white nationalist terrorism.
+                        </p>
+                        <ul class="project-tech">
+                            <li>Civil Rights Policy</li>
+                            <li>Systemic Racism Analysis</li>
+                            <li>Historical Policy Analysis</li>
+                            <li>Political Economy</li>
+                            <li>Social Justice</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Research Paper 7 - WGS Final Paper -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            Gender & Politics
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <span class="project-label">Research Paper | 2018</span>
+                            <div class="project-links">
+                                <a href="Writing Samples/WGS Final Research Paper (1).pdf" target="_blank" aria-label="Download PDF">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <h3>Gender, Race & Political Representation</h3>
+                        <p>
+                            An analysis of how gender, race, sexuality, age, education and religious differences between Democratic and Republican members-elect reflect each party's policies. Examines the 2018 midterm elections as a case study of increasing diversity in Congress and its implications for political representation and policy priorities.
+                        </p>
+                        <ul class="project-tech">
+                            <li>Women's & Gender Studies</li>
+                            <li>Political Representation</li>
+                            <li>Congressional Analysis</li>
+                            <li>Intersectionality</li>
+                            <li>Election Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Data Science & Analytics</h3>
+                    <ul class="skill-list">
+                        <li class="skill-name">R / RStudio</li>
+                        <li class="skill-name">Python</li>
+                        <li class="skill-name">SQL</li>
+                        <li class="skill-name">Tableau</li>
+                        <li class="skill-name">Statistical Analysis</li>
+                        <li class="skill-name">Data Visualization</li>
+                        <li class="skill-name">Regression Modeling</li>
+                        <li class="skill-name">Machine Learning</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Policy Analysis & Research</h3>
+                    <ul class="skill-list">
+                        <li class="skill-name">Policy Analysis</li>
+                        <li class="skill-name">Legislative Research</li>
+                        <li class="skill-name">Academic Writing</li>
+                        <li class="skill-name">Research Design</li>
+                        <li class="skill-name">Literature Synthesis</li>
+                        <li class="skill-name">Policy Brief Development</li>
+                        <li class="skill-name">Qualitative Analysis</li>
+                        <li class="skill-name">Stakeholder Analysis</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Technical Tools</h3>
+                    <ul class="skill-list">
+                        <li class="skill-name">Git / GitHub</li>
+                        <li class="skill-name">Microsoft Excel (Advanced)</li>
+                        <li class="skill-name">R Markdown / Quarto</li>
+                        <li class="skill-name">Jupyter Notebooks</li>
+                        <li class="skill-name">Statistical Software (R, Python)</li>
+                        <li class="skill-name">Data Visualization Tools (Tableau)</li>
+                        <li class="skill-name">Google Workspace</li>
+                        <li class="skill-name">Content Creation (Canva)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Professional & Management</h3>
+                    <ul class="skill-list">
+                        <li class="skill-name">Project Management</li>
+                        <li class="skill-name">Team Leadership</li>
+                        <li class="skill-name">Public Speaking & Presentation</li>
+                        <li class="skill-name">Cross-Functional Coordination</li>
+                        <li class="skill-name">Process Optimization</li>
+                        <li class="skill-name">Training & Mentorship</li>
+                        <li class="skill-name">Time Management</li>
+                        <li class="skill-name">Strategic Communication</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Subject Matter Expertise</h3>
+                    <ul class="skill-list">
+                        <li class="skill-name">Digital Privacy & Technology Policy</li>
+                        <li class="skill-name">Gender & Labor Economics</li>
+                        <li class="skill-name">Reproductive Rights & Health Policy</li>
+                        <li class="skill-name">Civil Rights & Social Justice</li>
+                        <li class="skill-name">International Security & Relations</li>
+                        <li class="skill-name">Counterterrorism & Conflict Analysis</li>
+                        <li class="skill-name">Political Representation</li>
+                        <li class="skill-name">Public Policy Implementation</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Operations & Administration</h3>
+                    <ul class="skill-list">
+                        <li class="skill-name">Supply Chain & Procurement</li>
+                        <li class="skill-name">Operations Management</li>
+                        <li class="skill-name">Customer Service & Relations</li>
+                        <li class="skill-name">Quality Control & Assurance</li>
+                        <li class="skill-name">Compliance & Safety Standards</li>
+                        <li class="skill-name">High-Volume Service Management</li>
+                        <li class="skill-name">Data Entry & Management</li>
+                        <li class="skill-name">Multi-Unit Coordination</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+
+            <div class="contact-content">
+                <p class="contact-intro">
+                    As a graduate student bridging data science and public policy, I'm eager to connect with 
+                    professionals and organizations working at this intersection. I'm open to learning 
+                    opportunities, research collaborations, or discussions about how data can inform 
+                    more equitable policy decisions.
+                </p>
+
+                <div class="contact-methods">
+                    <a href="mailto:langmeyeraly24@gmail.com" class="contact-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
+                        </svg>
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">langmeyeraly24@gmail.com</span>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/alyssa-langmeyer-79518617a/" target="_blank" rel="noopener noreferrer" class="contact-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                        <span class="contact-label">LinkedIn</span>
+                        <span class="contact-value">Connect with me</span>
+                    </a>
+
+                    <a href="https://github.com/langmeyeraly24" target="_blank" rel="noopener noreferrer" class="contact-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        <span class="contact-label">GitHub</span>
+                        <span class="contact-value">View my code</span>
+                    </a>
+                </div>
+
+                <a href="mailto:langmeyeraly24@gmail.com" class="btn btn-primary btn-large">Say Hello</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Alyssa Langmeyer. All rights reserved.</p>
+            <p class="footer-note">Built with care for policy and data.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Projects\nDetailed project descriptions go here…"
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact",
+    "section": "",
+    "text": "Contact\nContact form or additional contact info…"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About Me\nMore detailed biography…"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Alyssa Langmeyer | Data Science & Policy Analyst",
+    "section": "",
+    "text": "&lt;div class=\"nav-logo\"&gt;Alyssa Langmeyer&lt;/div&gt;\n&lt;div class=\"nav-links\"&gt;\n  &lt;a href=\"#about\"&gt;About&lt;/a&gt;\n  &lt;a href=\"#experience\"&gt;Experience&lt;/a&gt;\n  &lt;a href=\"#projects\"&gt;Projects&lt;/a&gt;\n  &lt;a href=\"#skills\"&gt;Skills&lt;/a&gt;\n  &lt;a href=\"#education\"&gt;Education&lt;/a&gt;\n  &lt;a href=\"#contact\"&gt;Contact&lt;/a&gt;\n&lt;/div&gt;\n&lt;button class=\"theme-toggle\" id=\"themeToggle\"&gt;\n  &lt;span class=\"sun-icon\"&gt;☀️&lt;/span&gt;\n  &lt;span class=\"moon-icon\"&gt;🌙&lt;/span&gt;\n&lt;/button&gt;\n&lt;button class=\"mobile-menu-btn\" id=\"mobileMenuBtn\"&gt;\n  &lt;span&gt;&lt;/span&gt;\n  &lt;span&gt;&lt;/span&gt;\n  &lt;span&gt;&lt;/span&gt;\n&lt;/button&gt;"
+  },
+  {
+    "objectID": "index.html#about",
+    "href": "index.html#about",
+    "title": "Alyssa Langmeyer | Data Science & Policy Analyst",
+    "section": "About Me",
+    "text": "About Me\n\n\n&lt;div class=\"image-placeholder\"&gt;AL&lt;/div&gt;\n\n\n&lt;p&gt;Data Science & Policy Analyst with expertise in quantitative research, \nstatistical analysis, and policy evaluation. Passionate about using data \nto inform public policy decisions and create positive social impact.&lt;/p&gt;\n&lt;p&gt;Skilled in R, Python, SQL, and data visualization tools with experience \nin government, non-profit, and research settings.&lt;/p&gt;\n&lt;div class=\"about-stats\"&gt;\n  &lt;div class=\"stat\"&gt;\n    &lt;span class=\"stat-number\"&gt;5+&lt;/span&gt;\n    &lt;span class=\"stat-label\"&gt;Years Experience&lt;/span&gt;\n  &lt;/div&gt;\n  &lt;div class=\"stat\"&gt;\n    &lt;span class=\"stat-number\"&gt;50+&lt;/span&gt;\n    &lt;span class=\"stat-label\"&gt;Projects&lt;/span&gt;\n  &lt;/div&gt;\n  &lt;div class=\"stat\"&gt;\n    &lt;span class=\"stat-number\"&gt;10+&lt;/span&gt;\n    &lt;span class=\"stat-label\"&gt;Policy Areas&lt;/span&gt;\n  &lt;/div&gt;\n&lt;/div&gt;"
+  },
+  {
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
+    "title": "Alyssa Langmeyer | Data Science & Policy Analyst",
+    "section": "Experience",
+    "text": "Experience\n\n\n&lt;div class=\"timeline-marker\"&gt;&lt;/div&gt;\n&lt;div class=\"timeline-content\"&gt;\n  &lt;span class=\"timeline-date\"&gt;2022 - Present&lt;/span&gt;\n  &lt;h3&gt;Data Science & Policy Analyst&lt;/h3&gt;\n  &lt;h4&gt;Center for Policy Research&lt;/h4&gt;\n  &lt;p&gt;Lead quantitative analysis for public policy research projects, developing \n  statistical models to evaluate program effectiveness and inform policy decisions.&lt;/p&gt;\n  &lt;ul class=\"timeline-tags\"&gt;\n    &lt;li&gt;R&lt;/li&gt;\n    &lt;li&gt;Python&lt;/li&gt;\n    &lt;li&gt;SQL&lt;/li&gt;\n    &lt;li&gt;Data Visualization&lt;/li&gt;\n    &lt;li&gt;Policy Analysis&lt;/li&gt;\n  &lt;/ul&gt;\n&lt;/div&gt;"
+  },
+  {
+    "objectID": "index.html#projects",
+    "href": "index.html#projects",
+    "title": "Alyssa Langmeyer | Data Science & Policy Analyst",
+    "section": "Projects",
+    "text": "Projects\n\n\n&lt;div class=\"project-image\"&gt;\n  &lt;div class=\"project-placeholder\"&gt;Housing Affordability Analysis&lt;/div&gt;\n&lt;/div&gt;\n&lt;div class=\"project-content\"&gt;\n  &lt;div class=\"project-header\"&gt;\n    &lt;span class=\"project-label\"&gt;Featured Project&lt;/span&gt;\n    &lt;div class=\"project-links\"&gt;\n      &lt;a href=\"#\" title=\"View Code\"&gt;&lt;&gt;&lt;/a&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n  &lt;h3&gt;Urban Housing Affordability Analysis&lt;/h3&gt;\n  &lt;p&gt;Comprehensive analysis of housing affordability trends...&lt;/p&gt;\n&lt;/div&gt;"
+  }
+]

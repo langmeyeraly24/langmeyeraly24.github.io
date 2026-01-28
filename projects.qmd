@@ -1,0 +1,6 @@
+---
+title: "Projects"
+---
+# Projects
+
+Detailed project descriptions go here...

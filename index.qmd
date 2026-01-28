@@ -1,0 +1,156 @@
+---
+title: "Alyssa Langmeyer | Data Science & Policy Analyst"
+format: html
+css: styles.css
+toc: false
+---
+
+<div class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">Alyssa Langmeyer</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="theme-toggle" id="themeToggle">
+      <span class="sun-icon">☀️</span>
+      <span class="moon-icon">🌙</span>
+    </button>
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-greeting">Hello, I'm</div>
+    <h1 class="hero-name">Alyssa Langmeyer</h1>
+    <div class="hero-title">Data Science & Policy Analyst</div>
+    <p class="hero-description">
+      Specializing in public policy research, data analytics, and policy advocacy 
+      to drive evidence-based decision making and social impact.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Get In Touch</a>
+      <a href="#projects" class="btn btn-secondary">View Projects</a>
+      <a href="Alyssa_Langmeyer_Resume.pdf" class="btn btn-secondary" download>Download Resume</a>
+    </div>
+    <div class="hero-social">
+      <a href="https://linkedin.com/in/alyssaelangmeyer" target="_blank">LinkedIn</a>
+      <a href="https://github.com/allylangmeyer" target="_blank">GitHub</a>
+      <a href="https://twitter.com/allylangmeyer" target="_blank">Twitter</a>
+      <a href="mailto:alyssaelangmeyer@gmail.com">Email</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll to explore</span>
+    <div class="scroll-indicator"></div>
+  </div>
+</div>
+
+## About Me {#about}
+
+<div class="about-content">
+  <div class="about-image">
+    <div class="image-placeholder">AL</div>
+  </div>
+  <div class="about-text">
+    <p>Data Science & Policy Analyst with expertise in quantitative research, 
+    statistical analysis, and policy evaluation. Passionate about using data 
+    to inform public policy decisions and create positive social impact.</p>
+    <p>Skilled in R, Python, SQL, and data visualization tools with experience 
+    in government, non-profit, and research settings.</p>
+    <div class="about-stats">
+      <div class="stat">
+        <span class="stat-number">5+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">50+</span>
+        <span class="stat-label">Projects</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">10+</span>
+        <span class="stat-label">Policy Areas</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+## Experience {#experience}
+
+<div class="timeline">
+  
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-date">2022 - Present</span>
+      <h3>Data Science & Policy Analyst</h3>
+      <h4>Center for Policy Research</h4>
+      <p>Lead quantitative analysis for public policy research projects, developing 
+      statistical models to evaluate program effectiveness and inform policy decisions.</p>
+      <ul class="timeline-tags">
+        <li>R</li>
+        <li>Python</li>
+        <li>SQL</li>
+        <li>Data Visualization</li>
+        <li>Policy Analysis</li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Add other timeline items -->
+</div>
+
+## Projects {#projects}
+
+<div class="projects-grid">
+  <div class="project-card">
+    <div class="project-image">
+      <div class="project-placeholder">Housing Affordability Analysis</div>
+    </div>
+    <div class="project-content">
+      <div class="project-header">
+        <span class="project-label">Featured Project</span>
+        <div class="project-links">
+          <a href="#" title="View Code">&lt;&gt;</a>
+        </div>
+      </div>
+      <h3>Urban Housing Affordability Analysis</h3>
+      <p>Comprehensive analysis of housing affordability trends...</p>
+    </div>
+  </div>
+</div>
+
+<!-- Continue with other sections -->
+
+<script>
+// Your JavaScript here
+document.addEventListener('DOMContentLoaded', function() {
+  // Theme toggle
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    });
+  }
+  
+  // Mobile menu
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const navLinks = document.querySelector('.nav-links');
+  if (mobileMenuBtn && navLinks) {
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  }
+});
+</script>
