@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alyssa Langmeyer - Data Science & Policy Analyst</title>
+    <title>Alyssa Langmeyer - Resume</title>
     <style>
         /* Clean, professional single-column layout */
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700&family=Open+Sans:wght@400;600;700&display=swap');
@@ -16,10 +16,11 @@
         
         body {
             font-family: 'Open Sans', sans-serif;
-            line-height: 1.5;
+            line-height: 1.4;
             color: #2c3e50;
             background: #f8f9fa;
             padding: 20px;
+            font-size: 11pt;
         }
         
         .resume {
@@ -28,87 +29,82 @@
             margin: 0 auto;
             background: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 40px 50px;
+            padding: 35px 40px;
             position: relative;
         }
         
         /* Header */
         .header {
             text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 3px solid #3498db;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #3498db;
         }
         
         .name {
             font-family: 'Lato', sans-serif;
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
             color: #2c3e50;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             letter-spacing: -0.5px;
         }
         
         .title {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             color: #3498db;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         
         .contact-info {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 15px;
-            font-size: 13px;
+            gap: 12px;
+            font-size: 11px;
             color: #7f8c8d;
-            line-height: 1.8;
+            line-height: 1.6;
         }
         
         .contact-info a {
             color: #7f8c8d;
             text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .contact-info a:hover {
-            color: #3498db;
         }
         
         /* Sections */
         .section {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             page-break-inside: avoid;
         }
         
         .section-title {
             font-family: 'Lato', sans-serif;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 700;
             color: #2c3e50;
-            margin-bottom: 15px;
-            padding-bottom: 5px;
-            border-bottom: 2px solid #ecf0f1;
+            margin-bottom: 12px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #ecf0f1;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         
         /* Experience Items */
         .experience-item, .education-item, .project-item {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
         
         .item-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
         
         .item-title {
             font-weight: 600;
-            font-size: 15px;
+            font-size: 13px;
             color: #2c3e50;
             line-height: 1.3;
         }
@@ -116,42 +112,37 @@
         .item-company {
             font-weight: 500;
             color: #3498db;
-            font-size: 14px;
-            margin-top: 2px;
+            font-size: 12px;
         }
         
         .item-details {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-top: 3px;
+            margin-bottom: 4px;
         }
         
         .item-location {
-            font-size: 13px;
+            font-size: 11px;
             color: #7f8c8d;
             font-style: italic;
         }
         
         .item-date {
-            font-size: 13px;
+            font-size: 11px;
             color: #7f8c8d;
             font-weight: 500;
         }
         
         ul {
-            padding-left: 20px;
-            margin-top: 8px;
+            padding-left: 16px;
+            margin-top: 6px;
         }
         
         li {
-            margin-bottom: 5px;
-            font-size: 13px;
-            line-height: 1.4;
-        }
-        
-        li strong {
-            color: #2c3e50;
+            margin-bottom: 4px;
+            font-size: 11px;
+            line-height: 1.3;
         }
         
         .highlight {
@@ -159,12 +150,12 @@
             font-weight: 600;
         }
         
-        /* Skills Grid */
+        /* Skills Grid - More compact */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 10px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 8px;
         }
         
         .skill-category {
@@ -173,42 +164,75 @@
         
         .skill-title {
             font-weight: 600;
-            font-size: 14px;
+            font-size: 12px;
             color: #3498db;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
         
         .skill-items {
-            font-size: 13px;
+            font-size: 11px;
             color: #2c3e50;
-            line-height: 1.4;
+            line-height: 1.3;
         }
         
-        /* Compact list for education */
-        .education-details {
-            font-size: 13px;
+        /* Project items - more concise */
+        .project-item .item-title {
+            font-size: 12px;
+        }
+        
+        /* Additional Experience grid */
+        .additional-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 8px;
+        }
+        
+        .additional-item {
+            font-size: 11px;
+            line-height: 1.3;
+        }
+        
+        .additional-title {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .additional-details {
             color: #7f8c8d;
-            margin: 5px 0;
+            font-size: 10px;
+        }
+        
+        /* Volunteer */
+        .volunteer-item {
+            margin-bottom: 8px;
+            font-size: 11px;
         }
         
         /* Print styles */
         @media print {
+            @page {
+                margin: 0.5in;
+                size: letter;
+            }
+            
             body {
                 background: white;
                 padding: 0;
-                font-size: 12pt;
+                font-size: 10pt;
+                margin: 0;
             }
             
             .resume {
                 box-shadow: none;
-                padding: 30px 40px;
+                padding: 0;
                 max-width: 100%;
-                min-height: auto;
-                font-size: 11pt;
+                min-height: 0;
+                margin: 0;
             }
             
             .no-print {
-                display: none;
+                display: none !important;
             }
             
             a {
@@ -216,17 +240,25 @@
                 text-decoration: none;
             }
             
-            .contact-info a::after {
-                content: "";
+            /* Ensure proper page breaks */
+            .page-break {
+                page-break-before: always;
+                margin-top: 30px;
             }
             
-            /* Ensure proper spacing for print */
+            /* Adjust spacing for print */
+            .header {
+                padding-top: 10px;
+            }
+            
             .section {
-                margin-bottom: 20px;
+                margin-bottom: 15px;
             }
             
-            .experience-item, .education-item, .project-item {
-                margin-bottom: 15px;
+            /* Prevent widows and orphans */
+            p, li, .item-title, .skill-title {
+                orphans: 3;
+                widows: 3;
             }
         }
         
@@ -237,7 +269,7 @@
             right: 20px;
             z-index: 1000;
             background: white;
-            padding: 10px;
+            padding: 8px;
             border-radius: 6px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
@@ -246,77 +278,60 @@
             background: #3498db;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 4px;
             cursor: pointer;
             font-family: 'Open Sans', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-        
-        .print-btn:hover {
-            background: #2980b9;
-        }
-        
-        /* Additional Experience */
-        .additional-experience {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 10px;
-        }
-        
-        .additional-item {
-            font-size: 13px;
-            line-height: 1.4;
-        }
-        
-        .additional-title {
-            font-weight: 600;
-            color: #2c3e50;
-        }
-        
-        .additional-details {
-            color: #7f8c8d;
             font-size: 12px;
+            font-weight: 600;
         }
         
-        /* Volunteer section */
-        .volunteer-item {
+        /* Compact education */
+        .education-compact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
             margin-bottom: 15px;
         }
         
-        .volunteer-title {
-            font-weight: 600;
-            font-size: 14px;
-            color: #2c3e50;
-            margin-bottom: 3px;
+        .education-item-compact {
+            margin-bottom: 0;
         }
         
-        .volunteer-details {
-            color: #7f8c8d;
-            font-size: 13px;
+        /* Projects container */
+        .projects-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
         }
         
-        /* Footer */
-        .footer-note {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 11px;
-            color: #95a5a6;
-            border-top: 1px solid #ecf0f1;
-            padding-top: 10px;
+        .project-item-compact {
+            margin-bottom: 12px;
+        }
+        
+        /* Page break helper */
+        .page-end {
+            height: 1px;
+            visibility: hidden;
+            page-break-after: always;
+        }
+        
+        /* Second page start */
+        .page-2 {
+            padding-top: 20px;
         }
     </style>
 </head>
 <body>
     <div class="controls no-print">
-        <button class="print-btn" onclick="window.print()">Save as PDF / Print</button>
+        <button class="print-btn" onclick="downloadResume()">Download PDF</button>
+        <div style="font-size: 10px; color: #666; margin-top: 5px; text-align: center;">
+            Add job title after dash
+        </div>
     </div>
     
     <div class="resume">
-        <!-- Header -->
+        <!-- Page 1 -->
         <div class="header">
             <h1 class="name">ALYSSA LANGMEYER</h1>
             <div class="title">Data Science & Policy Analyst | M.S. Candidate in Data Science for Applied Public Policy</div>
@@ -324,47 +339,40 @@
                 <span>Washington, DC</span>
                 <a href="mailto:langmeyeraly24@gmail.com">langmeyeraly24@gmail.com</a>
                 <a href="tel:7745739331">(774) 573-9331</a>
-                <a href="https://linkedin.com/in/alyssa-langmeyer-79518617a">linkedin.com/in/alyssa-langmeyer-79518617a</a>
-                <a href="https://github.com/langmeyeraly24">github.com/langmeyeraly24</a>
+                <a href="https://linkedin.com/in/alyssa-langmeyer-79518617a">LinkedIn</a>
+                <a href="https://github.com/langmeyeraly24">GitHub</a>
             </div>
         </div>
         
         <!-- Education -->
         <div class="section">
             <h2 class="section-title">EDUCATION</h2>
-            
-            <div class="education-item">
-                <div class="item-header">
-                    <div>
-                        <div class="item-title">Master of Science in Data Science for Applied Public Policy</div>
-                        <div class="item-company">American University</div>
+            <div class="education-compact">
+                <div class="education-item-compact">
+                    <div class="item-title">M.S. Data Science for Applied Public Policy</div>
+                    <div class="item-company">American University</div>
+                    <div class="item-details">
+                        <div class="item-location">Washington, DC</div>
+                        <div class="item-date">Expected Winter 2026 | GPA: 3.3</div>
                     </div>
+                    <ul>
+                        <li>Data Science, Statistical ML, R Programming, Political Analysis</li>
+                        <li>Campaign Management Institute (Summer 2026)</li>
+                    </ul>
                 </div>
-                <div class="item-details">
-                    <div class="item-location">Washington, DC</div>
-                    <div class="item-date">Expected Winter 2026 | GPA: 3.3</div>
-                </div>
-                <ul>
-                    <li><strong>Coursework:</strong> Data Science, Statistical Machine Learning, Statistical Programming in R, Political Analysis, Statistical Methods, Data Mining</li>
-                    <li><strong>Additional Training:</strong> Campaign Management Institute (Summer 2026)</li>
-                </ul>
-            </div>
-            
-            <div class="education-item">
-                <div class="item-header">
-                    <div>
-                        <div class="item-title">Bachelor of Arts in Political Science</div>
-                        <div class="item-company">University of Massachusetts Dartmouth</div>
+                
+                <div class="education-item-compact">
+                    <div class="item-title">B.A. Political Science</div>
+                    <div class="item-company">University of Massachusetts Dartmouth</div>
+                    <div class="item-details">
+                        <div class="item-location">Dartmouth, MA</div>
+                        <div class="item-date">Graduated 2021 | Major GPA: 3.5</div>
                     </div>
+                    <ul>
+                        <li>Concentrations: International Relations, International Security</li>
+                        <li>Key Coursework: Political Research Methods, Constitutional Law</li>
+                    </ul>
                 </div>
-                <div class="item-details">
-                    <div class="item-location">Dartmouth, MA</div>
-                    <div class="item-date">Graduated 2021 | Major GPA: 3.5</div>
-                </div>
-                <ul>
-                    <li><strong>Concentrations:</strong> Pre-Law, International Relations, International Security</li>
-                    <li><strong>Key Coursework:</strong> International Relations, Constitutional Law, Political Science Research Methods, Government & Politics of Middle East</li>
-                </ul>
             </div>
         </div>
         
@@ -375,7 +383,7 @@
             <div class="experience-item">
                 <div class="item-header">
                     <div>
-                        <div class="item-title">Food Runner & Host (with Shift Leadership Duties)</div>
+                        <div class="item-title">Food Runner & Host (Shift Leadership Duties)</div>
                         <div class="item-company">2D Noodles</div>
                     </div>
                 </div>
@@ -384,10 +392,10 @@
                     <div class="item-date">May 2025 – Present</div>
                 </div>
                 <ul>
-                    <li>Manage guest seating and dining transitions in high-volume restaurant serving <span class="highlight">200+ customers daily</span></li>
-                    <li>Coordinate food expediting and timing between kitchen and dining room to ensure optimal service flow</li>
-                    <li>Train and mentor <span class="highlight">15+ new hires</span> on POS systems and service protocols, reducing onboarding time by <span class="highlight">30%</span></li>
-                    <li>Implement process improvements reducing order errors by <span class="highlight">25%</span> through streamlined communication systems</li>
+                    <li>Manage guest seating/dining for <span class="highlight">200+ daily customers</span> in high-volume restaurant</li>
+                    <li>Coordinate food expediting and kitchen-dining room timing</li>
+                    <li>Train and mentor <span class="highlight">15+ new hires</span>, reducing onboarding time by <span class="highlight">30%</span></li>
+                    <li>Implement improvements reducing order errors by <span class="highlight">25%</span></li>
                 </ul>
             </div>
             
@@ -400,12 +408,12 @@
                 </div>
                 <div class="item-details">
                     <div class="item-location">Washington, DC</div>
-                    <div class="item-date">January 2025 – May 2025</div>
+                    <div class="item-date">Jan 2025 – May 2025</div>
                 </div>
                 <ul>
-                    <li>Evaluated assignments for <span class="highlight">75+ students</span> in CORE-200: AU Encounters with consistent two-week turnaround</li>
-                    <li>Applied detailed rubrics to assess student work on James Baldwin-focused literary analysis</li>
-                    <li>Maintained grading consistency and academic integrity standards across all assessments</li>
+                    <li>Evaluated assignments for <span class="highlight">75+ students</span> in CORE-200: AU Encounters</li>
+                    <li>Applied rubrics for James Baldwin literary analysis assessment</li>
+                    <li>Maintained grading consistency and academic integrity</li>
                 </ul>
             </div>
             
@@ -418,31 +426,13 @@
                 </div>
                 <div class="item-details">
                     <div class="item-location">Westborough, MA</div>
-                    <div class="item-date">February 2022 – April 2024</div>
+                    <div class="item-date">Feb 2022 – Apr 2024</div>
                 </div>
                 <ul>
-                    <li>Managed relationships with <span class="highlight">130+ suppliers</span> for printed circuit board component procurement</li>
-                    <li>Negotiated pricing and terms for orders up to <span class="highlight">$300,000</span> for 10+ multinational technology clients</li>
-                    <li>Generated <span class="highlight">5-10 daily Excel reports</span> to inform supplier selection and procurement strategies</li>
-                    <li>Contributed to <span class="highlight">15% reduction</span> in material costs through data-driven procurement analysis</li>
-                </ul>
-            </div>
-            
-            <div class="experience-item">
-                <div class="item-header">
-                    <div>
-                        <div class="item-title">Public Policy & Advocacy Intern</div>
-                        <div class="item-company">The Borgen Project</div>
-                    </div>
-                </div>
-                <div class="item-details">
-                    <div class="item-location">Remote</div>
-                    <div class="item-date">September 2021 – December 2021</div>
-                </div>
-                <ul>
-                    <li>Conducted research on global poverty alleviation strategies and international development policies</li>
-                    <li>Authored policy briefs and communication materials for government officials and stakeholders</li>
-                    <li>Organized events and leveraged social media for poverty awareness in Massachusetts' 5th District</li>
+                    <li>Managed relationships with <span class="highlight">130+ suppliers</span> for PCB procurement</li>
+                    <li>Negotiated pricing for orders up to <span class="highlight">$300,000</span> for multinational clients</li>
+                    <li>Generated daily Excel reports informing procurement strategies</li>
+                    <li>Contributed to <span class="highlight">15% reduction</span> in material costs</li>
                 </ul>
             </div>
         </div>
@@ -452,149 +442,222 @@
             <h2 class="section-title">SKILLS</h2>
             <div class="skills-grid">
                 <div class="skill-category">
-                    <div class="skill-title">Data Science & Analytics</div>
-                    <div class="skill-items">R / RStudio, Python, SQL, Tableau, Statistical Analysis, Data Visualization, Regression Modeling, Machine Learning</div>
+                    <div class="skill-title">Data Science</div>
+                    <div class="skill-items">R / RStudio, Python, SQL, Tableau, Statistical Analysis, Data Visualization</div>
                 </div>
                 
                 <div class="skill-category">
-                    <div class="skill-title">Policy Research & Analysis</div>
-                    <div class="skill-items">Policy Analysis, Legislative Research, Academic Writing, Research Design, Literature Review, Qualitative Analysis</div>
+                    <div class="skill-title">Policy Analysis</div>
+                    <div class="skill-items">Policy Research, Legislative Analysis, Academic Writing, Research Design</div>
                 </div>
                 
                 <div class="skill-category">
                     <div class="skill-title">Technical Tools</div>
-                    <div class="skill-items">Microsoft Excel (Advanced), Git / GitHub, R Markdown / Quarto, Jupyter Notebooks, Statistical Software</div>
+                    <div class="skill-items">Excel (Advanced), Git/GitHub, R Markdown, Jupyter, Statistical Software</div>
                 </div>
                 
                 <div class="skill-category">
-                    <div class="skill-title">Professional & Management</div>
-                    <div class="skill-items">Project Management, Team Leadership, Cross-Functional Coordination, Process Optimization, Strategic Communication</div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Research & Projects -->
-        <div class="section">
-            <h2 class="section-title">RESEARCH & PROJECTS</h2>
-            
-            <div class="project-item">
-                <div class="item-header">
-                    <div>
-                        <div class="item-title">Smith Analytics Consortium 6th Annual Datathon - 4th Place/41 Teams</div>
-                    </div>
-                </div>
-                <div class="item-details">
-                    <div class="item-date">April 2025</div>
-                </div>
-                <ul>
-                    <li>Placed <span class="highlight">4th out of 41 teams</span> in data competition hosted by University of Maryland and Deloitte</li>
-                    <li>Collaborated on cross-university team to help Spotify select profitable artist lineup using real-world data</li>
-                    <li>Analyzed streaming statistics, concert trends, and ticket pricing to develop optimal concert proposal</li>
-                </ul>
-            </div>
-            
-            <div class="project-item">
-                <div class="item-header">
-                    <div>
-                        <div class="item-title">"The Backlash Equation" Research Paper</div>
-                    </div>
-                </div>
-                <div class="item-details">
-                    <div class="item-date">Fall 2025</div>
-                </div>
-                <ul>
-                    <li>Analyzed relationship between rising women's employment and authoritarian electoral gains</li>
-                    <li>Applied backlash theory using time-series cross-sectional analysis of U.S. labor and voting data</li>
-                    <li>Written for GOVT-650: Political Analysis at American University</li>
-                </ul>
-            </div>
-            
-            <div class="project-item">
-                <div class="item-header">
-                    <div>
-                        <div class="item-title">"Your Body, Their Data" Research Paper</div>
-                    </div>
-                </div>
-                <div class="item-details">
-                    <div class="item-date">Fall 2025</div>
-                </div>
-                <ul>
-                    <li>Analyzed digital surveillance and reproductive rights in post-Dobbs era</li>
-                    <li>Proposed "Digital Bodyguard Act" policy solution for digital privacy protection</li>
-                    <li>Written for GOVT-620: Applied Politics & American Public Policy</li>
-                </ul>
-            </div>
-        </div>
-        
-        <!-- Additional Experience -->
-        <div class="section">
-            <h2 class="section-title">ADDITIONAL EXPERIENCE</h2>
-            <div class="additional-experience">
-                <div class="additional-item">
-                    <div class="additional-title">Writing Tutor with Political Science Focus</div>
-                    <div class="additional-details">The Writing and Reading Center, UMass Dartmouth • 2019-2021</div>
+                    <div class="skill-title">Project Management</div>
+                    <div class="skill-items">Team Leadership, Cross-Functional Coordination, Process Optimization</div>
                 </div>
                 
-                <div class="additional-item">
-                    <div class="additional-title">Front-of-House Manager & Server</div>
-                    <div class="additional-details">Doragon Ramen • 2021-2022</div>
+                <div class="skill-category">
+                    <div class="skill-title">Subject Expertise</div>
+                    <div class="skill-items">Digital Privacy, Labor Economics, Reproductive Rights, International Security</div>
                 </div>
                 
-                <div class="additional-item">
-                    <div class="additional-title">First Chef & Line Cook</div>
-                    <div class="additional-details">The 99 Restaurant & Pub • 2020-2021</div>
-                </div>
-                
-                <div class="additional-item">
-                    <div class="additional-title">Shift Manager & Multi-Role Specialist</div>
-                    <div class="additional-details">The Corner Market • 2015-2020</div>
+                <div class="skill-category">
+                    <div class="skill-title">Operations</div>
+                    <div class="skill-items">Supply Chain, Operations Mgmt, Quality Control, High-Volume Service</div>
                 </div>
             </div>
         </div>
         
-        <!-- Volunteer -->
-        <div class="section">
-            <h2 class="section-title">VOLUNTEER EXPERIENCE</h2>
-            
-            <div class="volunteer-item">
-                <div class="volunteer-title">Vote Save America - Phone Banker</div>
-                <div class="volunteer-details">Fall 2024 • Conducted voter outreach and political education</div>
-            </div>
-            
-            <div class="volunteer-item">
-                <div class="volunteer-title">Big Brothers Big Sisters of Eastern Massachusetts - Big Sister</div>
-                <div class="volunteer-details">2018-2021 • Provided one-on-one mentoring and support</div>
-            </div>
-        </div>
+        <!-- Manual page break for printing -->
+        <div class="page-end"></div>
         
-        <!-- Footer -->
-        <div class="footer-note">
-            Updated: January 2025 • Portfolio available at alyssalangmeyer.com • References available upon request
+        <!-- Page 2 -->
+        <div class="page-2">
+            <!-- Additional Professional Experience -->
+            <div class="section">
+                <h2 class="section-title">ADDITIONAL PROFESSIONAL EXPERIENCE</h2>
+                
+                <div class="experience-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">Public Policy & Advocacy Intern</div>
+                            <div class="item-company">The Borgen Project</div>
+                        </div>
+                    </div>
+                    <div class="item-details">
+                        <div class="item-location">Remote</div>
+                        <div class="item-date">Sep 2021 – Dec 2021</div>
+                    </div>
+                    <ul>
+                        <li>Conducted research on global poverty alleviation strategies</li>
+                        <li>Authored policy briefs for government officials</li>
+                        <li>Organized events for poverty awareness in Massachusetts</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">Writing Tutor (Political Science Focus)</div>
+                            <div class="item-company">The Writing and Reading Center, UMass Dartmouth</div>
+                        </div>
+                    </div>
+                    <div class="item-details">
+                        <div class="item-location">North Dartmouth, MA</div>
+                        <div class="item-date">Jan 2019 – May 2021</div>
+                    </div>
+                    <ul>
+                        <li>Provided tutoring in political science writing and research</li>
+                        <li>Assisted with thesis development and argumentation</li>
+                        <li>Helped students engage with primary sources</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Projects & Competitions -->
+            <div class="section">
+                <h2 class="section-title">PROJECTS & COMPETITIONS</h2>
+                <div class="projects-container">
+                    <div class="project-item-compact">
+                        <div class="item-title">Smith Analytics Datathon</div>
+                        <div class="item-company">4th Place/41 Teams</div>
+                        <div class="item-date">Apr 2025</div>
+                        <ul>
+                            <li>Collaborated on cross-university team</li>
+                            <li>Analyzed streaming data and concert trends</li>
+                            <li>Developed operational plan for 20,000+ event</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="project-item-compact">
+                        <div class="item-title">Policy Research Papers</div>
+                        <div class="item-company">Graduate Level</div>
+                        <div class="item-date">Fall 2025</div>
+                        <ul>
+                            <li>"The Backlash Equation" - Gender/labor analysis</li>
+                            <li>"Your Body, Their Data" - Digital privacy policy</li>
+                            <li>Applied statistical and policy analysis methods</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Experience -->
+            <div class="section">
+                <h2 class="section-title">ADDITIONAL EXPERIENCE</h2>
+                <div class="additional-grid">
+                    <div class="additional-item">
+                        <div class="additional-title">Front-of-House Manager & Server</div>
+                        <div class="additional-details">Doragon Ramen • 2021-2022</div>
+                    </div>
+                    
+                    <div class="additional-item">
+                        <div class="additional-title">First Chef & Line Cook</div>
+                        <div class="additional-details">The 99 Restaurant & Pub • 2020-2021</div>
+                    </div>
+                    
+                    <div class="additional-item">
+                        <div class="additional-title">Shift Manager & Multi-Role Specialist</div>
+                        <div class="additional-details">The Corner Market • 2015-2020</div>
+                    </div>
+                    
+                    <div class="additional-item">
+                        <div class="additional-title">Assistant Kitchen Manager</div>
+                        <div class="additional-details">Camp Haiastan • Summer 2021</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Volunteer -->
+            <div class="section">
+                <h2 class="section-title">VOLUNTEER EXPERIENCE</h2>
+                
+                <div class="volunteer-item">
+                    <div class="additional-title">Vote Save America - Phone Banker</div>
+                    <div class="additional-details">Fall 2024 • Conducted voter outreach and political education</div>
+                </div>
+                
+                <div class="volunteer-item">
+                    <div class="additional-title">Big Brothers Big Sisters - Big Sister</div>
+                    <div class="additional-details">2018-2021 • Provided one-on-one mentoring and support</div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div style="text-align: center; margin-top: 25px; font-size: 9px; color: #95a5a6; border-top: 1px solid #ecf0f1; padding-top: 8px;">
+                Updated: January 2025 • References available upon request
+            </div>
         </div>
     </div>
     
     <script>
-        // Hide print button when printing
-        window.addEventListener('beforeprint', function() {
+        function downloadResume() {
+            // Get user input for job title
+            const jobTitle = prompt('Enter job title to append to filename (or leave blank for generic):', '');
+            
+            // Construct filename
+            let filename = 'Alyssa Langmeyer - Resume';
+            if (jobTitle && jobTitle.trim() !== '') {
+                filename += ' - ' + jobTitle.trim();
+            }
+            filename += '.pdf';
+            
+            // Set print options and print
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html>
+                <head>
+                    <title>${filename}</title>
+                    <style>
+                        ${document.querySelector('style').innerHTML}
+                        body { padding: 0; margin: 0; }
+                        .resume { padding: 30px 40px; }
+                        @page { margin: 0.5in; }
+                    </style>
+                </head>
+                <body>
+                    ${document.querySelector('.resume').outerHTML}
+                </body>
+                </html>
+            `);
+            
+            printWindow.document.close();
+            
+            // Wait for content to load, then print
+            setTimeout(() => {
+                printWindow.print();
+                printWindow.onafterprint = () => printWindow.close();
+            }, 250);
+        }
+        
+        // Hide controls when printing
+        window.addEventListener('beforeprint', () => {
             document.querySelector('.controls').style.display = 'none';
         });
         
-        window.addEventListener('afterprint', function() {
+        window.addEventListener('afterprint', () => {
             document.querySelector('.controls').style.display = 'block';
         });
         
-        // Add keyboard shortcut for printing (Ctrl/Cmd + P)
-        document.addEventListener('keydown', function(e) {
-            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
-                e.preventDefault();
-                window.print();
-            }
+        // Ensure proper page breaks
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add page break logic for print
+            const style = document.createElement('style');
+            style.textContent = `
+                @media print {
+                    .page-2 { 
+                        page-break-before: always;
+                        padding-top: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
         });
-        
-        // Hide controls when PDF is generated
-        if (window.matchMedia('print').matches) {
-            document.querySelector('.controls').style.display = 'none';
-        }
     </script>
 </body>
 </html>
