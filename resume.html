@@ -326,7 +326,7 @@
     <div class="controls no-print">
         <button class="print-btn" onclick="downloadResume()">Download PDF</button>
         <div style="font-size: 10px; color: #666; margin-top: 5px; text-align: center;">
-            Add job title after dash
+            PDF will download as "Alyssa Langmeyer - Resume.pdf"
         </div>
     </div>
     
@@ -597,42 +597,132 @@
     
     <script>
         function downloadResume() {
-            // Get user input for job title
-            const jobTitle = prompt('Enter job title to append to filename (or leave blank for generic):', '');
+            // Set the filename exactly as requested
+            const filename = 'Alyssa Langmeyer - Resume - .pdf';
             
-            // Construct filename
-            let filename = 'Alyssa Langmeyer - Resume';
-            if (jobTitle && jobTitle.trim() !== '') {
-                filename += ' - ' + jobTitle.trim();
-            }
-            filename += '.pdf';
+            // Create a clone of the resume content for printing
+            const printContent = document.querySelector('.resume').cloneNode(true);
             
-            // Set print options and print
+            // Create print window
             const printWindow = window.open('', '_blank');
+            
+            // Write the print content with proper styling
             printWindow.document.write(`
+                <!DOCTYPE html>
                 <html>
                 <head>
                     <title>${filename}</title>
                     <style>
-                        ${document.querySelector('style').innerHTML}
-                        body { padding: 0; margin: 0; }
-                        .resume { padding: 30px 40px; }
-                        @page { margin: 0.5in; }
+                        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700&family=Open+Sans:wght@400;600;700&display=swap');
+                        
+                        * {
+                            margin: 0;
+                            padding: 0;
+                            box-sizing: border-box;
+                        }
+                        
+                        body {
+                            font-family: 'Open Sans', sans-serif;
+                            line-height: 1.4;
+                            color: #2c3e50;
+                            background: white;
+                            padding: 0;
+                            margin: 0;
+                            font-size: 10pt;
+                        }
+                        
+                        @page {
+                            margin: 0.5in;
+                            size: letter;
+                        }
+                        
+                        .resume {
+                            width: 100%;
+                            padding: 30px 40px;
+                            background: white;
+                        }
+                        
+                        .header {
+                            text-align: center;
+                            margin-bottom: 25px;
+                            padding-bottom: 15px;
+                            border-bottom: 2px solid #3498db;
+                        }
+                        
+                        .name {
+                            font-family: 'Lato', sans-serif;
+                            font-size: 24px;
+                            font-weight: 700;
+                            color: #2c3e50;
+                            margin-bottom: 5px;
+                        }
+                        
+                        .title {
+                            font-size: 14px;
+                            font-weight: 600;
+                            color: #3498db;
+                            margin-bottom: 10px;
+                        }
+                        
+                        .contact-info {
+                            display: flex;
+                            justify-content: center;
+                            flex-wrap: wrap;
+                            gap: 12px;
+                            font-size: 11px;
+                            color: #7f8c8d;
+                        }
+                        
+                        .section {
+                            margin-bottom: 20px;
+                            page-break-inside: avoid;
+                        }
+                        
+                        .section-title {
+                            font-family: 'Lato', sans-serif;
+                            font-size: 14px;
+                            font-weight: 700;
+                            color: #2c3e50;
+                            margin-bottom: 12px;
+                            padding-bottom: 4px;
+                            border-bottom: 1px solid #ecf0f1;
+                            text-transform: uppercase;
+                            letter-spacing: 1px;
+                        }
+                        
+                        .page-2 {
+                            page-break-before: always;
+                            padding-top: 20px;
+                        }
+                        
+                        /* Include all other print styles here */
+                        .education-compact { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 15px; }
+                        .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 8px; }
+                        .projects-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+                        .additional-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 8px; }
+                        ul { padding-left: 16px; margin-top: 6px; }
+                        li { margin-bottom: 4px; font-size: 11px; line-height: 1.3; }
+                        .highlight { color: #2c3e50; font-weight: 600; }
                     </style>
                 </head>
                 <body>
-                    ${document.querySelector('.resume').outerHTML}
+                    ${printContent.outerHTML}
+                    <script>
+                        // After printing, close the window
+                        window.onafterprint = function() {
+                            window.close();
+                        };
+                        
+                        // Trigger print after content loads
+                        setTimeout(() => {
+                            window.print();
+                        }, 500);
+                    <\/script>
                 </body>
                 </html>
             `);
             
             printWindow.document.close();
-            
-            // Wait for content to load, then print
-            setTimeout(() => {
-                printWindow.print();
-                printWindow.onafterprint = () => printWindow.close();
-            }, 250);
         }
         
         // Hide controls when printing
@@ -642,21 +732,6 @@
         
         window.addEventListener('afterprint', () => {
             document.querySelector('.controls').style.display = 'block';
-        });
-        
-        // Ensure proper page breaks
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add page break logic for print
-            const style = document.createElement('style');
-            style.textContent = `
-                @media print {
-                    .page-2 { 
-                        page-break-before: always;
-                        padding-top: 0;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
         });
     </script>
 </body>
