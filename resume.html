@@ -153,7 +153,7 @@
         /* Skills Grid - More compact */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 12px;
             margin-top: 8px;
         }
@@ -209,7 +209,7 @@
             font-size: 11px;
         }
         
-        /* Print styles */
+        /* Print styles - FIXED to prevent blank page */
         @media print {
             @page {
                 margin: 0.5in;
@@ -221,6 +221,8 @@
                 padding: 0;
                 font-size: 10pt;
                 margin: 0;
+                height: auto;
+                overflow: visible;
             }
             
             .resume {
@@ -229,6 +231,8 @@
                 max-width: 100%;
                 min-height: 0;
                 margin: 0;
+                height: auto;
+                page-break-inside: avoid;
             }
             
             .no-print {
@@ -241,9 +245,10 @@
             }
             
             /* Ensure proper page breaks */
-            .page-break {
+            .page-2 {
                 page-break-before: always;
-                margin-top: 30px;
+                margin-top: 0;
+                padding-top: 0;
             }
             
             /* Adjust spacing for print */
@@ -253,6 +258,7 @@
             
             .section {
                 margin-bottom: 15px;
+                page-break-inside: avoid;
             }
             
             /* Prevent widows and orphans */
@@ -309,16 +315,29 @@
             margin-bottom: 12px;
         }
         
-        /* Page break helper */
-        .page-end {
+        /* Page break helper - REMOVED to prevent blank page */
+        /* .page-end {
             height: 1px;
             visibility: hidden;
             page-break-after: always;
-        }
+        } */
         
         /* Second page start */
         .page-2 {
             padding-top: 20px;
+        }
+        
+        /* Hospitality skills */
+        .hospitality-skills {
+            font-size: 10px;
+            color: #7f8c8d;
+            margin-top: 2px;
+        }
+        
+        /* Skill items with HTML/CSS */
+        .skill-items.html {
+            font-family: monospace;
+            font-size: 10.5px;
         }
     </style>
 </head>
@@ -356,8 +375,8 @@
                         <div class="item-date">Expected Winter 2026 | GPA: 3.3</div>
                     </div>
                     <ul>
-                        <li>Data Science, Statistical ML, R Programming, Political Analysis</li>
-                        <li>Campaign Management Institute (Summer 2026)</li>
+                        <li>Coursework: Data Science, Statistical ML, R Programming, Political Analysis</li>
+                        <li>Additional Training: Campaign Management Institute (Summer 2026)</li>
                     </ul>
                 </div>
                 
@@ -369,8 +388,8 @@
                         <div class="item-date">Graduated 2021 | Major GPA: 3.5</div>
                     </div>
                     <ul>
-                        <li>Concentrations: International Relations, International Security</li>
-                        <li>Key Coursework: Political Research Methods, Constitutional Law</li>
+                        <li>Concentrations: International Relations, International Security, Pre-Law</li>
+                        <li>Key Coursework: Political Research Methods, Constitutional Law, Government & Politics of Middle East</li>
                     </ul>
                 </div>
             </div>
@@ -392,10 +411,10 @@
                     <div class="item-date">May 2025 – Present</div>
                 </div>
                 <ul>
-                    <li>Manage guest seating/dining for <span class="highlight">200+ daily customers</span> in high-volume restaurant</li>
-                    <li>Coordinate food expediting and kitchen-dining room timing</li>
-                    <li>Train and mentor <span class="highlight">15+ new hires</span>, reducing onboarding time by <span class="highlight">30%</span></li>
-                    <li>Implement improvements reducing order errors by <span class="highlight">25%</span></li>
+                    <li>Manage guest seating and dining transitions in high-volume restaurant serving <span class="highlight">200+ customers daily</span>, optimizing service flow</li>
+                    <li>Coordinate food expediting and timing between kitchen and dining room to ensure optimal service efficiency</li>
+                    <li>Train and mentor <span class="highlight">15+ new hires</span> on POS systems and service protocols, reducing onboarding time by <span class="highlight">30%</span></li>
+                    <li>Implement process improvements reducing order errors by <span class="highlight">25%</span> through streamlined communication systems</li>
                 </ul>
             </div>
             
@@ -411,9 +430,9 @@
                     <div class="item-date">Jan 2025 – May 2025</div>
                 </div>
                 <ul>
-                    <li>Evaluated assignments for <span class="highlight">75+ students</span> in CORE-200: AU Encounters</li>
-                    <li>Applied rubrics for James Baldwin literary analysis assessment</li>
-                    <li>Maintained grading consistency and academic integrity</li>
+                    <li>Evaluated assignments for <span class="highlight">75+ students</span> in CORE-200: AU Encounters with consistent two-week turnaround</li>
+                    <li>Applied detailed rubrics to assess student work on James Baldwin-focused literary analysis essays</li>
+                    <li>Maintained grading consistency and academic integrity standards across all assessments and assignments</li>
                 </ul>
             </div>
             
@@ -429,10 +448,10 @@
                     <div class="item-date">Feb 2022 – Apr 2024</div>
                 </div>
                 <ul>
-                    <li>Managed relationships with <span class="highlight">130+ suppliers</span> for PCB procurement</li>
-                    <li>Negotiated pricing for orders up to <span class="highlight">$300,000</span> for multinational clients</li>
-                    <li>Generated daily Excel reports informing procurement strategies</li>
-                    <li>Contributed to <span class="highlight">15% reduction</span> in material costs</li>
+                    <li>Managed relationships with <span class="highlight">130+ suppliers</span> for printed circuit board component procurement across multiple projects</li>
+                    <li>Negotiated pricing and terms for orders up to <span class="highlight">$300,000</span> for 10+ multinational technology clients in competitive market</li>
+                    <li>Generated 5-10 daily Excel reports analyzing supplier performance and market trends to inform procurement strategies</li>
+                    <li>Contributed to <span class="highlight">15% reduction</span> in material costs through data-driven procurement analysis and vendor optimization</li>
                 </ul>
             </div>
         </div>
@@ -442,39 +461,39 @@
             <h2 class="section-title">SKILLS</h2>
             <div class="skills-grid">
                 <div class="skill-category">
-                    <div class="skill-title">Data Science</div>
-                    <div class="skill-items">R / RStudio, Python, SQL, Tableau, Statistical Analysis, Data Visualization</div>
+                    <div class="skill-title">Data Science & Analytics</div>
+                    <div class="skill-items">R / RStudio, Python, SQL, Tableau, Statistical Analysis, Data Visualization, Regression Modeling, Machine Learning</div>
                 </div>
                 
                 <div class="skill-category">
-                    <div class="skill-title">Policy Analysis</div>
-                    <div class="skill-items">Policy Research, Legislative Analysis, Academic Writing, Research Design</div>
+                    <div class="skill-title">Technical Tools & Development</div>
+                    <div class="skill-items html">HTML, CSS, JavaScript, Microsoft Excel (Advanced), Git/GitHub, R Markdown/Quarto, Jupyter Notebooks, Statistical Software</div>
                 </div>
                 
                 <div class="skill-category">
-                    <div class="skill-title">Technical Tools</div>
-                    <div class="skill-items">Excel (Advanced), Git/GitHub, R Markdown, Jupyter, Statistical Software</div>
+                    <div class="skill-title">Policy Research & Analysis</div>
+                    <div class="skill-items">Policy Analysis, Legislative Research, Academic Writing, Research Design, Literature Review, Qualitative Analysis</div>
                 </div>
                 
                 <div class="skill-category">
-                    <div class="skill-title">Project Management</div>
-                    <div class="skill-items">Team Leadership, Cross-Functional Coordination, Process Optimization</div>
+                    <div class="skill-title">Professional & Management</div>
+                    <div class="skill-items">Project Management, Team Leadership, Cross-Functional Coordination, Process Optimization, Strategic Communication</div>
                 </div>
                 
                 <div class="skill-category">
-                    <div class="skill-title">Subject Expertise</div>
-                    <div class="skill-items">Digital Privacy, Labor Economics, Reproductive Rights, International Security</div>
+                    <div class="skill-title">Subject Matter Expertise</div>
+                    <div class="skill-items">Digital Privacy & Technology Policy, Gender & Labor Economics, Reproductive Rights & Health Policy, Civil Rights & Social Justice, International Security & Relations, Counterterrorism & Conflict Analysis, Political Representation, Public Policy Implementation</div>
                 </div>
                 
                 <div class="skill-category">
-                    <div class="skill-title">Operations</div>
-                    <div class="skill-items">Supply Chain, Operations Mgmt, Quality Control, High-Volume Service</div>
+                    <div class="skill-title">Operations & Hospitality</div>
+                    <div class="skill-items">Supply Chain Management, Operations Management, Quality Control, High-Volume Service, Food Safety Protocols, Kitchen Operations, Team Training</div>
                 </div>
             </div>
         </div>
         
-        <!-- Manual page break for printing -->
-        <div class="page-end"></div>
+        <!-- No manual page break to prevent blank pages -->
+        <!-- <div class="page-end"></div> -->
         
         <!-- Page 2 -->
         <div class="page-2">
@@ -494,9 +513,9 @@
                         <div class="item-date">Sep 2021 – Dec 2021</div>
                     </div>
                     <ul>
-                        <li>Conducted research on global poverty alleviation strategies</li>
-                        <li>Authored policy briefs for government officials</li>
-                        <li>Organized events for poverty awareness in Massachusetts</li>
+                        <li>Conducted research on global poverty alleviation strategies and international development policies for congressional advocacy</li>
+                        <li>Authored policy briefs and communication materials for government officials and stakeholders on poverty reduction initiatives</li>
+                        <li>Organized events and leveraged social media platforms for poverty awareness campaigns in Massachusetts' 5th District</li>
                     </ul>
                 </div>
                 
@@ -512,9 +531,9 @@
                         <div class="item-date">Jan 2019 – May 2021</div>
                     </div>
                     <ul>
-                        <li>Provided tutoring in political science writing and research</li>
-                        <li>Assisted with thesis development and argumentation</li>
-                        <li>Helped students engage with primary sources</li>
+                        <li>Provided specialized tutoring in political science writing, research methodologies, and analytical frameworks</li>
+                        <li>Assisted students with thesis development, argumentation, and engagement with primary political sources</li>
+                        <li>Helped students improve academic writing skills for political science papers, research proposals, and analytical essays</li>
                     </ul>
                 </div>
             </div>
@@ -524,51 +543,54 @@
                 <h2 class="section-title">PROJECTS & COMPETITIONS</h2>
                 <div class="projects-container">
                     <div class="project-item-compact">
-                        <div class="item-title">Smith Analytics Datathon</div>
-                        <div class="item-company">4th Place/41 Teams</div>
-                        <div class="item-date">Apr 2025</div>
+                        <div class="item-title">Smith Analytics Consortium Datathon</div>
+                        <div class="item-company">4th Place / 41 Teams</div>
+                        <div class="item-date">April 2025</div>
                         <ul>
-                            <li>Collaborated on cross-university team</li>
-                            <li>Analyzed streaming data and concert trends</li>
-                            <li>Developed operational plan for 20,000+ event</li>
+                            <li>Collaborated on cross-university team to help Spotify select profitable artist lineup using real-world data</li>
+                            <li>Analyzed streaming statistics, concert trends, and ticket pricing to develop optimal concert proposal</li>
+                            <li>Developed operational and marketing plan for 20,000+ attendee event with budget projections</li>
                         </ul>
                     </div>
                     
                     <div class="project-item-compact">
-                        <div class="item-title">Policy Research Papers</div>
-                        <div class="item-company">Graduate Level</div>
+                        <div class="item-title">Graduate Policy Research Papers</div>
+                        <div class="item-company">American University</div>
                         <div class="item-date">Fall 2025</div>
                         <ul>
-                            <li>"The Backlash Equation" - Gender/labor analysis</li>
-                            <li>"Your Body, Their Data" - Digital privacy policy</li>
-                            <li>Applied statistical and policy analysis methods</li>
+                            <li><span class="highlight">"The Backlash Equation"</span> – Analyzed relationship between rising women's employment and authoritarian electoral gains using time-series cross-sectional analysis</li>
+                            <li><span class="highlight">"Your Body, Their Data"</span> – Analyzed digital surveillance and reproductive rights in post-Dobbs era, proposed "Digital Bodyguard Act" policy solution</li>
                         </ul>
                     </div>
                 </div>
             </div>
             
-            <!-- Additional Experience -->
+            <!-- Additional Hospitality Experience -->
             <div class="section">
-                <h2 class="section-title">ADDITIONAL EXPERIENCE</h2>
+                <h2 class="section-title">ADDITIONAL HOSPITALITY EXPERIENCE</h2>
                 <div class="additional-grid">
                     <div class="additional-item">
                         <div class="additional-title">Front-of-House Manager & Server</div>
                         <div class="additional-details">Doragon Ramen • 2021-2022</div>
+                        <div class="hospitality-skills">Customer Service, Order Management, Team Coordination, POS Systems</div>
                     </div>
                     
                     <div class="additional-item">
                         <div class="additional-title">First Chef & Line Cook</div>
                         <div class="additional-details">The 99 Restaurant & Pub • 2020-2021</div>
+                        <div class="hospitality-skills">Food Preparation, Kitchen Safety, Expediting, High-Volume Cooking</div>
                     </div>
                     
                     <div class="additional-item">
                         <div class="additional-title">Shift Manager & Multi-Role Specialist</div>
                         <div class="additional-details">The Corner Market • 2015-2020</div>
+                        <div class="hospitality-skills">Inventory Management, Staff Scheduling, Customer Relations, Cash Handling</div>
                     </div>
                     
                     <div class="additional-item">
                         <div class="additional-title">Assistant Kitchen Manager</div>
                         <div class="additional-details">Camp Haiastan • Summer 2021</div>
+                        <div class="hospitality-skills">Menu Planning, Food Cost Control, Staff Training, Sanitation Compliance</div>
                     </div>
                 </div>
             </div>
@@ -579,12 +601,12 @@
                 
                 <div class="volunteer-item">
                     <div class="additional-title">Vote Save America - Phone Banker</div>
-                    <div class="additional-details">Fall 2024 • Conducted voter outreach and political education</div>
+                    <div class="additional-details">Fall 2024 • Conducted voter outreach and political education on electoral processes and candidate platforms</div>
                 </div>
                 
                 <div class="volunteer-item">
-                    <div class="additional-title">Big Brothers Big Sisters - Big Sister</div>
-                    <div class="additional-details">2018-2021 • Provided one-on-one mentoring and support</div>
+                    <div class="additional-title">Big Brothers Big Sisters of Eastern MA - Big Sister</div>
+                    <div class="additional-details">2018-2021 • Provided one-on-one mentoring, academic support, and personal development guidance</div>
                 </div>
             </div>
             
@@ -600,11 +622,11 @@
             // Set the filename exactly as requested
             const filename = 'Alyssa Langmeyer - Resume - .pdf';
             
-            // Create a clone of the resume content for printing
-            const printContent = document.querySelector('.resume').cloneNode(true);
-            
-            // Create print window
+            // Create a clean print window
             const printWindow = window.open('', '_blank');
+            
+            // Get the HTML content
+            const resumeContent = document.querySelector('.resume').outerHTML;
             
             // Write the print content with proper styling
             printWindow.document.write(`
@@ -612,6 +634,8 @@
                 <html>
                 <head>
                     <title>${filename}</title>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <style>
                         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700&family=Open+Sans:wght@400;600;700&display=swap');
                         
@@ -629,6 +653,7 @@
                             padding: 0;
                             margin: 0;
                             font-size: 10pt;
+                            height: 100%;
                         }
                         
                         @page {
@@ -640,6 +665,7 @@
                             width: 100%;
                             padding: 30px 40px;
                             background: white;
+                            min-height: 11in;
                         }
                         
                         .header {
@@ -690,33 +716,46 @@
                             letter-spacing: 1px;
                         }
                         
+                        /* Page break for second page */
                         .page-2 {
                             page-break-before: always;
-                            padding-top: 20px;
+                            margin-top: 0;
+                            padding-top: 0;
                         }
                         
-                        /* Include all other print styles here */
+                        /* All other styles */
                         .education-compact { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 15px; }
-                        .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 8px; }
+                        .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 8px; }
                         .projects-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
                         .additional-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 8px; }
-                        ul { padding-left: 16px; margin-top: 6px; }
+                        ul { padding-left: 16px; margin-top: 6px; margin-bottom: 8px; }
                         li { margin-bottom: 4px; font-size: 11px; line-height: 1.3; }
                         .highlight { color: #2c3e50; font-weight: 600; }
+                        .hospitality-skills { font-size: 10px; color: #7f8c8d; margin-top: 2px; }
+                        .skill-items.html { font-family: monospace; font-size: 10.5px; }
+                        
+                        /* Hide controls in print */
+                        .no-print { display: none !important; }
+                        
+                        /* Adjust margins for print */
+                        @media print {
+                            body { margin: 0; padding: 0; }
+                            .resume { padding: 0.5in; box-shadow: none; }
+                        }
                     </style>
                 </head>
                 <body>
-                    ${printContent.outerHTML}
+                    ${resumeContent}
                     <script>
-                        // After printing, close the window
-                        window.onafterprint = function() {
-                            window.close();
+                        // Wait for content to load, then print
+                        window.onload = function() {
+                            setTimeout(() => {
+                                window.print();
+                                window.onafterprint = function() {
+                                    window.close();
+                                };
+                            }, 500);
                         };
-                        
-                        // Trigger print after content loads
-                        setTimeout(() => {
-                            window.print();
-                        }, 500);
                     <\/script>
                 </body>
                 </html>
@@ -727,11 +766,13 @@
         
         // Hide controls when printing
         window.addEventListener('beforeprint', () => {
-            document.querySelector('.controls').style.display = 'none';
+            const controls = document.querySelector('.controls');
+            if (controls) controls.style.display = 'none';
         });
         
         window.addEventListener('afterprint', () => {
-            document.querySelector('.controls').style.display = 'block';
+            const controls = document.querySelector('.controls');
+            if (controls) controls.style.display = 'block';
         });
     </script>
 </body>
