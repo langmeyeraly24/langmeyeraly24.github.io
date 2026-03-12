@@ -855,6 +855,16 @@ img {
     gap: 0.5rem;
 }
 
+/* Project subtitle styling */
+.project-subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
+}
+
 .project-label-wrapper {
     display: flex;
     align-items: center;
