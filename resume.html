@@ -75,7 +75,8 @@
         /* Sections */
         .section {
             margin-bottom: 20px;
-            page-break-inside: avoid;
+            /* Removed page-break-inside: avoid — it was causing large blank gaps when sections
+               didn't fit on a page. Individual items handle their own break behavior. */
         }
         
         .section-title {
