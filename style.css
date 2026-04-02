@@ -1601,7 +1601,39 @@ img {
 
     .section {
         padding: var(--space-xl) 0;
+        /* Removed break-inside: avoid — it was causing large blank gaps between pages */
+    }
+
+    /* Keep individual items from splitting across pages instead */
+    .timeline-item,
+    .project-card,
+    .skill-category,
+    .education-card,
+    .contact-card {
         break-inside: avoid;
+    }
+
+    /* Fix elements hidden by JS scroll animations — they stay at opacity: 0 when printing */
+    .timeline-item,
+    .project-card,
+    .skill-category,
+    .education-card,
+    .contact-card {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    /* Fix gradient text — -webkit-text-fill-color: transparent makes text invisible in print */
+    .hero-name {
+        -webkit-text-fill-color: black;
+        background: none;
+        color: black;
+    }
+
+    .nav-logo {
+        -webkit-text-fill-color: black;
+        background: none;
+        color: black;
     }
 
     body {
@@ -1647,4 +1679,4 @@ img {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
     }
-}
+}
