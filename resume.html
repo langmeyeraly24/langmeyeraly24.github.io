@@ -795,8 +795,8 @@
                         /* Skills Grid */
                         .skills-grid {
                             display: grid;
-                            grid-template-columns: repeat(2, 1fr);
-                            gap: 12px;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 8px;
                             margin-top: 8px;
                         }
 
@@ -930,7 +930,12 @@
                                 margin-bottom: 14px;
                             }
 
-                            .skills-grid, .additional-grid, .projects-container {
+                            .skills-grid {
+                                grid-template-columns: repeat(3, 1fr);
+                                gap: 8px;
+                            }
+
+                            .additional-grid, .projects-container {
                                 gap: 10px;
                             }
 
