@@ -260,7 +260,12 @@
                 margin-bottom: 14px;
             }
 
-            .skills-grid, .additional-grid, .projects-container {
+            .skills-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+
+            .additional-grid, .projects-container {
                 gap: 10px;
             }
 
