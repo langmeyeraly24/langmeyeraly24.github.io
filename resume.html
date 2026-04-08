@@ -235,7 +235,7 @@
         /* ── PRINT STYLES ── */
         @media print {
             @page {
-                margin: 0.55in 0.68in;
+                margin: 0.48in 0.6in;
                 size: letter;
             }
 
@@ -243,6 +243,7 @@
                 background: white;
                 padding: 0;
                 font-size: 12pt;
+                line-height: 1.35;
                 margin: 0;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
@@ -259,8 +260,21 @@
             .no-print { display: none !important; }
 
             a { color: #444; text-decoration: none; }
-
             .contact-info a { color: #444; }
+
+            .section         { margin-bottom: 7px; }
+            .section-title   { margin-bottom: 5px; padding-bottom: 2px; }
+            .edu-block       { margin-bottom: 5px; }
+            .exp-block       { margin-bottom: 7px; }
+            .exp-block ul    { margin-top: 2px; }
+            .exp-block ul li { margin-bottom: 2px; }
+            .skills-list li  { margin-bottom: 1px; }
+            .pub-block       { margin-bottom: 6px; }
+            .pub-desc        { margin-top: 1px; }
+            .comm-block      { margin-bottom: 4px; }
+            .addl-block      { margin-bottom: 3px; }
+            .cert-block      { margin: 2px 0 2px 14px; }
+            .header          { margin-bottom: 9px; padding-bottom: 7px; }
         }
     </style>
 </head>
@@ -275,11 +289,13 @@
         <!-- ── HEADER ── -->
         <div class="header">
             <div class="name">Alyssa Langmeyer</div>
-            <div class="contact-info">4201 Massachusetts Avenue NW, Washington, DC</div>
             <div class="contact-info">
-                <a href="mailto:langmeyeraly24@gmail.com">langmeyeraly24@gmail.com</a>
+                4201 Massachusetts Avenue NW, Washington, DC
+                &nbsp;|&nbsp; <a href="mailto:langmeyeraly24@gmail.com">langmeyeraly24@gmail.com</a>
                 &nbsp;|&nbsp; (774) 573-9331
-                &nbsp;|&nbsp; <a href="https://linkedin.com/in/alyssa-langmeyer-79518617a">linkedin.com/in/alyssa-langmeyer-79518617a</a>
+            </div>
+            <div class="contact-info">
+                <a href="https://linkedin.com/in/alyssa-langmeyer-79518617a">linkedin.com/in/alyssa-langmeyer-79518617a</a>
                 &nbsp;|&nbsp; <a href="https://langmeyeraly24.github.io/index.html">langmeyeraly24.github.io</a>
             </div>
         </div>
@@ -562,13 +578,27 @@
                         .no-print { display: none !important; }
 
                         @media print {
-                            @page { margin: 0.55in 0.68in; size: letter; }
+                            @page { margin: 0.48in 0.6in; size: letter; }
                             body {
+                                line-height: 1.35;
                                 -webkit-print-color-adjust: exact;
                                 print-color-adjust: exact;
                             }
                             a { color: #444; text-decoration: none; }
                             .contact-info a { color: #444; }
+                            .section         { margin-bottom: 7px; }
+                            .section-title   { margin-bottom: 5px; padding-bottom: 2px; }
+                            .edu-block       { margin-bottom: 5px; }
+                            .exp-block       { margin-bottom: 7px; }
+                            .exp-block ul    { margin-top: 2px; }
+                            .exp-block ul li { margin-bottom: 2px; }
+                            .skills-list li  { margin-bottom: 1px; }
+                            .pub-block       { margin-bottom: 6px; }
+                            .pub-desc        { margin-top: 1px; }
+                            .comm-block      { margin-bottom: 4px; }
+                            .addl-block      { margin-bottom: 3px; }
+                            .cert-block      { margin: 2px 0 2px 14px; }
+                            .header          { margin-bottom: 9px; padding-bottom: 7px; }
                         }
                     </style>
                 </head>
