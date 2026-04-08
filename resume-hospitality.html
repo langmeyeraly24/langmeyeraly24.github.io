@@ -5,328 +5,239 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alyssa Langmeyer - Hospitality Resume</title>
     <style>
-        /* Clean, professional single-column layout */
-        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700&family=Open+Sans:wght@400;600;700&display=swap');
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Open Sans', sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12pt;
             line-height: 1.4;
-            color: #2c3e50;
-            background: #f8f9fa;
+            color: #111;
+            background: #f0f0f0;
             padding: 20px;
-            font-size: 11pt;
         }
-        
+
         .resume {
             max-width: 8.5in;
             min-height: 11in;
             margin: 0 auto;
             background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 35px 40px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+            padding: 0.55in 0.68in;
             position: relative;
         }
-        
-        /* Header - Hospitality Orange */
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #e67e22;
-        }
-        
-        .name {
-            font-family: 'Lato', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 5px;
-            letter-spacing: -0.5px;
-        }
-        
-        .title {
-            font-size: 14px;
-            font-weight: 600;
-            color: #e67e22;
-            margin-bottom: 8px;
-        }
-        
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            font-size: 11px;
-            color: #7f8c8d;
-            line-height: 1.6;
-        }
-        
-        .contact-info a {
-            color: #7f8c8d;
-            text-decoration: none;
-        }
-        
-        .contact-info a:hover {
-            text-decoration: underline;
-            color: #e67e22;
-        }
-        
-        /* Back button */
-        .back-button {
+
+        /* ── CONTROLS ── */
+        .controls {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1000;
             background: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border: 1px solid #ecf0f1;
-        }
-        
-        .back-button a {
-            background: #2c3e50;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 12px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: background 0.2s ease;
-        }
-        
-        .back-button a:hover {
-            background: #1a252f;
-        }
-        
-        .back-button span {
-            font-size: 12px;
-            color: #7f8c8d;
-        }
-        
-        /* Print button */
-        .print-btn {
-            background: #2c3e50;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 12px;
-            font-weight: 600;
-            margin-left: 10px;
-            transition: background 0.2s ease;
-        }
-        
-        .print-btn:hover {
-            background: #1a252f;
-        }
-        
-        /* Sections */
-        .section {
-            margin-bottom: 15px;
-            page-break-inside: avoid;
-        }
-        
-        .section-title {
-            font-family: 'Lato', sans-serif;
-            font-size: 14px;
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 8px;
-            padding-bottom: 3px;
-            border-bottom: 1px solid #e67e22;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        /* Summary Statement - condensed for printing */
-        .summary {
-            background: #fef5e7;
-            padding: 12px;
+            padding: 8px;
             border-radius: 6px;
-            margin-bottom: 15px;
-            border-left: 4px solid #e67e22;
-            font-size: 10.5pt;
-            line-height: 1.4;
-        }
-        
-        /* Experience Items */
-        .experience-item {
-            margin-bottom: 15px;
-            page-break-inside: avoid;
-        }
-        
-        .item-header {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 2px;
+            gap: 8px;
+            align-items: center;
         }
-        
-        .item-title {
-            font-weight: 700;
-            font-size: 13px;
-            color: #2c3e50;
-            line-height: 1.3;
-        }
-        
-        .item-company {
-            font-weight: 600;
-            color: #e67e22;
+
+        .print-btn {
+            background: #2e4a6e;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 12px;
+            font-weight: 700;
         }
-        
-        .item-details {
+
+        .print-btn:hover { background: #1c3050; }
+
+        .back-btn {
+            background: #555;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .back-btn:hover { background: #333; }
+
+        /* ── HEADER ── */
+        .header {
+            text-align: center;
+            border-bottom: 2.5px solid #2e4a6e;
+            padding-bottom: 10px;
+            margin-bottom: 13px;
+        }
+
+        .name {
+            font-size: 16pt;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #1c1c2e;
+            margin-bottom: 5px;
+        }
+
+        .contact-info {
+            font-size: 12pt;
+            color: #444;
+            line-height: 1.45;
+        }
+
+        .contact-info a {
+            color: #444;
+            text-decoration: none;
+        }
+
+        /* ── SECTION TITLES ── */
+        .section {
+            margin-bottom: 11px;
+        }
+
+        .section-title {
+            font-size: 10pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            border-bottom: 1.5px solid #2e4a6e;
+            padding-bottom: 3px;
+            margin-bottom: 8px;
+            color: #2e4a6e;
+        }
+
+        /* ── SKILLS PROFILE ── */
+        .skills-list {
+            list-style: disc;
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .skills-list li {
+            font-size: 12pt;
+            margin-bottom: 3px;
+            line-height: 1.35;
+        }
+
+        /* ── EDUCATION ── */
+        .edu-block {
+            margin-bottom: 8px;
+        }
+
+        .item-row {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 4px;
-            font-size: 11px;
-            color: #7f8c8d;
         }
-        
+
+        .item-title {
+            font-weight: 700;
+            font-size: 12pt;
+            color: #111;
+        }
+
+        .item-date {
+            font-size: 12pt;
+            color: #555;
+            white-space: nowrap;
+        }
+
+        .item-org {
+            font-size: 12pt;
+            font-weight: 700;
+            color: #2e4a6e;
+        }
+
         .item-location {
+            font-size: 12pt;
+            color: #555;
             font-style: italic;
         }
-        
-        .item-date {
-            font-weight: 500;
+
+        /* Certificate — plain indented, no box */
+        .cert-block {
+            margin: 4px 0 4px 14px;
         }
-        
-        ul {
-            padding-left: 18px;
-            margin-top: 3px;
-        }
-        
-        li {
-            margin-bottom: 3px;
-            font-size: 10.5pt;
-            line-height: 1.3;
-        }
-        
-        .highlight {
-            color: #e67e22;
+
+        .cert-title {
             font-weight: 700;
+            font-size: 12pt;
+            color: #111;
         }
-        
-        /* Key Metrics Banner - compact */
-        .restaurant-metrics {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 10px 0 15px;
-            padding: 10px;
-            background: #fef5e7;
-            border-radius: 6px;
-            justify-content: space-around;
+
+        .cert-sub {
+            font-size: 12pt;
+            color: #555;
         }
-        
-        .metric {
-            text-align: center;
-            min-width: 80px;
-        }
-        
-        .metric-value {
-            font-weight: 800;
-            font-size: 18px;
-            color: #e67e22;
-            line-height: 1.2;
-        }
-        
-        .metric-label {
-            font-size: 9px;
-            text-transform: uppercase;
-            color: #7f8c8d;
-            letter-spacing: 0.3px;
-        }
-        
-        /* Skills Grid - more compact */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-top: 5px;
-        }
-        
-        .skill-category {
-            margin-bottom: 0;
-            page-break-inside: avoid;
-        }
-        
-        .skill-title {
-            font-weight: 700;
-            font-size: 11px;
-            color: #e67e22;
-            margin-bottom: 3px;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-        
-        .skill-items {
-            font-size: 10px;
-            color: #2c3e50;
-            line-height: 1.3;
-        }
-        
-        /* Education compact */
-        .education-compact {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
+
+        /* ── EXPERIENCE ── */
+        .exp-block {
             margin-bottom: 10px;
         }
-        
-        .education-item-compact {
-            margin-bottom: 0;
+
+        .exp-block ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin-top: 3px;
         }
-        
-        .education-item-compact .item-title {
-            font-size: 12px;
-            margin-bottom: 2px;
+
+        .exp-block ul li {
+            font-size: 12pt;
+            margin-bottom: 3px;
+            line-height: 1.35;
         }
-        
-        .education-item-compact .item-company {
-            font-size: 11px;
-            margin-bottom: 2px;
-            color: #e67e22;
+
+        /* ── HOSPITALITY SKILLS ── */
+        .hosp-skills-list {
+            list-style: disc;
+            padding-left: 20px;
+            margin: 0;
         }
-        
-        .education-item-compact .item-details {
-            font-size: 10px;
+
+        .hosp-skills-list li {
+            font-size: 12pt;
+            margin-bottom: 3px;
+            line-height: 1.35;
         }
-        
-        /* Print styles - optimized for 2 pages */
+
+        /* ── COMMUNITY ── */
+        .comm-block {
+            margin-bottom: 7px;
+            font-size: 12pt;
+            line-height: 1.4;
+        }
+
+        .comm-title {
+            font-weight: 700;
+        }
+
+        /* ── PRINT STYLES ── */
         @media print {
             @page {
-                margin: 0.4in;
+                margin: 0.48in 0.6in;
                 size: letter;
             }
 
             body {
                 background: white;
                 padding: 0;
-                font-size: 10pt;
+                font-size: 12pt;
+                line-height: 1.35;
                 margin: 0;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
-            }
-
-            .back-button, .print-btn {
-                display: none;
             }
 
             .resume {
@@ -336,278 +247,356 @@
                 min-height: 0;
                 margin: 0;
             }
-            
-            .summary {
-                background: #fef5e7 !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-                padding: 8px;
-                margin-bottom: 10px;
-            }
-            
-            .restaurant-metrics {
-                background: #fef5e7 !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-                padding: 6px;
-                margin: 5px 0 10px;
-            }
-            
-            .experience-item {
-                margin-bottom: 10px;
-            }
-            
-            li {
-                font-size: 9.5pt;
-                margin-bottom: 2px;
-            }
-            
-            .skills-grid {
-                gap: 8px;
-            }
+
+            .no-print { display: none !important; }
+
+            a { color: #444; text-decoration: none; }
+            .contact-info a { color: #444; }
+
+            .section              { margin-bottom: 7px; }
+            .section-title        { margin-bottom: 5px; padding-bottom: 2px; }
+            .edu-block            { margin-bottom: 5px; }
+            .exp-block            { margin-bottom: 7px; }
+            .exp-block ul         { margin-top: 2px; }
+            .exp-block ul li      { margin-bottom: 2px; }
+            .skills-list          { columns: 2; column-gap: 24px; }
+            .skills-list li       { margin-bottom: 1px; break-inside: avoid; }
+            .hosp-skills-list li  { margin-bottom: 1px; }
+            .comm-block           { margin-bottom: 4px; }
+            .cert-block           { margin: 2px 0 2px 14px; }
+            .header               { margin-bottom: 9px; padding-bottom: 7px; }
         }
     </style>
 </head>
 <body>
-    <!-- Back button -->
-    <div class="back-button no-print">
-        <span>←</span>
-        <a href="index.html">Back to Portfolio</a>
-        <button class="print-btn" onclick="window.print()">Download PDF</button>
+
+    <div class="controls no-print">
+        <a class="back-btn" href="index.html">&#8592; Portfolio</a>
+        <button class="print-btn" onclick="downloadResume()">Download PDF</button>
     </div>
 
     <div class="resume">
-        <!-- Header -->
+
+        <!-- ── HEADER ── -->
         <div class="header">
-            <h1 class="name">ALYSSA LANGMEYER</h1>
-            <div class="title">Hospitality Operations & Kitchen Management</div>
+            <div class="name">Alyssa Langmeyer</div>
             <div class="contact-info">
-                <span>Washington, DC</span>
-                <a href="mailto:langmeyeraly24@gmail.com">langmeyeraly24@gmail.com</a>
-                <a href="tel:7745739331">(774) 573-9331</a>
-                <a href="https://linkedin.com/in/alyssa-langmeyer-79518617a">LinkedIn</a>
+                4201 Massachusetts Avenue NW, Washington, DC
+                &nbsp;|&nbsp; <a href="mailto:langmeyeraly24@gmail.com">langmeyeraly24@gmail.com</a>
+                &nbsp;|&nbsp; (774) 573-9331
+            </div>
+            <div class="contact-info">
+                <a href="https://linkedin.com/in/alyssa-langmeyer-79518617a">linkedin.com/in/alyssa-langmeyer-79518617a</a>
+                &nbsp;|&nbsp; <a href="https://langmeyeraly24.github.io/index.html">langmeyeraly24.github.io</a>
             </div>
         </div>
-        
-        <!-- Professional Summary (kept but condensed) -->
-        <div class="summary">
-            <strong>Hospitality Professional</strong> with 10+ years in high-volume restaurants, line cook to shift management. Track record in training development, process improvement, and team leadership across FOH/BOH. Skilled in all kitchen stations with strong food safety practices. Experience in food ordering, vendor coordination, and delivery management. M.S. in Data Science candidate bringing analytical rigor to operations.
-        </div>
-        
-        <!-- Key Metrics Banner - UPDATED values -->
-        <div class="restaurant-metrics">
-            <div class="metric">
-                <div class="metric-value">10+ Years</div>
-                <div class="metric-label">Hospitality Experience</div>
-            </div>
-            <div class="metric">
-                <div class="metric-value">30+</div>
-                <div class="metric-label">New Hires Trained</div>
-            </div>
-            <div class="metric">
-                <div class="metric-value">300+/day</div>
-                <div class="metric-label">High-Volume Service</div>
-            </div>
-            <div class="metric">
-                <div class="metric-value">15+</div>
-                <div class="metric-label">Staff Supervised</div>
-            </div>
-        </div>
-        
-        <!-- Core Hospitality Experience -->
+
+        <!-- ── PROFESSIONAL SKILLS PROFILE ── -->
         <div class="section">
-            <h2 class="section-title">RESTAURANT & HOSPITALITY EXPERIENCE</h2>
-            
+            <div class="section-title">Professional Skills Profile</div>
+            <ul class="skills-list">
+                <li>Front-of-house and back-of-house operations management</li>
+                <li>Staff training, onboarding, and shift leadership</li>
+                <li>High-volume guest experience and service flow management</li>
+                <li>Food ordering, vendor coordination, and inventory management</li>
+                <li>Food safety, sanitation, and health code compliance</li>
+                <li>Multi-station kitchen proficiency: grill, saut&eacute;, fry, prep, and expo</li>
+                <li>POS systems, cash handling, and order accuracy management</li>
+                <li>Procurement, cost analysis, and supply chain coordination</li>
+                <li>Team performance management and conflict resolution</li>
+                <li>Staff scheduling, quality assurance, and process improvement</li>
+            </ul>
+        </div>
+
+        <!-- ── EDUCATION ── -->
+        <div class="section">
+            <div class="section-title">Education</div>
+
+            <div class="edu-block">
+                <div class="item-row">
+                    <div class="item-title">M.S., Data Science for Applied Public Policy</div>
+                    <div class="item-date">Expected December 2026</div>
+                </div>
+                <div class="item-org">American University &mdash; School of Public Affairs</div>
+                <div class="item-location">Washington, DC</div>
+            </div>
+
+            <div class="cert-block">
+                <div class="cert-title">Certificate: Campaign Management Institute (CMI)</div>
+                <div class="cert-sub">Center for Congressional &amp; Presidential Studies, American University &nbsp;|&nbsp; Summer 2026</div>
+            </div>
+
+            <div class="edu-block" style="margin-top: 8px;">
+                <div class="item-row">
+                    <div class="item-title">B.A., Political Science</div>
+                    <div class="item-date">May 2021</div>
+                </div>
+                <div class="item-org">University of Massachusetts Dartmouth</div>
+                <div class="item-location">North Dartmouth, MA</div>
+            </div>
+        </div>
+
+        <!-- ── RESTAURANT & HOSPITALITY EXPERIENCE ── -->
+        <div class="section">
+            <div class="section-title">Restaurant &amp; Hospitality Experience</div>
+
             <!-- 2D Noodles -->
-            <div class="experience-item">
-                <div class="item-header">
-                    <div>
-                        <div class="item-title">Food Runner & Host (Shift Leadership Duties)</div>
-                        <div class="item-company">2D Noodles | Modern Asian Fusion</div>
-                    </div>
+            <div class="exp-block">
+                <div class="item-row">
+                    <div class="item-title">Front of House Shift Leader</div>
+                    <div class="item-date">May 2025 &ndash; Present</div>
                 </div>
-                <div class="item-details">
-                    <div class="item-location">Washington, DC</div>
-                    <div class="item-date">May 2025 – Present</div>
-                </div>
+                <div class="item-org">2D Noodles</div>
+                <div class="item-location">Washington, DC</div>
                 <ul>
-                    <li><span class="highlight">Guest Experience Management:</span> Greet and seat guests, manage waitlists for <span class="highlight">200+ customers daily</span></li>
-                    <li><span class="highlight">Food Expediting:</span> Coordinate timing between kitchen and dining room, ensuring optimal temperature and presentation</li>
-                    <li><span class="highlight">Team Leadership:</span> Shift coordinator overseeing opening/closing, staff assignments, and real-time service issues</li>
-                    <li><span class="highlight">Training & Development:</span> Train and mentor <span class="highlight">30+ new hires</span> on POS systems, service protocols, and food safety</li>
-                    <li><span class="highlight">Quality Control:</span> Final plate checks, order accuracy, and presentation standards</li>
-                    <li><span class="highlight">Process Improvement:</span> Streamlined communication systems between front and back of house</li>
+                    <li>Operate fluidly across front-of-house roles &mdash; food runner, server, host, and floor manager &mdash; adapting to service needs in a high-volume restaurant serving 200+ customers daily</li>
+                    <li>Lead shift operations including opening and closing procedures, staff assignments, and real-time service coordination</li>
+                    <li>Trained and mentored 15+ new hires on POS systems, service protocols, and food safety standards, reducing onboarding time by 30%</li>
+                    <li>Coordinate food expediting and timing between kitchen and dining room to ensure optimal temperature, presentation, and service flow</li>
                 </ul>
             </div>
-            
-            <!-- Columbia Tech - Procurement -->
-            <div class="experience-item">
-                <div class="item-header">
-                    <div>
-                        <div class="item-title">PCB Procurement Buyer</div>
-                        <div class="item-company">Columbia Tech | Coghlin Companies</div>
-                    </div>
-                </div>
-                <div class="item-details">
-                    <div class="item-location">Westborough, MA</div>
-                    <div class="item-date">Feb 2022 – Apr 2024</div>
-                </div>
-                <ul>
-                    <li><span class="highlight">Vendor Management:</span> Managed <span class="highlight">130+ suppliers</span>, negotiating orders up to $300K – transferable to food vendor coordination</li>
-                    <li><span class="highlight">Inventory & Ordering:</span> Daily reports analyzing supplier performance for purchasing decisions</li>
-                    <li><span class="highlight">Cost Reduction:</span> <span class="highlight">15% reduction</span> in material costs through data-driven procurement analysis</li>
-                    <li><span class="highlight">Supply Chain Coordination:</span> Coordinated across warehouse, accounting, and planning teams</li>
-                </ul>
-            </div>
-            
+
             <!-- Doragon Ramen -->
-            <div class="experience-item">
-                <div class="item-header">
-                    <div>
-                        <div class="item-title">Front-of-House Manager & Server</div>
-                        <div class="item-company">Doragon Ramen | Specialty Ramen Restaurant</div>
-                    </div>
+            <div class="exp-block">
+                <div class="item-row">
+                    <div class="item-title">Front-of-House Manager &amp; Server</div>
+                    <div class="item-date">September 2021 &ndash; February 2022</div>
                 </div>
-                <div class="item-details">
-                    <div class="item-location">Ashland, MA</div>
-                    <div class="item-date">Sep 2021 – Feb 2022</div>
-                </div>
+                <div class="item-org">Doragon Ramen</div>
+                <div class="item-location">Ashland, MA</div>
                 <ul>
-                    <li><span class="highlight">Staff Management:</span> Trained and supervised <span class="highlight">10+ FOH staff</span> in service protocols</li>
-                    <li><span class="highlight">Team Revitalization:</span> Transformed struggling team through communication and performance management</li>
-                    <li><span class="highlight">Beverage Operations:</span> Boba tea and hot tea service</li>
-                    <li><span class="highlight">Customer Relations:</span> Handled inquiries and complaints to maintain reputation</li>
+                    <li>Trained and supervised 10+ FOH staff in service protocols, beverage operations, and customer relations</li>
+                    <li>Managed guest experience including seating, waitlists, and complaint resolution to maintain restaurant reputation</li>
+                    <li>Oversaw boba tea and hot tea service operations and quality standards</li>
                 </ul>
             </div>
-            
+
             <!-- Camp Haiastan -->
-            <div class="experience-item">
-                <div class="item-header">
-                    <div>
-                        <div class="item-title">Assistant Kitchen Manager & Cook</div>
-                        <div class="item-company">Camp Haiastan | High-Volume Camp Kitchen</div>
-                    </div>
+            <div class="exp-block">
+                <div class="item-row">
+                    <div class="item-title">Assistant Kitchen Manager &amp; Cook</div>
+                    <div class="item-date">June &ndash; August 2021</div>
                 </div>
-                <div class="item-details">
-                    <div class="item-location">Franklin, MA</div>
-                    <div class="item-date">Jun 2021 – Aug 2021</div>
-                </div>
+                <div class="item-org">Camp Haiastan</div>
+                <div class="item-location">Franklin, MA</div>
                 <ul>
-                    <li><span class="highlight">High-Volume Production:</span> Meal planning for <span class="highlight">200+ campers and staff daily</span></li>
-                    <li><span class="highlight">Food Ordering:</span> Assisted with ordering and inventory management</li>
-                    <li><span class="highlight">Food Safety:</span> Achieved <span class="highlight">zero health code violations</span></li>
-                    <li><span class="highlight">Kitchen Management:</span> Oversaw hot line, cold prep, bakery, and dishwashing</li>
-                    <li><span class="highlight">Staff Training:</span> Trained staff-in-training on food safety and kitchen ops</li>
+                    <li>Managed high-volume meal production for 200+ campers and staff daily across hot line, cold prep, bakery, and dishwashing</li>
+                    <li>Assisted with food ordering, vendor coordination, and inventory management throughout the season</li>
+                    <li>Maintained zero health code violations through rigorous food safety and sanitation protocols</li>
+                    <li>Trained kitchen staff-in-training on food safety procedures and kitchen operations</li>
                 </ul>
             </div>
-            
+
             <!-- The 99 Restaurant -->
-            <div class="experience-item">
-                <div class="item-header">
-                    <div>
-                        <div class="item-title">First Chef & Line Cook</div>
-                        <div class="item-company">The 99 Restaurant & Pub | New England Chain</div>
-                    </div>
+            <div class="exp-block">
+                <div class="item-row">
+                    <div class="item-title">First Chef &amp; Line Cook</div>
+                    <div class="item-date">September 2020 &ndash; June 2021</div>
                 </div>
-                <div class="item-details">
-                    <div class="item-location">Milford, MA</div>
-                    <div class="item-date">Sep 2020 – Jun 2021</div>
-                </div>
+                <div class="item-org">The 99 Restaurant &amp; Pub</div>
+                <div class="item-location">Milford, MA</div>
                 <ul>
-                    <li><span class="highlight">Multi-Station Proficiency:</span> Grill, sauté, fry, pantry, and salad stations</li>
-                    <li><span class="highlight">Efficiency Management:</span> Maintained workflow during peak hours</li>
-                    <li><span class="highlight">Delivery Coordination:</span> Collaborated with takeout and delivery systems</li>
-                    <li><span class="highlight">Food Safety:</span> Proper handling, temperature control, and sanitation</li>
+                    <li>Maintained proficiency across multiple kitchen stations including grill, saut&eacute;, fry, pantry, and salad during high-volume service</li>
+                    <li>Upheld food safety, temperature control, and sanitation standards consistently across all stations</li>
+                    <li>Collaborated with takeout and delivery coordination during peak operational periods</li>
                 </ul>
             </div>
-            
+
             <!-- The Corner Market -->
-            <div class="experience-item">
-                <div class="item-header">
-                    <div>
-                        <div class="item-title">Shift Manager & Multi-Role Specialist</div>
-                        <div class="item-company">The Corner Market | Full-Service Restaurant</div>
-                    </div>
+            <div class="exp-block">
+                <div class="item-row">
+                    <div class="item-title">Shift Manager &amp; Multi-Role Specialist</div>
+                    <div class="item-date">January 2015 &ndash; September 2020</div>
                 </div>
-                <div class="item-details">
-                    <div class="item-location">Holliston, MA</div>
-                    <div class="item-date">Jan 2015 – Sep 2020</div>
-                </div>
+                <div class="item-org">The Corner Market</div>
+                <div class="item-location">Holliston, MA</div>
                 <ul>
-                    <li><span class="highlight">Operations Management:</span> Supervised <span class="highlight">30+ employees</span> across multiple roles</li>
-                    <li><span class="highlight">Food Ordering & Delivery:</span> Handled ordering, vendor deliveries, and driver coordination</li>
-                    <li><span class="highlight">All-Station Proficiency:</span> Grill, fry, sauté, sandwich, pizza, and salad</li>
-                    <li><span class="highlight">Staff Development:</span> Hiring, training, and performance management</li>
-                    <li><span class="highlight">Compliance:</span> Zero health code violations</li>
-                    <li><span class="highlight">Inventory Control:</span> Managed levels and conducted regular counts</li>
+                    <li>Supervised 30+ employees across FOH and BOH roles including hiring, training, scheduling, and performance management</li>
+                    <li>Managed food ordering, vendor deliveries, and driver coordination across all restaurant departments</li>
+                    <li>Maintained proficiency across all kitchen stations: grill, fry, saut&eacute;, sandwich, pizza, and salad</li>
+                    <li>Achieved zero health code violations through consistent inventory control and sanitation compliance</li>
                 </ul>
             </div>
         </div>
-        
-        <!-- Hospitality Skills -->
+
+        <!-- ── RELEVANT ADDITIONAL EXPERIENCE ── -->
         <div class="section">
-            <h2 class="section-title">HOSPITALITY SKILLS</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <div class="skill-title">Kitchen Stations</div>
-                    <div class="skill-items">Grill • Sauté • Fry • Pizza • Sandwich • Salad • Cold Prep • Expo • Dish</div>
+            <div class="section-title">Relevant Additional Experience</div>
+
+            <div class="exp-block">
+                <div class="item-row">
+                    <div class="item-title">PCB Procurement Buyer</div>
+                    <div class="item-date">February 2022 &ndash; April 2024</div>
                 </div>
-                <div class="skill-category">
-                    <div class="skill-title">Culinary Techniques</div>
-                    <div class="skill-items">Knife Skills • Batch Cooking • Mise en Place • Temperature Control • Plating</div>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-title">FOH Operations</div>
-                    <div class="skill-items">Guest Seating • Waitlist Mgmt • POS • Cash Handling • Customer Service</div>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-title">Management</div>
-                    <div class="skill-items">Shift Leadership • Staff Training • Scheduling • Inventory Control • QA</div>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-title">Procurement</div>
-                    <div class="skill-items">Vendor Relations • Food Ordering • Delivery Coord • Cost Analysis</div>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-title">Safety</div>
-                    <div class="skill-items">Food Safety • Sanitation • Health Code • Allergen Awareness</div>
-                </div>
+                <div class="item-org">Columbia Tech | Coghlin Companies</div>
+                <div class="item-location">Westborough, MA</div>
+                <ul>
+                    <li>Managed 130+ vendor relationships, negotiating orders up to $300,000 &mdash; directly transferable to food vendor coordination and supplier management</li>
+                    <li>Generated, distributed, and analyzed 5&ndash;10 daily reports on supplier performance, market trends, and cost metrics to support purchasing decisions</li>
+                    <li>Reduced material costs by 15% through data-driven procurement analysis, vendor negotiation, and strategic sourcing</li>
+                </ul>
             </div>
         </div>
-        
-        <!-- Education -->
+
+        <!-- ── HOSPITALITY SKILLS ── -->
         <div class="section">
-            <h2 class="section-title">EDUCATION</h2>
-            <div class="education-compact">
-                <div class="education-item-compact">
-                    <div class="item-title">M.S. Data Science for Applied Public Policy</div>
-                    <div class="item-company">American University</div>
-                    <div class="item-details">
-                        <div class="item-location">Washington, DC</div>
-                        <div class="item-date">Expected Winter 2026</div>
-                    </div>
-                </div>
-                <div class="education-item-compact">
-                    <div class="item-title">B.A. Political Science</div>
-                    <div class="item-company">University of Massachusetts Dartmouth</div>
-                    <div class="item-details">
-                        <div class="item-location">Dartmouth, MA</div>
-                        <div class="item-date">Graduated 2021</div>
-                    </div>
-                </div>
+            <div class="section-title">Hospitality Skills</div>
+            <ul class="hosp-skills-list">
+                <li>Kitchen stations: Grill, Saut&eacute;, Fry, Pizza, Sandwich, Salad, Cold Prep, Expo, Dish</li>
+                <li>FOH operations: Guest seating, waitlist management, POS systems, cash handling, customer service</li>
+                <li>Management: Shift leadership, staff scheduling, inventory control, quality assurance, process improvement</li>
+                <li>Food safety: Sanitation protocols, health code compliance, temperature control, allergen awareness</li>
+                <li>Procurement: Food ordering, vendor relations, delivery coordination, cost analysis, supply chain management</li>
+            </ul>
+        </div>
+
+        <!-- ── COMMUNITY & CIVIC ENGAGEMENT ── -->
+        <div class="section">
+            <div class="section-title">Community &amp; Civic Engagement</div>
+
+            <div class="comm-block">
+                <span class="comm-title">Phone Banker</span> &mdash; Vote Save America &nbsp;|&nbsp; Fall 2024<br>
+                Conducted voter outreach and civic education on electoral processes and candidate platforms
+            </div>
+            <div class="comm-block">
+                <span class="comm-title">Big Sister</span> &mdash; Big Brothers Big Sisters of Eastern MA &nbsp;|&nbsp; 2018&ndash;2021<br>
+                Provided one-on-one mentoring, academic support, and personal development guidance to a matched youth
             </div>
         </div>
-        
-        <!-- Additional Skills (includes Intermediate Spanish) -->
-        <div class="section">
-            <h2 class="section-title">ADDITIONAL SKILLS</h2>
-            <div class="skill-items">Data Analysis • Process Optimization • Team Training • Vendor Negotiation • Inventory Management • Communication • Problem Solving • Time Management • Conflict Resolution • Intermediate Spanish</div>
-        </div>
-        
-        <!-- Footer -->
-        <div style="text-align: center; margin-top: 15px; font-size: 8px; color: #95a5a6; border-top: 1px solid #ecf0f1; padding-top: 5px;">
-            Hospitality Operations • Kitchen Management • Procurement • Team Leadership • Updated: March 2026
-        </div>
-    </div>
+
+    </div><!-- /resume -->
+
+    <script>
+        function downloadResume() {
+            const jobTitle = prompt('Enter job title to append to filename (or leave blank for generic):', '');
+            let filename = 'Alyssa Langmeyer - Hospitality Resume';
+            if (jobTitle && jobTitle.trim() !== '') {
+                filename += ' - ' + jobTitle.trim();
+            }
+            filename += '.pdf';
+
+            const resumeClone = document.querySelector('.resume').cloneNode(true);
+            const printWindow = window.open('', '_blank');
+
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>${filename}</title>
+                    <meta charset="UTF-8">
+                    <style>
+                        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+                        body {
+                            font-family: Arial, Helvetica, sans-serif;
+                            font-size: 12pt;
+                            line-height: 1.35;
+                            color: #111;
+                            background: white;
+                        }
+
+                        .resume { background: white; }
+
+                        .header {
+                            text-align: center;
+                            border-bottom: 2.5px solid #2e4a6e;
+                            padding-bottom: 7px;
+                            margin-bottom: 9px;
+                        }
+
+                        .name {
+                            font-size: 16pt;
+                            font-weight: 700;
+                            letter-spacing: 4px;
+                            text-transform: uppercase;
+                            color: #1c1c2e;
+                            margin-bottom: 5px;
+                        }
+
+                        .contact-info { font-size: 12pt; color: #444; line-height: 1.45; }
+                        .contact-info a { color: #444; text-decoration: none; }
+
+                        .section { margin-bottom: 7px; }
+
+                        .section-title {
+                            font-size: 10pt;
+                            font-weight: 700;
+                            text-transform: uppercase;
+                            letter-spacing: 1.8px;
+                            border-bottom: 1.5px solid #2e4a6e;
+                            padding-bottom: 2px;
+                            margin-bottom: 5px;
+                            color: #2e4a6e;
+                        }
+
+                        .skills-list { list-style: disc; padding-left: 20px; margin: 0; columns: 2; column-gap: 24px; }
+                        .skills-list li { font-size: 12pt; margin-bottom: 1px; line-height: 1.35; break-inside: avoid; }
+
+                        .hosp-skills-list { list-style: disc; padding-left: 20px; margin: 0; }
+                        .hosp-skills-list li { font-size: 12pt; margin-bottom: 1px; line-height: 1.35; }
+
+                        .edu-block { margin-bottom: 5px; }
+
+                        .item-row {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: baseline;
+                        }
+
+                        .item-title { font-weight: 700; font-size: 12pt; color: #111; }
+                        .item-date { font-size: 12pt; color: #555; white-space: nowrap; }
+                        .item-org { font-size: 12pt; font-weight: 700; color: #2e4a6e; }
+                        .item-location { font-size: 12pt; color: #555; font-style: italic; }
+
+                        .cert-block { margin: 2px 0 2px 14px; }
+                        .cert-title { font-weight: 700; font-size: 12pt; color: #111; }
+                        .cert-sub { font-size: 12pt; color: #555; }
+
+                        .exp-block { margin-bottom: 7px; }
+                        .exp-block ul { list-style: disc; padding-left: 20px; margin-top: 2px; }
+                        .exp-block ul li { font-size: 12pt; margin-bottom: 2px; line-height: 1.35; }
+
+                        .comm-block { margin-bottom: 4px; font-size: 12pt; line-height: 1.4; }
+                        .comm-title { font-weight: 700; }
+
+                        .no-print { display: none !important; }
+
+                        @media print {
+                            @page { margin: 0.48in 0.6in; size: letter; }
+                            body {
+                                -webkit-print-color-adjust: exact;
+                                print-color-adjust: exact;
+                            }
+                            a { color: #444; text-decoration: none; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="resume">
+                        ${resumeClone.innerHTML}
+                    </div>
+                    <script>
+                        document.fonts.ready.then(function() {
+                            setTimeout(() => {
+                                window.print();
+                                window.onafterprint = function() { window.close(); };
+                            }, 150);
+                        });
+                    <\/script>
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+        }
+
+        window.addEventListener('beforeprint', () => {
+            const controls = document.querySelector('.controls');
+            if (controls) controls.style.display = 'none';
+        });
+        window.addEventListener('afterprint', () => {
+            const controls = document.querySelector('.controls');
+            if (controls) controls.style.display = 'flex';
+        });
+    </script>
 </body>
 </html>
