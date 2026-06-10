@@ -5,33 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alyssa Langmeyer - Resume</title>
     <style>
-        /* =========================================================
-           Resume — Data Science / Policy
-           ========================================================= */
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        :root {
-            --ink: #1a1a1a;
-            --muted: #4a4a4a;
-            --rule: #b8b8b8;
-            --section: #1f3864;
-            --org: #1f4e8c;
-            --paper: #ffffff;
-            --bg: #ececec;
-        }
-
-        html, body { background: var(--bg); }
+        html, body { background: #ececec; }
 
         body {
-            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-            color: var(--ink);
+            font-family: "Times New Roman", Times, serif;
+            color: #000;
             font-size: 11pt;
             line-height: 1.35;
             padding: 28px 0;
         }
 
-        /* ---------------- Controls (screen only) ---------------- */
+        /* ── Controls (screen only) ── */
         .controls {
             position: fixed;
             top: 18px;
@@ -55,115 +41,79 @@
             text-decoration: none;
         }
 
-        .print-btn { background: var(--section); color: white; }
+        .print-btn { background: #1f3864; color: white; }
         .print-btn:hover { background: #15294a; }
         .back-btn { background: #555; color: white; }
         .back-btn:hover { background: #333; }
 
-        /* ---------------- Page / sheet ---------------- */
+        /* ── Page ── */
         .resume {
             max-width: 8.5in;
             margin: 0 auto;
-            background: var(--paper);
+            background: white;
             box-shadow: 0 2px 14px rgba(0,0,0,0.12);
             padding: 0.6in 0.7in;
         }
 
-        /* ---------------- Header ---------------- */
-        .name {
+        /* ── Header ── */
+        .resume-name {
             text-align: center;
-            font-size: 17pt;
-            font-weight: 700;
-            letter-spacing: 0.6pt;
-            color: #000;
-            margin-bottom: 4pt;
+            font-size: 16pt;
+            font-weight: bold;
+            margin-bottom: 2pt;
         }
 
-        .contact {
+        .resume-contact {
             text-align: center;
-            font-size: 10.5pt;
-            color: var(--ink);
-            line-height: 1.5;
+            font-size: 11pt;
             margin-bottom: 10pt;
         }
 
-        .contact a { color: var(--ink); text-decoration: none; }
+        .resume-contact a { color: #000; text-decoration: none; }
 
-        /* ---------------- Section headers ---------------- */
+        /* ── Section headers ── */
         .section-title {
-            font-size: 9.5pt;
-            font-weight: 700;
-            color: var(--section);
+            font-size: 13pt;
+            font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 0.6pt;
-            border-bottom: 0.6pt solid var(--rule);
-            padding-bottom: 2pt;
-            margin-top: 9pt;
-            margin-bottom: 5pt;
+            margin-top: 8pt;
+            margin-bottom: 3pt;
         }
 
-        /* ---------------- Entry blocks (jobs / education) ---------------- */
-        .entry { margin-bottom: 5pt; page-break-inside: avoid; }
-
-        .entry-row {
+        /* ── Two-column row (institution / date) ── */
+        .row {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            gap: 12px;
         }
 
-        .entry-title { font-weight: 700; font-size: 11pt; color: var(--ink); }
-        .entry-date  { font-size: 10.5pt; color: var(--ink); white-space: nowrap; }
-        .entry-org   { font-weight: 700; color: var(--org); font-size: 10.5pt; }
-        .entry-loc   { font-style: italic; font-size: 10.5pt; color: var(--ink); }
+        /* ── Bullet entries ── */
+        .bullets { margin: 2pt 0 4pt 18pt; }
 
-        .entry ul { list-style: none; padding-left: 4pt; margin: 2pt 0 0 0; }
-
-        .entry ul li {
-            font-size: 10.5pt;
+        .bullets li {
+            font-size: 11pt;
+            line-height: 1.35;
             margin-bottom: 1pt;
-            line-height: 1.32;
-            padding-left: 12pt;
-            position: relative;
         }
 
-        .entry ul li::before {
-            content: "\25CF";
-            position: absolute;
-            left: 0;
-            top: 0;
-            font-size: 8pt;
-            line-height: 1.55;
-            color: var(--ink);
-        }
+        /* ── Job header line ── */
+        .job-line { margin-bottom: 1pt; }
 
-        /* ---------------- Sub-entry (certificate under degree) ---------------- */
-        .sub-entry { margin: 2pt 0 2pt 14pt; display: flex; justify-content: space-between; align-items: baseline; }
-        .sub-title { font-weight: 700; font-size: 10.5pt; }
-        .sub-detail { font-size: 10.5pt; }
+        /* ── Skills ── */
+        .skill-line { margin-bottom: 2pt; font-size: 11pt; line-height: 1.35; }
 
-        /* ---------------- Compact one-liners ---------------- */
-        .compact { font-size: 10.5pt; margin-bottom: 2pt; line-height: 1.32; }
-        .compact strong { font-weight: 700; }
-
-        /* ---------------- Skills paragraphs ---------------- */
-        .skills-block { margin-bottom: 2pt; font-size: 10.5pt; line-height: 1.35; }
-        .skills-block strong { font-weight: 700; }
-
-        /* ---------------- Print rules ---------------- */
+        /* ── Print ── */
         @media print {
             @page { size: letter; margin: 0.55in 0.65in; }
-            html, body { background: white; }
+            html, body { background: white; padding: 0; }
             body {
-                padding: 0;
-                font-size: 10.5pt;
+                font-size: 11pt;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
             .resume { max-width: 100%; margin: 0; padding: 0; box-shadow: none; }
             .controls, .no-print { display: none !important; }
-            a { color: var(--ink); text-decoration: none; }
-            .entry { page-break-inside: avoid; }
+            a { color: #000; text-decoration: none; }
         }
     </style>
 </head>
@@ -176,115 +126,99 @@
 
     <div class="resume">
 
-        <div class="name">Alyssa Langmeyer</div>
-        <div class="contact">
+        <div class="resume-name">Alyssa Langmeyer</div>
+        <div class="resume-contact">
             NW Washington, DC &nbsp;|&nbsp;
             <a href="mailto:langmeyeraly24@gmail.com">langmeyeraly24@gmail.com</a>
             &nbsp;|&nbsp; 774-573-9331
         </div>
 
-        <!-- ── EDUCATION ── -->
+        <!-- EDUCATION -->
         <div class="section-title">Education</div>
 
-        <div class="entry">
-            <div class="entry-row">
-                <span class="entry-title">American University</span>
-                <span class="entry-loc">Washington, DC</span>
-            </div>
-            <div class="entry-row">
-                <span class="entry-org">Master of Science in Data Science for Applied Public Policy</span>
-                <span class="entry-date">Currently &ndash; December 2026</span>
-            </div>
-            <div class="sub-entry">
-                <span class="sub-title">Campaign Management Institute &nbsp;|&nbsp; <span class="sub-detail">Center for Congressional &amp; Presidential Studies</span></span>
-                <span class="entry-date">May 2026</span>
-            </div>
+        <div class="row">
+            <span><strong>American University</strong></span>
+            <span><strong>Washington, DC</strong></span>
+        </div>
+        <div class="row">
+            <span>Master of Science <em>in</em> Data Science <em>for</em> Applied Public Policy</span>
+            <span><em>Currently &ndash; December 2026</em></span>
+        </div>
+        <div class="row" style="padding-left: 14pt;">
+            <span><strong>Campaign Management Institute</strong> | Center for Congressional &amp; Presidential Studies</span>
+            <span><em>May 2026</em></span>
+        </div>
+        <div class="row" style="margin-top: 3pt;">
+            <span><strong>University of Massachusetts</strong></span>
+            <span><strong>Dartmouth, MA</strong></span>
+        </div>
+        <div>
+            Bachelor of Arts <em>in</em> Political Science
+            &nbsp;&nbsp;&nbsp;<em>Concentrations:</em> Pre-Law, International Relations, International Security
         </div>
 
-        <div class="entry">
-            <div class="entry-row">
-                <span class="entry-title">University of Massachusetts</span>
-                <span class="entry-loc">Dartmouth, MA</span>
-            </div>
-            <div>
-                <span class="entry-org">Bachelor of Arts in Political Science</span>
-                &nbsp;&nbsp;
-                <span style="font-size:10.5pt; font-style:italic; color:var(--muted);">Concentrations: Pre-Law, International Relations, International Security</span>
-            </div>
-        </div>
-
-        <!-- ── WORK EXPERIENCE ── -->
+        <!-- WORK EXPERIENCE -->
         <div class="section-title">Work Experience</div>
 
-        <div class="entry">
-            <div class="compact">
-                <strong>2D Noodles</strong> | <strong>Shift Lead</strong> | Washington DC | <em>May 2025 &ndash; Currently</em>
-            </div>
-            <ul>
-                <li>Manage front-of-house operations and a team of staff, training new hires on protocols and service standards while maintaining a high standard of guest experience.</li>
-            </ul>
+        <div class="job-line">
+            <strong>2D Noodles | <em>Shift Lead</em> |</strong> Washington DC <strong>|</strong> <em>May 2025 - Currently</em>
+        </div>
+        <ul class="bullets">
+            <li>Manage front-of-house operations and a team of staff, training new hires on protocols and service standards while maintaining a high standard of guest experience.</li>
+        </ul>
+
+        <div class="job-line">
+            <strong>American University | <em>Graduate Course Marker</em> |</strong> Washington, DC <strong>|</strong> <em>Spring 2025</em>
+        </div>
+        <ul class="bullets">
+            <li>Evaluated and provided detailed feedback on written assignments for 75+ students in CORE-200: AU Encounters.</li>
+        </ul>
+
+        <div class="job-line">
+            <strong>Columbia Tech, Coghlin Companies | <em>Procurement Buyer - PCB</em> |</strong> Westborough, MA <strong>|</strong> <em>February 2022 - April 2024</em>
+        </div>
+        <ul class="bullets">
+            <li>Negotiated pricing, discounts, and shipment terms on six-figure purchase orders across 10+ multinational accounts for a capital equipment contract manufacturer serving the robotics, semiconductor, medical, and defense industries.</li>
+            <li>Maintained procurement databases and generated 5-10 daily analytical reports to inform supplier selection, contributing to a 15% reduction in material costs and improved on-time delivery rates.</li>
+        </ul>
+
+        <div class="job-line">
+            <strong>The Borgen Project | <em>Public Policy Intern - International Poverty Prevention</em> |</strong> Seattle, WA <strong>|</strong> <em>Fall 2021</em>
+        </div>
+        <ul class="bullets">
+            <li>Authored weekly policy briefs on global poverty alleviation strategies and met with local congressional offices to advocate for increases in the U.S. foreign aid budget.</li>
+            <li>Mobilized constituents to contact congressional representatives in support of poverty-reduction legislation, gaining hands-on experience in grassroots advocacy and political outreach.</li>
+        </ul>
+
+        <div class="job-line">
+            <strong>The Writing and Reading Center | <em>Writing Tutor - Social Science Focus</em> |</strong> Dartmouth, MA <strong>|</strong> <em>2019 - 2021</em>
+        </div>
+        <ul class="bullets">
+            <li>Tutored students in writing and analytical reasoning across social science coursework, delivering one-on-one feedback that strengthened thesis development, evidence-based argumentation, and academic writing skills.</li>
+        </ul>
+
+        <div class="job-line">
+            <strong>Various Hospitality Experiences | <em>FOH Manager, Assistant Kitchen Manager, Line Cook</em> |</strong> Massachusetts <strong>|</strong> <em>2015 - 2022</em>
         </div>
 
-        <div class="entry">
-            <div class="compact">
-                <strong>American University</strong> | <strong>Graduate Course Marker</strong> | Washington, DC | <em>Spring 2025</em>
-            </div>
-            <ul>
-                <li>Evaluated and provided detailed feedback on written assignments for 75+ students in CORE-200: AU Encounters.</li>
-            </ul>
-        </div>
-
-        <div class="entry">
-            <div class="compact">
-                <strong>Columbia Tech, Coghlin Companies</strong> | <strong>Procurement Buyer &ndash; PCB</strong> | Westborough, MA | <em>February 2022 &ndash; April 2024</em>
-            </div>
-            <ul>
-                <li>Negotiated pricing, discounts, and shipment terms on six-figure purchase orders across 10+ multinational accounts for a capital equipment contract manufacturer serving the robotics, semiconductor, medical, and defense industries.</li>
-                <li>Maintained procurement databases and generated 5&ndash;10 daily analytical reports to inform supplier selection, contributing to a 15% reduction in material costs and improved on-time delivery rates.</li>
-            </ul>
-        </div>
-
-        <div class="entry">
-            <div class="compact">
-                <strong>The Borgen Project</strong> | <strong>Public Policy Intern &ndash; International Poverty Prevention</strong> | Seattle, WA | <em>Fall 2021</em>
-            </div>
-            <ul>
-                <li>Authored weekly policy briefs on global poverty alleviation strategies and met with local congressional offices to advocate for increases in the U.S. foreign aid budget.</li>
-                <li>Mobilized constituents to contact congressional representatives in support of poverty-reduction legislation, gaining hands-on experience in grassroots advocacy and political outreach.</li>
-            </ul>
-        </div>
-
-        <div class="entry">
-            <div class="compact">
-                <strong>The Writing and Reading Center</strong> | <strong>Writing Tutor &ndash; Social Science Focus</strong> | Dartmouth, MA | <em>2019 &ndash; 2021</em>
-            </div>
-            <ul>
-                <li>Tutored students in writing and analytical reasoning across social science coursework, delivering one-on-one feedback that strengthened thesis development, evidence-based argumentation, and academic writing skills.</li>
-            </ul>
-        </div>
-
-        <div class="entry">
-            <div class="compact">
-                <strong>Various Hospitality Experiences</strong> | <em>FOH Manager, Assistant Kitchen Manager, Line Cook</em> | Massachusetts | 2015 &ndash; 2022
-            </div>
-        </div>
-
-        <!-- ── VOLUNTEER EXPERIENCE ── -->
+        <!-- VOLUNTEER EXPERIENCE -->
         <div class="section-title">Volunteer Experience</div>
 
-        <div class="entry">
-            <div class="compact"><strong>Vote Save America</strong> | Organizer | Remote | <em>Fall 2024</em></div>
-            <div class="compact"><strong>New Hampshire Democrats</strong> | Organizer | Nashua, NH area | <em>Fall 2024</em></div>
+        <div class="job-line">
+            <strong>Vote Save America | <em>Organizer</em> |</strong> Remote <strong>|</strong> <em>Fall 2024</em>
+        </div>
+        <div class="job-line" style="margin-top: 2pt;">
+            <strong>New Hampshire Democrats | <em>Organizer</em> |</strong> Nashua, NH area <strong>|</strong> <em>Fall 2024</em>
         </div>
 
-        <!-- ── SKILLS ── -->
+        <!-- SKILLS -->
         <div class="section-title">Skills</div>
 
-        <div class="skills-block"><strong>Programming Languages:</strong> R, Python, SQL</div>
-        <div class="skills-block"><strong>Leadership &amp; Communication:</strong> 5+ years management experience, 7+ years training &amp; mentorship, Public Speaking, Conflict Resolution, Event Planning, Peer-Reviewed Academic Writing, Technical &amp; Policy Writing</div>
-        <div class="skills-block"><strong>Research &amp; Policy:</strong> Qualitative and Quantitative Analysis, Survey Design, Literature Reviews, Content Analysis, Policy Evaluation, Policy Brief Development, Research Design</div>
-        <div class="skills-block"><strong>Data Analysis, Management &amp; Visualization:</strong> Statistical Analysis, Regression Analysis, Sentiment Analysis, Text Analysis (TF-IDF), Web Scraping, API Integration, Mapping/Geospatial Analysis, Data Visualization, Data Wrangling/Cleaning, Data Acquisition, Database Management, Report Generation, Procurement Analytics</div>
-        <div class="skills-block"><strong>Software &amp; Tools:</strong> Microsoft Office Suite, Google Workspace, RStudio, Positron, Jupyter Notebooks, Git, GitHub, Shiny, Quarto, Canva, Epicor, ETQ, Omnify, Toast, VoteBuilder</div>
+        <div class="skill-line"><strong>Programming Languages:</strong> R, Python, SQL</div>
+        <div class="skill-line"><strong>Leadership &amp; Communication:</strong> 5+ years management experience, 7+ years training &amp; mentorship, Public Speaking, Conflict Resolution, Event Planning, Peer-Reviewed Academic Writing, Technical &amp; Policy Writing</div>
+        <div class="skill-line"><strong>Research &amp; Policy:</strong> Qualitative and Quantitative Analysis, Survey Design, Literature Reviews, Content Analysis, Policy Evaluation, Policy Brief Development, Research Design</div>
+        <div class="skill-line"><strong>Data Analysis, Management &amp; Visualization:</strong> Statistical Analysis, Regression Analysis, Sentiment Analysis, Text Analysis (TF-IDF), Web Scraping, API Integration, Mapping/Geospatial Analysis, Data Visualization, Data Wrangling/Cleaning, Data Acquisition, Database Management, Report Generation, Procurement Analytics</div>
+        <div class="skill-line"><strong>Software &amp; Tools:</strong> Microsoft Office Suite, Google Workspace, RStudio, Positron, Jupyter Notebooks, Git, GitHub, Shiny, Quarto, Canva, Epicor, ETQ, Omnify, Toast, VoteBuilder</div>
 
     </div>
 
