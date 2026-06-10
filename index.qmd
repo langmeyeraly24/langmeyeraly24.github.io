@@ -1,7 +1,7 @@
 ---
 title: "Alyssa Langmeyer | Data Science & Policy Analyst"
 format: html
-css: styles.css
+css: style.css
 toc: false
 ---
 
@@ -34,19 +34,19 @@ toc: false
     <h1 class="hero-name">Alyssa Langmeyer</h1>
     <div class="hero-title">Data Science & Policy Analyst</div>
     <p class="hero-description">
-      Specializing in public policy research, data analytics, and policy advocacy 
-      to drive evidence-based decision making and social impact.
+      M.S. Data Science candidate at American University combining quantitative analysis,
+      policy research, and data-driven storytelling to tackle complex public problems —
+      from reproductive rights to electoral targeting to labor economics.
     </p>
     <div class="hero-cta">
       <a href="#contact" class="btn btn-primary">Get In Touch</a>
       <a href="#projects" class="btn btn-secondary">View Projects</a>
-      <a href="Alyssa_Langmeyer_Resume.pdf" class="btn btn-secondary" download>Download Resume</a>
+      <a href="resume.html" class="btn btn-secondary">View Resume</a>
     </div>
     <div class="hero-social">
-      <a href="https://linkedin.com/in/alyssaelangmeyer" target="_blank">LinkedIn</a>
+      <a href="https://linkedin.com/in/alyssa-langmeyer-79518617a" target="_blank">LinkedIn</a>
       <a href="https://github.com/allylangmeyer" target="_blank">GitHub</a>
-      <a href="https://twitter.com/allylangmeyer" target="_blank">Twitter</a>
-      <a href="mailto:alyssaelangmeyer@gmail.com">Email</a>
+      <a href="mailto:langmeyeraly24@gmail.com">Email</a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -62,23 +62,25 @@ toc: false
     <div class="image-placeholder">AL</div>
   </div>
   <div class="about-text">
-    <p>Data Science & Policy Analyst with expertise in quantitative research, 
-    statistical analysis, and policy evaluation. Passionate about using data 
-    to inform public policy decisions and create positive social impact.</p>
-    <p>Skilled in R, Python, SQL, and data visualization tools with experience 
-    in government, non-profit, and research settings.</p>
+    <p>I'm a data scientist and policy analyst with a background that bridges political science,
+    procurement analytics, and public policy research. Currently finishing my M.S. in Data Science
+    for Applied Public Policy at American University, I specialize in turning messy, real-world
+    data into clear findings that inform decisions.</p>
+    <p>My work spans electoral targeting and campaign strategy, digital privacy and reproductive
+    rights policy, gender and labor economics, and supply chain analytics. I work primarily in
+    Python and R, with a focus on making analysis reproducible, communicable, and actionable.</p>
     <div class="about-stats">
       <div class="stat">
         <span class="stat-number">5+</span>
-        <span class="stat-label">Years Experience</span>
+        <span class="stat-label">Years Management Experience</span>
       </div>
       <div class="stat">
-        <span class="stat-number">50+</span>
-        <span class="stat-label">Projects</span>
+        <span class="stat-number">1</span>
+        <span class="stat-label">Published Paper</span>
       </div>
       <div class="stat">
-        <span class="stat-number">10+</span>
-        <span class="stat-label">Policy Areas</span>
+        <span class="stat-number">4th</span>
+        <span class="stat-label">Place, 44-Team Datathon</span>
       </div>
     </div>
   </div>
@@ -87,52 +89,328 @@ toc: false
 ## Experience {#experience}
 
 <div class="timeline">
-  
+
   <div class="timeline-item">
     <div class="timeline-marker"></div>
     <div class="timeline-content">
-      <span class="timeline-date">2022 - Present</span>
-      <h3>Data Science & Policy Analyst</h3>
-      <h4>Center for Policy Research</h4>
-      <p>Lead quantitative analysis for public policy research projects, developing 
-      statistical models to evaluate program effectiveness and inform policy decisions.</p>
+      <span class="timeline-date">May 2025 – Present</span>
+      <h3>Shift Lead</h3>
+      <h4>2D Noodles · Washington, DC</h4>
+      <p>Manage front-of-house operations and a team of staff, training new hires on protocols
+      and service standards while maintaining a high standard of guest experience.</p>
       <ul class="timeline-tags">
-        <li>R</li>
-        <li>Python</li>
-        <li>SQL</li>
-        <li>Data Visualization</li>
-        <li>Policy Analysis</li>
+        <li>Team Management</li>
+        <li>Training & Mentorship</li>
+        <li>Operations</li>
       </ul>
     </div>
   </div>
-  
-  <!-- Add other timeline items -->
+
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-date">Spring 2025</span>
+      <h3>Graduate Course Marker</h3>
+      <h4>American University · Washington, DC</h4>
+      <p>Evaluated and provided detailed feedback on written assignments for 75+ students
+      in CORE-200: AU Encounters, applying consistent rubrics to assess literary analysis
+      and academic argumentation.</p>
+      <ul class="timeline-tags">
+        <li>Academic Assessment</li>
+        <li>Written Feedback</li>
+        <li>Rubric Development</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-date">February 2022 – April 2024</span>
+      <h3>Procurement Buyer — PCB</h3>
+      <h4>Columbia Tech, Coghlin Companies · Westborough, MA</h4>
+      <p>Negotiated pricing, discounts, and shipment terms on six-figure purchase orders
+      across 10+ multinational accounts for a capital equipment contract manufacturer serving
+      robotics, semiconductor, medical, and defense industries. Generated 5–10 daily analytical
+      reports to inform supplier selection, contributing to a 15% reduction in material costs.</p>
+      <ul class="timeline-tags">
+        <li>Procurement Analytics</li>
+        <li>Vendor Negotiation</li>
+        <li>Supply Chain</li>
+        <li>Database Management</li>
+        <li>Report Generation</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-date">Fall 2021</span>
+      <h3>Public Policy Intern — International Poverty Prevention</h3>
+      <h4>The Borgen Project · Remote</h4>
+      <p>Authored weekly policy briefs on global poverty alleviation strategies and met with
+      local congressional offices to advocate for increases in the U.S. foreign aid budget.
+      Mobilized constituents in Massachusetts' 5th Congressional District in support of
+      poverty-reduction legislation.</p>
+      <ul class="timeline-tags">
+        <li>Policy Writing</li>
+        <li>Congressional Advocacy</li>
+        <li>Grassroots Organizing</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+      <span class="timeline-date">2019 – 2021</span>
+      <h3>Writing Tutor — Social Science Focus</h3>
+      <h4>The Writing and Reading Center, UMass Dartmouth · North Dartmouth, MA</h4>
+      <p>Tutored students in writing and analytical reasoning across social science coursework,
+      delivering one-on-one feedback that strengthened thesis development, evidence-based
+      argumentation, and academic writing skills.</p>
+      <ul class="timeline-tags">
+        <li>Academic Tutoring</li>
+        <li>Social Science Writing</li>
+        <li>Research Methodology</li>
+      </ul>
+    </div>
+  </div>
+
 </div>
 
 ## Projects {#projects}
 
 <div class="projects-grid">
-  <div class="project-card">
+
+  <div class="project-card featured">
     <div class="project-image">
-      <div class="project-placeholder">Housing Affordability Analysis</div>
+      <div class="project-placeholder">Collins for U.S. Senate 2026</div>
     </div>
     <div class="project-content">
       <div class="project-header">
         <span class="project-label">Featured Project</span>
         <div class="project-links">
-          <a href="#" title="View Code">&lt;&gt;</a>
+          <a href="Writing Samples/Formatted Campaign Plan (7).docx" title="View Campaign Plan" download>↓ Plan</a>
         </div>
       </div>
-      <h3>Urban Housing Affordability Analysis</h3>
-      <p>Comprehensive analysis of housing affordability trends...</p>
+      <h3>Collins for U.S. Senate 2026 — Campaign Plan & Data Targeting</h3>
+      <p>Full campaign plan developed at the Campaign Management Institute (AU) for a
+      competitive Georgia Senate race (Collins vs. Ossoff). Built a Python-based targeting
+      model merging six county-level datasets across all 159 Georgia counties — election
+      results, voter registration, and demographic data — to produce turnout projections,
+      persuasion universes, and priority scores. Vote goal: 2,152,409 (52% of projected turnout).
+      Total campaign budget modeled: $80M.</p>
+      <ul class="timeline-tags">
+        <li>Python</li>
+        <li>pandas</li>
+        <li>Electoral Targeting</li>
+        <li>Campaign Strategy</li>
+        <li>Data Wrangling</li>
+        <li>Excel</li>
+      </ul>
     </div>
+  </div>
+
+  <div class="project-card">
+    <div class="project-image">
+      <div class="project-placeholder">Your Body, Their Data</div>
+    </div>
+    <div class="project-content">
+      <div class="project-header">
+        <span class="project-label">Published Paper</span>
+        <div class="project-links">
+          <a href="Writing Samples/Your Body, Their Data - Published Version, The Public Purpose.pdf" title="Read Paper" target="_blank">↗ Read</a>
+        </div>
+      </div>
+      <h3>"Your Body, Their Data" — Reproductive Surveillance Policy Brief</h3>
+      <p>Published in <em>The Public Purpose</em>, American University's peer-reviewed policy journal
+      (April 2026). Analyzes how post-Dobbs state trigger bans, unregulated data brokers, and
+      algorithmic inference have turned personal data — location history, period-tracking apps —
+      into evidence for criminal prosecution. Proposes the "Digital Bodyguard Act," a federal
+      statute establishing a prohibited-by-default regulatory standard for reproductive health data.</p>
+      <ul class="timeline-tags">
+        <li>Policy Analysis</li>
+        <li>Digital Privacy</li>
+        <li>Reproductive Rights</li>
+        <li>Legal Research</li>
+        <li>Published</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <div class="project-image">
+      <div class="project-placeholder">Smith Analytics Datathon</div>
+    </div>
+    <div class="project-content">
+      <div class="project-header">
+        <span class="project-label">Competition — 4th of 44 Teams</span>
+      </div>
+      <h3>Smith Analytics Consortium Datathon — Spotify Artist Lineup</h3>
+      <p>Placed 4th out of 44 teams in a cross-university data competition (April 2025).
+      Analyzed real-world Spotify streaming, ticketing, and market data to recommend a
+      profitable artist lineup for a 20,000+ attendee live event, complete with full budget
+      projections and a marketing and operations plan.</p>
+      <ul class="timeline-tags">
+        <li>Data Analysis</li>
+        <li>Python</li>
+        <li>Market Research</li>
+        <li>Business Strategy</li>
+        <li>Data Visualization</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <div class="project-image">
+      <div class="project-placeholder">The Backlash Equation</div>
+    </div>
+    <div class="project-content">
+      <div class="project-header">
+        <span class="project-label">Research Paper</span>
+        <div class="project-links">
+          <a href="Writing Samples/The Backlash Equation - Research Paper - GOVT650  (1).pdf" title="Read Paper" target="_blank">↗ Read</a>
+        </div>
+      </div>
+      <h3>"The Backlash Equation" — Gender, Labor, & Authoritarian Gains</h3>
+      <p>Research paper (GOVT-650, American University, 2025) examining the relationship between
+      rising women's labor force participation and the global surge in far-right authoritarianism.
+      Synthesizes labor economics data, electoral research, and gender studies literature to argue
+      that male economic resentment is a measurable driver of authoritarian electoral gains.</p>
+      <ul class="timeline-tags">
+        <li>Quantitative Research</li>
+        <li>Political Analysis</li>
+        <li>Labor Economics</li>
+        <li>Gender Studies</li>
+        <li>Literature Review</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+## Skills {#skills}
+
+<div class="skills-section">
+
+  <div class="skill-category">
+    <h3>Programming & Data</h3>
+    <ul class="skill-list-tags">
+      <li>Python</li>
+      <li>R</li>
+      <li>SQL</li>
+      <li>Statistical Analysis</li>
+      <li>Regression Analysis</li>
+      <li>Sentiment Analysis</li>
+      <li>Text Analysis (TF-IDF)</li>
+      <li>Web Scraping</li>
+      <li>API Integration</li>
+      <li>Data Visualization</li>
+      <li>Data Wrangling/Cleaning</li>
+      <li>Geospatial/Mapping</li>
+    </ul>
+  </div>
+
+  <div class="skill-category">
+    <h3>Research & Policy</h3>
+    <ul class="skill-list-tags">
+      <li>Qualitative & Quantitative Analysis</li>
+      <li>Survey Design</li>
+      <li>Literature Reviews</li>
+      <li>Content Analysis</li>
+      <li>Policy Evaluation</li>
+      <li>Policy Brief Development</li>
+      <li>Research Design</li>
+      <li>Electoral Targeting</li>
+      <li>Campaign Strategy</li>
+    </ul>
+  </div>
+
+  <div class="skill-category">
+    <h3>Tools & Software</h3>
+    <ul class="skill-list-tags">
+      <li>RStudio / Positron</li>
+      <li>Jupyter Notebooks</li>
+      <li>Git / GitHub</li>
+      <li>Shiny</li>
+      <li>Quarto</li>
+      <li>Microsoft Office Suite</li>
+      <li>Google Workspace</li>
+      <li>Canva</li>
+      <li>VoteBuilder</li>
+      <li>Epicor</li>
+    </ul>
+  </div>
+
+  <div class="skill-category">
+    <h3>Leadership & Communication</h3>
+    <ul class="skill-list-tags">
+      <li>5+ Years Management Experience</li>
+      <li>Training & Mentorship</li>
+      <li>Public Speaking</li>
+      <li>Academic & Policy Writing</li>
+      <li>Peer-Reviewed Publication</li>
+      <li>Congressional Advocacy</li>
+      <li>Event Planning</li>
+      <li>Conflict Resolution</li>
+    </ul>
+  </div>
+
+</div>
+
+## Education {#education}
+
+<div class="education-grid">
+
+  <div class="education-card">
+    <div class="edu-header">
+      <h3>M.S. Data Science for Applied Public Policy</h3>
+      <span class="edu-date">Expected December 2026</span>
+    </div>
+    <h4>American University — School of Public Affairs · Washington, DC</h4>
+    <div class="edu-sub">
+      <strong>Certificate:</strong> Campaign Management Institute (CMI)<br>
+      Center for Congressional & Presidential Studies · May 2026
+    </div>
+  </div>
+
+  <div class="education-card">
+    <div class="edu-header">
+      <h3>B.A. Political Science</h3>
+      <span class="edu-date">May 2021</span>
+    </div>
+    <h4>University of Massachusetts Dartmouth · North Dartmouth, MA</h4>
+    <div class="edu-sub">
+      Concentrations: Pre-Law · International Relations · International Security
+    </div>
+  </div>
+
+</div>
+
+## Contact {#contact}
+
+<div class="contact-section">
+  <p>I'm currently open to policy analyst, data analyst, and research roles — especially
+  at the intersection of data science and public policy. Feel free to reach out.</p>
+  <div class="contact-links">
+    <a href="mailto:langmeyeraly24@gmail.com" class="contact-item">
+      <span class="contact-icon">✉</span>
+      <span>langmeyeraly24@gmail.com</span>
+    </a>
+    <a href="https://linkedin.com/in/alyssa-langmeyer-79518617a" target="_blank" class="contact-item">
+      <span class="contact-icon">in</span>
+      <span>linkedin.com/in/alyssa-langmeyer-79518617a</span>
+    </a>
+    <a href="https://github.com/allylangmeyer" target="_blank" class="contact-item">
+      <span class="contact-icon">gh</span>
+      <span>github.com/allylangmeyer</span>
+    </a>
   </div>
 </div>
 
-<!-- Continue with other sections -->
-
 <script>
-// Your JavaScript here
 document.addEventListener('DOMContentLoaded', function() {
   // Theme toggle
   const themeToggle = document.getElementById('themeToggle');
@@ -142,8 +420,13 @@ document.addEventListener('DOMContentLoaded', function() {
       document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
       localStorage.setItem('theme', isDark ? 'light' : 'dark');
     });
+    // Apply saved theme on load
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
   }
-  
+
   // Mobile menu
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const navLinks = document.querySelector('.nav-links');
@@ -152,5 +435,18 @@ document.addEventListener('DOMContentLoaded', function() {
       navLinks.classList.toggle('active');
     });
   }
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.timeline-item, .project-card, .education-card, .skill-category').forEach(el => {
+    observer.observe(el);
+  });
 });
 </script>

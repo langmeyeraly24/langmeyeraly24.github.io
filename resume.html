@@ -6,8 +6,7 @@
     <title>Alyssa Langmeyer - Resume</title>
     <style>
         /* =========================================================
-           Google Docs-style 2-page resume
-           Two switchable versions: Base (data/policy) + Hospitality
+           Resume — Data Science / Policy
            ========================================================= */
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -16,8 +15,8 @@
             --ink: #1a1a1a;
             --muted: #4a4a4a;
             --rule: #b8b8b8;
-            --section: #1f3864;   /* dark navy for section headers */
-            --org: #1f4e8c;       /* medium blue for org names */
+            --section: #1f3864;
+            --org: #1f4e8c;
             --paper: #ffffff;
             --bg: #ececec;
         }
@@ -39,55 +38,27 @@
             right: 18px;
             z-index: 1000;
             background: white;
-            padding: 12px 14px;
+            padding: 10px 12px;
             border-radius: 8px;
             box-shadow: 0 4px 16px rgba(0,0,0,0.15);
             display: flex;
-            flex-direction: column;
-            gap: 10px;
-            min-width: 200px;
+            gap: 8px;
+            align-items: center;
         }
 
-        .controls .toggle {
-            display: flex;
-            border: 1px solid var(--section);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .controls .toggle button {
-            flex: 1;
+        .print-btn, .back-btn {
             border: none;
-            background: white;
-            color: var(--section);
-            padding: 7px 10px;
-            font: 600 12px Arial, sans-serif;
-            cursor: pointer;
-        }
-
-        .controls .toggle button.active {
-            background: var(--section);
-            color: white;
-        }
-
-        .print-btn {
-            background: var(--section);
-            color: white;
-            border: none;
-            padding: 9px 14px;
+            padding: 8px 14px;
             border-radius: 4px;
             font: 600 12px Arial, sans-serif;
             cursor: pointer;
+            text-decoration: none;
         }
 
+        .print-btn { background: var(--section); color: white; }
         .print-btn:hover { background: #15294a; }
-
-        .controls .hint {
-            font-size: 10px;
-            color: #666;
-            text-align: center;
-            line-height: 1.3;
-        }
+        .back-btn { background: #555; color: white; }
+        .back-btn:hover { background: #333; }
 
         /* ---------------- Page / sheet ---------------- */
         .resume {
@@ -131,33 +102,8 @@
             margin-bottom: 5pt;
         }
 
-        /* ---------------- Skill bullets list ---------------- */
-        .skill-list {
-            list-style: none;
-            padding-left: 4pt;
-            margin: 0 0 2pt 0;
-        }
-
-        .skill-list li {
-            font-size: 10.5pt;
-            margin-bottom: 1pt;
-            line-height: 1.32;
-            padding-left: 12pt;
-            position: relative;
-        }
-
-        .skill-list li::before {
-            content: "●";
-            position: absolute;
-            left: 0;
-            top: 0;
-            font-size: 8pt;
-            line-height: 1.55;
-            color: var(--ink);
-        }
-
         /* ---------------- Entry blocks (jobs / education) ---------------- */
-        .entry { margin-bottom: 6pt; page-break-inside: avoid; }
+        .entry { margin-bottom: 5pt; page-break-inside: avoid; }
 
         .entry-row {
             display: flex;
@@ -166,35 +112,12 @@
             gap: 12px;
         }
 
-        .entry-title {
-            font-weight: 700;
-            font-size: 11pt;
-            color: var(--ink);
-        }
+        .entry-title { font-weight: 700; font-size: 11pt; color: var(--ink); }
+        .entry-date  { font-size: 10.5pt; color: var(--ink); white-space: nowrap; }
+        .entry-org   { font-weight: 700; color: var(--org); font-size: 10.5pt; }
+        .entry-loc   { font-style: italic; font-size: 10.5pt; color: var(--ink); }
 
-        .entry-date {
-            font-size: 10.5pt;
-            color: var(--ink);
-            white-space: nowrap;
-        }
-
-        .entry-org {
-            font-weight: 700;
-            color: var(--org);
-            font-size: 10.5pt;
-        }
-
-        .entry-loc {
-            font-style: italic;
-            font-size: 10.5pt;
-            color: var(--ink);
-        }
-
-        .entry ul {
-            list-style: none;
-            padding-left: 4pt;
-            margin: 2pt 0 0 0;
-        }
+        .entry ul { list-style: none; padding-left: 4pt; margin: 2pt 0 0 0; }
 
         .entry ul li {
             font-size: 10.5pt;
@@ -205,7 +128,7 @@
         }
 
         .entry ul li::before {
-            content: "●";
+            content: "\25CF";
             position: absolute;
             left: 0;
             top: 0;
@@ -215,415 +138,173 @@
         }
 
         /* ---------------- Sub-entry (certificate under degree) ---------------- */
-        .sub-entry { margin: 1pt 0 4pt 14pt; }
-        .sub-entry .sub-title { font-weight: 700; font-size: 10.5pt; }
-        .sub-entry .sub-detail { font-size: 10.5pt; }
-
-        /* ---------------- Publications block ---------------- */
-        .pub { margin-bottom: 6pt; page-break-inside: avoid; }
-        .pub-title { font-weight: 700; font-style: italic; font-size: 10.5pt; }
-        .pub-venue { font-weight: 700; color: var(--org); font-size: 10.5pt; }
-        .pub-desc { font-size: 10.5pt; line-height: 1.32; }
+        .sub-entry { margin: 2pt 0 2pt 14pt; display: flex; justify-content: space-between; align-items: baseline; }
+        .sub-title { font-weight: 700; font-size: 10.5pt; }
+        .sub-detail { font-size: 10.5pt; }
 
         /* ---------------- Compact one-liners ---------------- */
-        .compact { font-size: 10.5pt; margin-bottom: 3pt; line-height: 1.32; }
+        .compact { font-size: 10.5pt; margin-bottom: 2pt; line-height: 1.32; }
         .compact strong { font-weight: 700; }
+
+        /* ---------------- Skills paragraphs ---------------- */
+        .skills-block { margin-bottom: 2pt; font-size: 10.5pt; line-height: 1.35; }
+        .skills-block strong { font-weight: 700; }
 
         /* ---------------- Print rules ---------------- */
         @media print {
             @page { size: letter; margin: 0.55in 0.65in; }
-
             html, body { background: white; }
-
             body {
                 padding: 0;
                 font-size: 10.5pt;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
-
-            .resume {
-                max-width: 100%;
-                margin: 0;
-                padding: 0;
-                box-shadow: none;
-            }
-
+            .resume { max-width: 100%; margin: 0; padding: 0; box-shadow: none; }
             .controls, .no-print { display: none !important; }
-
             a { color: var(--ink); text-decoration: none; }
-
-            .entry, .pub { page-break-inside: avoid; }
+            .entry { page-break-inside: avoid; }
         }
-
-        /* ---------------- Version visibility ---------------- */
-        .version { display: none; }
-        .version.active { display: block; }
     </style>
 </head>
 <body>
 
     <div class="controls no-print">
-        <div class="toggle" role="tablist" aria-label="Resume version">
-            <button id="btn-base" class="active" onclick="showVersion('base')">Base</button>
-            <button id="btn-hosp" onclick="showVersion('hosp')">Hospitality</button>
-        </div>
+        <a class="back-btn" href="index.html">&larr; Portfolio</a>
         <button class="print-btn" onclick="downloadResume()">Download PDF</button>
-        <div class="hint">Pick a version, then download.<br>Browser print dialog → Save as PDF.</div>
     </div>
 
-    <!-- ========================== BASE RESUME ========================== -->
-    <div id="version-base" class="resume version active">
+    <div class="resume">
 
-        <div class="name">ALYSSA LANGMEYER</div>
+        <div class="name">Alyssa Langmeyer</div>
         <div class="contact">
-            4201 Massachusetts Avenue NW, Washington, DC<br>
-            <a href="mailto:langmeyeraly24@gmail.com">langmeyeraly24@gmail.com</a> | (774) 573-9331 | <a href="https://linkedin.com/in/alyssa-langmeyer-79518617a">linkedin.com/in/alyssa-langmeyer-79518617a</a><br>
-            <a href="https://langmeyeraly24.github.io">langmeyeraly24.github.io</a>
+            NW Washington, DC &nbsp;|&nbsp;
+            <a href="mailto:langmeyeraly24@gmail.com">langmeyeraly24@gmail.com</a>
+            &nbsp;|&nbsp; 774-573-9331
         </div>
 
-        <div class="section-title">Professional Skills Profile</div>
-        <ul class="skill-list">
-            <li>Policy research, analysis, and legislative brief writing</li>
-            <li>Data analysis using Python, R, SQL, and Tableau</li>
-            <li>Statistical modeling, machine learning, and data visualization</li>
-            <li>Expertise in digital privacy, reproductive rights, and gender &amp; labor policy</li>
-            <li>Published researcher: digital surveillance and post-Dobbs reproductive policy</li>
-            <li>Quantitative and qualitative research design and analysis</li>
-            <li>Cross-functional communication and stakeholder engagement</li>
-            <li>Supply chain management, procurement, and vendor negotiation</li>
-            <li>Graduate training: data science, political analysis, mass communication</li>
-            <li>Academic writing, student support, and curriculum-aligned grading</li>
-        </ul>
-
+        <!-- ── EDUCATION ── -->
         <div class="section-title">Education</div>
 
         <div class="entry">
             <div class="entry-row">
-                <span class="entry-title">M.S., Data Science for Applied Public Policy</span>
-                <span class="entry-date">Expected December 2026</span>
+                <span class="entry-title">American University</span>
+                <span class="entry-loc">Washington, DC</span>
             </div>
             <div class="entry-row">
-                <span class="entry-org">American University &mdash; School of Public Affairs</span>
-                <span class="entry-loc">Washington, DC</span>
+                <span class="entry-org">Master of Science in Data Science for Applied Public Policy</span>
+                <span class="entry-date">Currently &ndash; December 2026</span>
             </div>
             <div class="sub-entry">
-                <div class="sub-title">Certificate: Campaign Management Institute (CMI)</div>
-                <div class="sub-detail">Center for Congressional &amp; Presidential Studies, American University&nbsp;|&nbsp;Summer 2026</div>
+                <span class="sub-title">Campaign Management Institute &nbsp;|&nbsp; <span class="sub-detail">Center for Congressional &amp; Presidential Studies</span></span>
+                <span class="entry-date">May 2026</span>
             </div>
         </div>
 
         <div class="entry">
             <div class="entry-row">
-                <span class="entry-title">B.A., Political Science</span>
-                <span class="entry-date">May 2021</span>
+                <span class="entry-title">University of Massachusetts</span>
+                <span class="entry-loc">Dartmouth, MA</span>
             </div>
-            <div class="entry-row">
-                <span class="entry-org">University of Massachusetts Dartmouth</span>
-                <span class="entry-loc">North Dartmouth, MA</span>
+            <div>
+                <span class="entry-org">Bachelor of Arts in Political Science</span>
+                &nbsp;&nbsp;
+                <span style="font-size:10.5pt; font-style:italic; color:var(--muted);">Concentrations: Pre-Law, International Relations, International Security</span>
             </div>
         </div>
 
-        <div class="section-title">Relevant Professional Experience</div>
+        <!-- ── WORK EXPERIENCE ── -->
+        <div class="section-title">Work Experience</div>
 
         <div class="entry">
-            <div class="entry-row">
-                <span class="entry-title">Graduate Course Marker</span>
-                <span class="entry-date">January &ndash; May 2025</span>
-            </div>
-            <div class="entry-row">
-                <span class="entry-org">American University</span>
-                <span class="entry-loc">Washington, DC</span>
+            <div class="compact">
+                <strong>2D Noodles</strong> | <strong>Shift Lead</strong> | Washington DC | <em>May 2025 &ndash; Currently</em>
             </div>
             <ul>
-                <li>Evaluated assignments for 75+ students in core literature course with consistent two-week turnaround</li>
-                <li>Applied detailed rubrics to assess literary analysis essays, maintaining grading consistency and academic integrity</li>
+                <li>Manage front-of-house operations and a team of staff, training new hires on protocols and service standards while maintaining a high standard of guest experience.</li>
             </ul>
         </div>
 
         <div class="entry">
-            <div class="entry-row">
-                <span class="entry-title">PCB Procurement Buyer</span>
-                <span class="entry-date">February 2022 &ndash; April 2024</span>
-            </div>
-            <div class="entry-row">
-                <span class="entry-org">Columbia Tech | Coghlin Companies</span>
-                <span class="entry-loc">Westborough, MA</span>
+            <div class="compact">
+                <strong>American University</strong> | <strong>Graduate Course Marker</strong> | Washington, DC | <em>Spring 2025</em>
             </div>
             <ul>
-                <li>Generated, distributed, and analyzed 5&ndash;10 daily reports on supplier performance, market trends, and cost metrics to inform procurement strategies across 130+ vendors</li>
-                <li>Maintained procurement records and processed purchase orders up to $300,000 for 10+ multinational technology clients</li>
-                <li>Identified cost-saving opportunities through data analysis, contributing to a 15% reduction in material costs via vendor negotiation and strategic sourcing</li>
+                <li>Evaluated and provided detailed feedback on written assignments for 75+ students in CORE-200: AU Encounters.</li>
             </ul>
         </div>
 
         <div class="entry">
-            <div class="entry-row">
-                <span class="entry-title">Public Policy &amp; Advocacy Intern</span>
-                <span class="entry-date">September &ndash; December 2021</span>
-            </div>
-            <div class="entry-row">
-                <span class="entry-org">The Borgen Project</span>
-                <span class="entry-loc">Remote</span>
+            <div class="compact">
+                <strong>Columbia Tech, Coghlin Companies</strong> | <strong>Procurement Buyer &ndash; PCB</strong> | Westborough, MA | <em>February 2022 &ndash; April 2024</em>
             </div>
             <ul>
-                <li>Conducted research on global poverty alleviation strategies and international development policy for congressional advocacy</li>
-                <li>Authored policy briefs and communications for government officials and stakeholders on poverty reduction initiatives</li>
-                <li>Organized outreach events and social media campaigns for poverty awareness in Massachusetts&rsquo; 5th Congressional District</li>
+                <li>Negotiated pricing, discounts, and shipment terms on six-figure purchase orders across 10+ multinational accounts for a capital equipment contract manufacturer serving the robotics, semiconductor, medical, and defense industries.</li>
+                <li>Maintained procurement databases and generated 5&ndash;10 daily analytical reports to inform supplier selection, contributing to a 15% reduction in material costs and improved on-time delivery rates.</li>
             </ul>
         </div>
 
         <div class="entry">
-            <div class="entry-row">
-                <span class="entry-title">Writing Tutor &mdash; Social Science Focus</span>
-                <span class="entry-date">January 2019 &ndash; May 2021</span>
-            </div>
-            <div class="entry-row">
-                <span class="entry-org">The Writing and Reading Center, UMass Dartmouth</span>
-                <span class="entry-loc">North Dartmouth, MA</span>
+            <div class="compact">
+                <strong>The Borgen Project</strong> | <strong>Public Policy Intern &ndash; International Poverty Prevention</strong> | Seattle, WA | <em>Fall 2021</em>
             </div>
             <ul>
-                <li>Provided specialized tutoring in social science writing, research methodologies, and analytical frameworks</li>
-                <li>Assisted students with thesis development, argumentation, and engagement with primary political sources</li>
-            </ul>
-        </div>
-
-        <div class="section-title">Publications &amp; Recognition</div>
-
-        <div class="pub">
-            <div class="pub-title">&ldquo;Your Body, Their Data: Reproductive Surveillance and the Long Project of American Control&rdquo;</div>
-            <div class="pub-venue">The Public Purpose Journal, American University&nbsp;|&nbsp;Accepted for Publication, April 2026</div>
-            <div class="pub-desc">Analyzed digital surveillance and reproductive rights in the post-Dobbs era; proposed the &ldquo;Digital Bodyguard Act&rdquo; as a federal policy solution to protect reproductive health data privacy</div>
-        </div>
-
-        <div class="pub">
-            <div class="pub-title">Smith Analytics Consortium Datathon &mdash; 4th Place of 44 Teams</div>
-            <div class="pub-venue">Cross-University Data Competition&nbsp;|&nbsp;April 2025</div>
-            <div class="pub-desc">Collaborated on a cross-university team to recommend a profitable artist lineup for Spotify using real-world streaming, ticketing, and market data; developed an operational and marketing plan for a 20,000+ attendee event with full budget projections</div>
-        </div>
-
-        <div class="section-title">Additional Work Experience</div>
-
-        <div class="entry">
-            <div class="entry-row">
-                <span class="entry-title">Front of House Shift Leader</span>
-                <span class="entry-date">May 2025 &ndash; Present</span>
-            </div>
-            <div class="entry-row">
-                <span class="entry-org">2D Noodles</span>
-                <span class="entry-loc">Washington, DC</span>
-            </div>
-            <ul>
-                <li>Operate fluidly across front-of-house roles &mdash; food runner, server, host, and floor manager &mdash; adapting to service needs in a high-volume restaurant serving 200+ customers daily</li>
-                <li>Trained and mentored 15+ new hires on POS systems and service protocols, reducing onboarding time by 30%</li>
-            </ul>
-        </div>
-
-        <div class="compact"><strong>Front-of-House Manager &amp; Server</strong> &mdash; Doragon Ramen, Worcester, MA&nbsp;|&nbsp;2021&ndash;2022</div>
-        <div class="compact"><strong>First Chef &amp; Line Cook</strong> &mdash; The 99 Restaurant &amp; Pub, Dartmouth, MA&nbsp;|&nbsp;2020&ndash;2021</div>
-        <div class="compact"><strong>Assistant Kitchen Manager</strong> &mdash; Camp Haiastan, Franklin, MA&nbsp;|&nbsp;Summer 2021</div>
-        <div class="compact"><strong>Shift Manager &amp; Multi-Role Specialist</strong> &mdash; The Corner Market&nbsp;|&nbsp;2015&ndash;2020</div>
-
-        <div class="section-title">Community &amp; Civic Engagement</div>
-
-        <div class="compact"><strong>Phone Banker</strong> &mdash; Vote Save America&nbsp;|&nbsp;Fall 2024<br>Conducted voter outreach and civic education on electoral processes and candidate platforms</div>
-        <div class="compact"><strong>Big Sister</strong> &mdash; Big Brothers Big Sisters of Eastern MA&nbsp;|&nbsp;2018&ndash;2021<br>Provided one-on-one mentoring, academic support, and personal development guidance to a matched youth</div>
-
-    </div>
-
-    <!-- ========================== HOSPITALITY RESUME ========================== -->
-    <div id="version-hosp" class="resume version">
-
-        <div class="name">ALYSSA LANGMEYER</div>
-        <div class="contact">
-            4201 Massachusetts Avenue NW, Washington, DC<br>
-            <a href="mailto:langmeyeraly24@gmail.com">langmeyeraly24@gmail.com</a> | (774) 573-9331 | <a href="https://linkedin.com/in/alyssa-langmeyer-79518617a">linkedin.com/in/alyssa-langmeyer-79518617a</a><br>
-            <a href="https://langmeyeraly24.github.io">langmeyeraly24.github.io</a>
-        </div>
-
-        <div class="section-title">Professional Skills Profile</div>
-        <ul class="skill-list">
-            <li>Front-of-house and back-of-house operations management</li>
-            <li>Staff training, onboarding, and shift leadership</li>
-            <li>High-volume guest experience and service flow management</li>
-            <li>Food ordering, vendor coordination, and inventory management</li>
-            <li>Food safety, sanitation, and health code compliance</li>
-            <li>Multi-station kitchen proficiency: grill, saut&eacute;, fry, prep, and expo</li>
-            <li>POS systems, cash handling, and order accuracy management</li>
-            <li>Procurement, cost analysis, and supply chain coordination</li>
-            <li>Team performance management and conflict resolution</li>
-            <li>Staff scheduling, quality assurance, and process improvement</li>
-        </ul>
-
-        <div class="section-title">Education</div>
-
-        <div class="entry">
-            <div class="entry-row">
-                <span class="entry-title">M.S., Data Science for Applied Public Policy</span>
-                <span class="entry-date">Expected December 2026</span>
-            </div>
-            <div class="entry-row">
-                <span class="entry-org">American University &mdash; School of Public Affairs</span>
-                <span class="entry-loc">Washington, DC</span>
-            </div>
-        </div>
-
-        <div class="entry">
-            <div class="entry-row">
-                <span class="entry-title">B.A., Political Science</span>
-                <span class="entry-date">May 2021</span>
-            </div>
-            <div class="entry-row">
-                <span class="entry-org">University of Massachusetts Dartmouth</span>
-                <span class="entry-loc">North Dartmouth, MA</span>
-            </div>
-        </div>
-
-        <div class="section-title">Restaurant &amp; Hospitality Experience</div>
-
-        <div class="entry">
-            <div class="entry-row">
-                <span class="entry-title">Front of House Shift Leader</span>
-                <span class="entry-date">May 2025 &ndash; Present</span>
-            </div>
-            <div class="entry-row">
-                <span class="entry-org">2D Noodles</span>
-                <span class="entry-loc">Washington, DC</span>
-            </div>
-            <ul>
-                <li>Operate fluidly across front-of-house roles &mdash; food runner, server, host, and floor manager &mdash; adapting to service needs in a high-volume restaurant serving 200+ customers daily</li>
-                <li>Lead shift operations including opening and closing procedures, staff assignments, and real-time service coordination</li>
-                <li>Trained and mentored 15+ new hires on POS systems, service protocols, and food safety standards, reducing onboarding time by 30%</li>
-                <li>Coordinate food expediting and timing between kitchen and dining room to ensure optimal temperature, presentation, and service flow</li>
+                <li>Authored weekly policy briefs on global poverty alleviation strategies and met with local congressional offices to advocate for increases in the U.S. foreign aid budget.</li>
+                <li>Mobilized constituents to contact congressional representatives in support of poverty-reduction legislation, gaining hands-on experience in grassroots advocacy and political outreach.</li>
             </ul>
         </div>
 
         <div class="entry">
-            <div class="entry-row">
-                <span class="entry-title">Front-of-House Manager &amp; Server</span>
-                <span class="entry-date">September 2021 &ndash; February 2022</span>
-            </div>
-            <div class="entry-row">
-                <span class="entry-org">Doragon Ramen</span>
-                <span class="entry-loc">Ashland, MA</span>
+            <div class="compact">
+                <strong>The Writing and Reading Center</strong> | <strong>Writing Tutor &ndash; Social Science Focus</strong> | Dartmouth, MA | <em>2019 &ndash; 2021</em>
             </div>
             <ul>
-                <li>Trained and supervised 10+ FOH staff in service protocols, beverage operations, and customer relations</li>
-                <li>Managed guest experience including seating, waitlists, and complaint resolution to maintain restaurant reputation</li>
-                <li>Oversaw boba tea and hot tea service operations and quality standards</li>
+                <li>Tutored students in writing and analytical reasoning across social science coursework, delivering one-on-one feedback that strengthened thesis development, evidence-based argumentation, and academic writing skills.</li>
             </ul>
         </div>
 
         <div class="entry">
-            <div class="entry-row">
-                <span class="entry-title">Assistant Kitchen Manager &amp; Cook</span>
-                <span class="entry-date">June &ndash; August 2021</span>
+            <div class="compact">
+                <strong>Various Hospitality Experiences</strong> | <em>FOH Manager, Assistant Kitchen Manager, Line Cook</em> | Massachusetts | 2015 &ndash; 2022
             </div>
-            <div class="entry-row">
-                <span class="entry-org">Camp Haiastan</span>
-                <span class="entry-loc">Franklin, MA</span>
-            </div>
-            <ul>
-                <li>Managed high-volume meal production for 200+ campers and staff daily across hot line, cold prep, bakery, and dishwashing</li>
-                <li>Assisted with food ordering, vendor coordination, and inventory management throughout the season</li>
-                <li>Maintained zero health code violations through rigorous food safety and sanitation protocols; trained kitchen staff-in-training on food safety procedures</li>
-            </ul>
         </div>
+
+        <!-- ── VOLUNTEER EXPERIENCE ── -->
+        <div class="section-title">Volunteer Experience</div>
 
         <div class="entry">
-            <div class="entry-row">
-                <span class="entry-title">First Chef &amp; Line Cook</span>
-                <span class="entry-date">September 2020 &ndash; June 2021</span>
-            </div>
-            <div class="entry-row">
-                <span class="entry-org">The 99 Restaurant &amp; Pub</span>
-                <span class="entry-loc">Milford, MA</span>
-            </div>
-            <ul>
-                <li>Maintained proficiency across multiple kitchen stations including grill, saut&eacute;, fry, pantry, and salad during high-volume service</li>
-                <li>Upheld food safety, temperature control, and sanitation standards consistently across all stations; collaborated with takeout and delivery coordination during peak operational periods</li>
-            </ul>
+            <div class="compact"><strong>Vote Save America</strong> | Organizer | Remote | <em>Fall 2024</em></div>
+            <div class="compact"><strong>New Hampshire Democrats</strong> | Organizer | Nashua, NH area | <em>Fall 2024</em></div>
         </div>
 
-        <div class="entry">
-            <div class="entry-row">
-                <span class="entry-title">Shift Manager &amp; Multi-Role Specialist</span>
-                <span class="entry-date">January 2015 &ndash; September 2020</span>
-            </div>
-            <div class="entry-row">
-                <span class="entry-org">The Corner Market</span>
-                <span class="entry-loc">Holliston, MA</span>
-            </div>
-            <ul>
-                <li>Supervised 30+ employees across FOH and BOH roles including hiring, training, scheduling, and performance management</li>
-                <li>Managed food ordering, vendor deliveries, and driver coordination across all restaurant departments</li>
-                <li>Maintained proficiency across all kitchen stations (grill, fry, saut&eacute;, sandwich, pizza, salad); achieved zero health code violations through consistent inventory control and sanitation compliance</li>
-            </ul>
-        </div>
+        <!-- ── SKILLS ── -->
+        <div class="section-title">Skills</div>
 
-        <div class="section-title">Relevant Additional Experience</div>
-
-        <div class="entry">
-            <div class="entry-row">
-                <span class="entry-title">PCB Procurement Buyer</span>
-                <span class="entry-date">February 2022 &ndash; April 2024</span>
-            </div>
-            <div class="entry-row">
-                <span class="entry-org">Columbia Tech | Coghlin Companies</span>
-                <span class="entry-loc">Westborough, MA</span>
-            </div>
-            <ul>
-                <li>Managed 130+ vendor relationships, negotiating orders up to $300,000 &mdash; directly transferable to food vendor coordination and supplier management</li>
-                <li>Generated, distributed, and analyzed 5&ndash;10 daily reports on supplier performance, market trends, and cost metrics to support purchasing decisions</li>
-                <li>Reduced material costs by 15% through data-driven procurement analysis, vendor negotiation, and strategic sourcing</li>
-            </ul>
-        </div>
-
-        <div class="section-title">Community &amp; Civic Engagement</div>
-
-        <div class="compact"><strong>Phone Banker</strong> &mdash; Vote Save America&nbsp;|&nbsp;Fall 2024<br>Conducted voter outreach and civic education on electoral processes and candidate platforms</div>
-        <div class="compact"><strong>Big Sister</strong> &mdash; Big Brothers Big Sisters of Eastern MA&nbsp;|&nbsp;2018&ndash;2021<br>Provided one-on-one mentoring, academic support, and personal development guidance to a matched youth</div>
+        <div class="skills-block"><strong>Programming Languages:</strong> R, Python, SQL</div>
+        <div class="skills-block"><strong>Leadership &amp; Communication:</strong> 5+ years management experience, 7+ years training &amp; mentorship, Public Speaking, Conflict Resolution, Event Planning, Peer-Reviewed Academic Writing, Technical &amp; Policy Writing</div>
+        <div class="skills-block"><strong>Research &amp; Policy:</strong> Qualitative and Quantitative Analysis, Survey Design, Literature Reviews, Content Analysis, Policy Evaluation, Policy Brief Development, Research Design</div>
+        <div class="skills-block"><strong>Data Analysis, Management &amp; Visualization:</strong> Statistical Analysis, Regression Analysis, Sentiment Analysis, Text Analysis (TF-IDF), Web Scraping, API Integration, Mapping/Geospatial Analysis, Data Visualization, Data Wrangling/Cleaning, Data Acquisition, Database Management, Report Generation, Procurement Analytics</div>
+        <div class="skills-block"><strong>Software &amp; Tools:</strong> Microsoft Office Suite, Google Workspace, RStudio, Positron, Jupyter Notebooks, Git, GitHub, Shiny, Quarto, Canva, Epicor, ETQ, Omnify, Toast, VoteBuilder</div>
 
     </div>
 
     <script>
-        function showVersion(which) {
-            document.getElementById('version-base').classList.toggle('active', which === 'base');
-            document.getElementById('version-hosp').classList.toggle('active', which === 'hosp');
-            document.getElementById('btn-base').classList.toggle('active', which === 'base');
-            document.getElementById('btn-hosp').classList.toggle('active', which === 'hosp');
-            window.scrollTo(0, 0);
-        }
-
-        function activeVersion() {
-            return document.getElementById('version-hosp').classList.contains('active') ? 'hosp' : 'base';
-        }
-
         function downloadResume() {
-            const which = activeVersion();
-            const baseFilename = which === 'hosp'
-                ? 'Alyssa Langmeyer - Hospitality Resume'
-                : 'Alyssa Langmeyer - Resume';
             const jobTitle = prompt('Enter job title to append to filename (or leave blank):', '');
-            let filename = baseFilename;
+            let filename = 'Alyssa Langmeyer - Resume';
             if (jobTitle && jobTitle.trim() !== '') filename += ' - ' + jobTitle.trim();
             filename += '.pdf';
 
-            // Clone selected version and the styles, render in a new window for printing
-            const sourceEl = document.getElementById(which === 'hosp' ? 'version-hosp' : 'version-base');
+            const sourceEl = document.querySelector('.resume');
             const styleEl = document.querySelector('style');
 
             const printWin = window.open('', '_blank');
             printWin.document.write('<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>' +
                 filename + '</title>' + styleEl.outerHTML + '</head><body>');
-            // Force the cloned version to be visible regardless of the toggle state
-            const clone = sourceEl.cloneNode(true);
-            clone.classList.add('active');
-            printWin.document.body.appendChild(clone);
+            printWin.document.body.appendChild(sourceEl.cloneNode(true));
             printWin.document.write('</body></html>');
             printWin.document.close();
 
-            // Wait for fonts/layout, then print
             const trigger = function () {
                 printWin.focus();
                 printWin.print();

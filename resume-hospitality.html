@@ -5,296 +5,189 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alyssa Langmeyer - Hospitality Resume</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* =========================================================
+           Resume — Hospitality
+           ========================================================= */
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --ink: #1a1a1a;
+            --muted: #4a4a4a;
+            --rule: #b8b8b8;
+            --section: #1f3864;
+            --org: #1f4e8c;
+            --paper: #ffffff;
+            --bg: #ececec;
         }
+
+        html, body { background: var(--bg); }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 12pt;
-            line-height: 1.4;
-            color: #111;
-            background: #f0f0f0;
-            padding: 20px;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            color: var(--ink);
+            font-size: 11pt;
+            line-height: 1.35;
+            padding: 28px 0;
         }
 
-        .resume {
-            max-width: 8.5in;
-            min-height: 11in;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-            padding: 0.55in 0.68in;
-            position: relative;
-        }
-
-        /* ── CONTROLS ── */
+        /* ---------------- Controls (screen only) ---------------- */
         .controls {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 18px;
+            right: 18px;
             z-index: 1000;
             background: white;
-            padding: 8px;
-            border-radius: 6px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            padding: 10px 12px;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
             display: flex;
             gap: 8px;
             align-items: center;
         }
 
-        .print-btn {
-            background: #2e4a6e;
-            color: white;
+        .print-btn, .back-btn {
             border: none;
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: 4px;
+            font: 600 12px Arial, sans-serif;
             cursor: pointer;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .print-btn:hover { background: #1c3050; }
-
-        .back-btn {
-            background: #555;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 12px;
-            font-weight: 700;
             text-decoration: none;
         }
 
+        .print-btn { background: var(--section); color: white; }
+        .print-btn:hover { background: #15294a; }
+        .back-btn { background: #555; color: white; }
         .back-btn:hover { background: #333; }
 
-        /* ── HEADER ── */
-        .header {
-            text-align: center;
-            border-bottom: 2.5px solid #2e4a6e;
-            padding-bottom: 10px;
-            margin-bottom: 13px;
+        /* ---------------- Page / sheet ---------------- */
+        .resume {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: var(--paper);
+            box-shadow: 0 2px 14px rgba(0,0,0,0.12);
+            padding: 0.6in 0.7in;
         }
 
+        /* ---------------- Header ---------------- */
         .name {
-            font-size: 16pt;
+            text-align: center;
+            font-size: 17pt;
             font-weight: 700;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: #1c1c2e;
-            margin-bottom: 5px;
+            letter-spacing: 0.6pt;
+            color: #000;
+            margin-bottom: 4pt;
         }
 
-        .contact-info {
-            font-size: 12pt;
-            color: #444;
-            line-height: 1.45;
+        .contact {
+            text-align: center;
+            font-size: 10.5pt;
+            color: var(--ink);
+            line-height: 1.5;
+            margin-bottom: 10pt;
         }
 
-        .contact-info a {
-            color: #444;
-            text-decoration: none;
-        }
+        .contact a { color: var(--ink); text-decoration: none; }
 
-        /* ── SECTION TITLES ── */
-        .section {
-            margin-bottom: 11px;
-        }
-
+        /* ---------------- Section headers ---------------- */
         .section-title {
-            font-size: 10pt;
+            font-size: 9.5pt;
             font-weight: 700;
+            color: var(--section);
             text-transform: uppercase;
-            letter-spacing: 1.8px;
-            border-bottom: 1.5px solid #2e4a6e;
-            padding-bottom: 3px;
-            margin-bottom: 8px;
-            color: #2e4a6e;
+            letter-spacing: 0.6pt;
+            border-bottom: 0.6pt solid var(--rule);
+            padding-bottom: 2pt;
+            margin-top: 9pt;
+            margin-bottom: 5pt;
         }
 
-        /* ── SKILLS PROFILE ── */
-        .skills-list {
-            list-style: disc;
-            padding-left: 20px;
-            margin: 0;
-        }
+        /* ---------------- Entry blocks (jobs / education) ---------------- */
+        .entry { margin-bottom: 5pt; page-break-inside: avoid; }
 
-        .skills-list li {
-            font-size: 12pt;
-            margin-bottom: 3px;
-            line-height: 1.35;
-        }
-
-        /* ── EDUCATION ── */
-        .edu-block {
-            margin-bottom: 8px;
-        }
-
-        .item-row {
+        .entry-row {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
+            gap: 12px;
         }
 
-        .item-title {
-            font-weight: 700;
-            font-size: 12pt;
-            color: #111;
+        .entry-title { font-weight: 700; font-size: 11pt; color: var(--ink); }
+        .entry-date  { font-size: 10.5pt; color: var(--ink); white-space: nowrap; }
+        .entry-org   { font-weight: 700; color: var(--org); font-size: 10.5pt; }
+        .entry-loc   { font-style: italic; font-size: 10.5pt; color: var(--ink); }
+
+        .entry ul { list-style: none; padding-left: 4pt; margin: 2pt 0 0 0; }
+
+        .entry ul li {
+            font-size: 10.5pt;
+            margin-bottom: 1pt;
+            line-height: 1.32;
+            padding-left: 12pt;
+            position: relative;
         }
 
-        .item-date {
-            font-size: 12pt;
-            color: #555;
-            white-space: nowrap;
+        .entry ul li::before {
+            content: "\25CF";
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 8pt;
+            line-height: 1.55;
+            color: var(--ink);
         }
 
-        .item-org {
-            font-size: 12pt;
-            font-weight: 700;
-            color: #2e4a6e;
-        }
+        /* ---------------- Sub-entry (certificate under degree) ---------------- */
+        .sub-entry { margin: 2pt 0 2pt 14pt; display: flex; justify-content: space-between; align-items: baseline; }
+        .sub-title { font-weight: 700; font-size: 10.5pt; }
+        .sub-detail { font-size: 10.5pt; }
 
-        .item-location {
-            font-size: 12pt;
-            color: #555;
-            font-style: italic;
-        }
+        /* ---------------- Compact one-liners ---------------- */
+        .compact { font-size: 10.5pt; margin-bottom: 2pt; line-height: 1.32; }
+        .compact strong { font-weight: 700; }
 
-        /* Certificate — plain indented, no box */
-        .cert-block {
-            margin: 4px 0 4px 14px;
-        }
+        /* ---------------- Skills paragraphs ---------------- */
+        .skills-block { margin-bottom: 2pt; font-size: 10.5pt; line-height: 1.35; }
+        .skills-block strong { font-weight: 700; }
 
-        .cert-title {
-            font-weight: 700;
-            font-size: 12pt;
-            color: #111;
-        }
-
-        .cert-sub {
-            font-size: 12pt;
-            color: #555;
-        }
-
-        /* ── EXPERIENCE ── */
-        .exp-block {
-            margin-bottom: 10px;
-        }
-
-        .exp-block ul {
-            list-style: disc;
-            padding-left: 20px;
-            margin-top: 3px;
-        }
-
-        .exp-block ul li {
-            font-size: 12pt;
-            margin-bottom: 3px;
-            line-height: 1.35;
-        }
-
-        /* ── HOSPITALITY SKILLS ── */
-        .hosp-skills-list {
-            list-style: disc;
-            padding-left: 20px;
-            margin: 0;
-        }
-
-        .hosp-skills-list li {
-            font-size: 12pt;
-            margin-bottom: 3px;
-            line-height: 1.35;
-        }
-
-        /* ── COMMUNITY ── */
-        .comm-block {
-            margin-bottom: 7px;
-            font-size: 12pt;
-            line-height: 1.4;
-        }
-
-        .comm-title {
-            font-weight: 700;
-        }
-
-        /* ── PRINT STYLES ── */
+        /* ---------------- Print rules ---------------- */
         @media print {
-            @page {
-                margin: 0.48in 0.6in;
-                size: letter;
-            }
-
+            @page { size: letter; margin: 0.55in 0.65in; }
+            html, body { background: white; }
             body {
-                background: white;
                 padding: 0;
-                font-size: 12pt;
-                line-height: 1.35;
-                margin: 0;
+                font-size: 10.5pt;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
-
-            .resume {
-                box-shadow: none;
-                padding: 0;
-                max-width: 100%;
-                min-height: 0;
-                margin: 0;
-            }
-
-            .no-print { display: none !important; }
-
-            a { color: #444; text-decoration: none; }
-            .contact-info a { color: #444; }
-
-            .section              { margin-bottom: 7px; }
-            .section-title        { margin-bottom: 5px; padding-bottom: 2px; }
-            .edu-block            { margin-bottom: 5px; }
-            .exp-block            { margin-bottom: 7px; }
-            .exp-block ul         { margin-top: 2px; }
-            .exp-block ul li      { margin-bottom: 2px; }
-            .skills-list          { columns: 2; column-gap: 24px; }
-            .skills-list li       { margin-bottom: 1px; break-inside: avoid; }
-            .hosp-skills-list li  { margin-bottom: 1px; }
-            .comm-block           { margin-bottom: 4px; }
-            .cert-block           { margin: 2px 0 2px 14px; }
-            .header               { margin-bottom: 9px; padding-bottom: 7px; }
+            .resume { max-width: 100%; margin: 0; padding: 0; box-shadow: none; }
+            .controls, .no-print { display: none !important; }
+            a { color: var(--ink); text-decoration: none; }
+            .entry { page-break-inside: avoid; }
         }
     </style>
 </head>
 <body>
 
     <div class="controls no-print">
-        <a class="back-btn" href="index.html">&#8592; Portfolio</a>
+        <a class="back-btn" href="index.html">&larr; Portfolio</a>
         <button class="print-btn" onclick="downloadResume()">Download PDF</button>
     </div>
 
     <div class="resume">
 
-        <!-- ── HEADER ── -->
-        <div class="header">
-            <div class="name">Alyssa Langmeyer</div>
-            <div class="contact-info">
-                4201 Massachusetts Avenue NW, Washington, DC
-                &nbsp;|&nbsp; <a href="mailto:langmeyeraly24@gmail.com">langmeyeraly24@gmail.com</a>
-                &nbsp;|&nbsp; (774) 573-9331
-            </div>
-            <div class="contact-info">
-                <a href="https://linkedin.com/in/alyssa-langmeyer-79518617a">linkedin.com/in/alyssa-langmeyer-79518617a</a>
-                &nbsp;|&nbsp; <a href="https://langmeyeraly24.github.io/index.html">langmeyeraly24.github.io</a>
-            </div>
+        <div class="name">Alyssa Langmeyer</div>
+        <div class="contact">
+            NW Washington, DC &nbsp;|&nbsp;
+            <a href="mailto:langmeyeraly24@gmail.com">langmeyeraly24@gmail.com</a>
+            &nbsp;|&nbsp; 774-573-9331
         </div>
 
         <!-- ── PROFESSIONAL SKILLS PROFILE ── -->
-        <div class="section">
-            <div class="section-title">Professional Skills Profile</div>
-            <ul class="skills-list">
+        <div class="section-title">Professional Skills Profile</div>
+
+        <div class="entry">
+            <ul>
                 <li>Front-of-house and back-of-house operations management</li>
                 <li>Staff training, onboarding, and shift leadership</li>
                 <li>High-volume guest experience and service flow management</li>
@@ -309,139 +202,145 @@
         </div>
 
         <!-- ── EDUCATION ── -->
-        <div class="section">
-            <div class="section-title">Education</div>
+        <div class="section-title">Education</div>
 
-            <div class="edu-block">
-                <div class="item-row">
-                    <div class="item-title">M.S., Data Science for Applied Public Policy</div>
-                    <div class="item-date">Expected December 2026</div>
-                </div>
-                <div class="item-org">American University &mdash; School of Public Affairs</div>
-                <div class="item-location">Washington, DC</div>
+        <div class="entry">
+            <div class="entry-row">
+                <span class="entry-title">American University</span>
+                <span class="entry-loc">Washington, DC</span>
             </div>
-
-            <div class="cert-block">
-                <div class="cert-title">Certificate: Campaign Management Institute (CMI)</div>
-                <div class="cert-sub">Center for Congressional &amp; Presidential Studies, American University &nbsp;|&nbsp; Summer 2026</div>
+            <div class="entry-row">
+                <span class="entry-org">Master of Science in Data Science for Applied Public Policy</span>
+                <span class="entry-date">Currently &ndash; December 2026</span>
             </div>
+            <div class="sub-entry">
+                <span class="sub-title">Campaign Management Institute &nbsp;|&nbsp; <span class="sub-detail">Center for Congressional &amp; Presidential Studies</span></span>
+                <span class="entry-date">May 2026</span>
+            </div>
+        </div>
 
-            <div class="edu-block" style="margin-top: 8px;">
-                <div class="item-row">
-                    <div class="item-title">B.A., Political Science</div>
-                    <div class="item-date">May 2021</div>
-                </div>
-                <div class="item-org">University of Massachusetts Dartmouth</div>
-                <div class="item-location">North Dartmouth, MA</div>
+        <div class="entry">
+            <div class="entry-row">
+                <span class="entry-title">University of Massachusetts</span>
+                <span class="entry-loc">Dartmouth, MA</span>
+            </div>
+            <div>
+                <span class="entry-org">Bachelor of Arts in Political Science</span>
+                &nbsp;&nbsp;
+                <span style="font-size:10.5pt; font-style:italic; color:var(--muted);">Concentrations: Pre-Law, International Relations, International Security</span>
             </div>
         </div>
 
         <!-- ── RESTAURANT & HOSPITALITY EXPERIENCE ── -->
-        <div class="section">
-            <div class="section-title">Restaurant &amp; Hospitality Experience</div>
+        <div class="section-title">Restaurant &amp; Hospitality Experience</div>
 
-            <!-- 2D Noodles -->
-            <div class="exp-block">
-                <div class="item-row">
-                    <div class="item-title">Front of House Shift Leader</div>
-                    <div class="item-date">May 2025 &ndash; Present</div>
-                </div>
-                <div class="item-org">2D Noodles</div>
-                <div class="item-location">Washington, DC</div>
-                <ul>
-                    <li>Operate fluidly across front-of-house roles &mdash; food runner, server, host, and floor manager &mdash; adapting to service needs in a high-volume restaurant serving 200+ customers daily</li>
-                    <li>Lead shift operations including opening and closing procedures, staff assignments, and real-time service coordination</li>
-                    <li>Trained and mentored 15+ new hires on POS systems, service protocols, and food safety standards, reducing onboarding time by 30%</li>
-                    <li>Coordinate food expediting and timing between kitchen and dining room to ensure optimal temperature, presentation, and service flow</li>
-                </ul>
+        <div class="entry">
+            <div class="entry-row">
+                <span class="entry-title">Front of House Shift Leader</span>
+                <span class="entry-date">May 2025 &ndash; Present</span>
             </div>
+            <div class="entry-row">
+                <span class="entry-org">2D Noodles</span>
+                <span class="entry-loc">Washington, DC</span>
+            </div>
+            <ul>
+                <li>Operate fluidly across front-of-house roles &mdash; food runner, server, host, and floor manager &mdash; adapting to service needs in a high-volume restaurant serving 200+ customers daily</li>
+                <li>Lead shift operations including opening and closing procedures, staff assignments, and real-time service coordination</li>
+                <li>Trained and mentored 15+ new hires on POS systems, service protocols, and food safety standards, reducing onboarding time by 30%</li>
+                <li>Coordinate food expediting and timing between kitchen and dining room to ensure optimal temperature, presentation, and service flow</li>
+            </ul>
+        </div>
 
-            <!-- Doragon Ramen -->
-            <div class="exp-block">
-                <div class="item-row">
-                    <div class="item-title">Front-of-House Manager &amp; Server</div>
-                    <div class="item-date">September 2021 &ndash; February 2022</div>
-                </div>
-                <div class="item-org">Doragon Ramen</div>
-                <div class="item-location">Ashland, MA</div>
-                <ul>
-                    <li>Trained and supervised 10+ FOH staff in service protocols, beverage operations, and customer relations</li>
-                    <li>Managed guest experience including seating, waitlists, and complaint resolution to maintain restaurant reputation</li>
-                    <li>Oversaw boba tea and hot tea service operations and quality standards</li>
-                </ul>
+        <div class="entry">
+            <div class="entry-row">
+                <span class="entry-title">Front-of-House Manager &amp; Server</span>
+                <span class="entry-date">September 2021 &ndash; February 2022</span>
             </div>
+            <div class="entry-row">
+                <span class="entry-org">Doragon Ramen</span>
+                <span class="entry-loc">Ashland, MA</span>
+            </div>
+            <ul>
+                <li>Trained and supervised 10+ FOH staff in service protocols, beverage operations, and customer relations</li>
+                <li>Managed guest experience including seating, waitlists, and complaint resolution to maintain restaurant reputation</li>
+                <li>Oversaw boba tea and hot tea service operations and quality standards</li>
+            </ul>
+        </div>
 
-            <!-- Camp Haiastan -->
-            <div class="exp-block">
-                <div class="item-row">
-                    <div class="item-title">Assistant Kitchen Manager &amp; Cook</div>
-                    <div class="item-date">June &ndash; August 2021</div>
-                </div>
-                <div class="item-org">Camp Haiastan</div>
-                <div class="item-location">Franklin, MA</div>
-                <ul>
-                    <li>Managed high-volume meal production for 200+ campers and staff daily across hot line, cold prep, bakery, and dishwashing</li>
-                    <li>Assisted with food ordering, vendor coordination, and inventory management throughout the season</li>
-                    <li>Maintained zero health code violations through rigorous food safety and sanitation protocols</li>
-                    <li>Trained kitchen staff-in-training on food safety procedures and kitchen operations</li>
-                </ul>
+        <div class="entry">
+            <div class="entry-row">
+                <span class="entry-title">Assistant Kitchen Manager &amp; Cook</span>
+                <span class="entry-date">June &ndash; August 2021</span>
             </div>
+            <div class="entry-row">
+                <span class="entry-org">Camp Haiastan</span>
+                <span class="entry-loc">Franklin, MA</span>
+            </div>
+            <ul>
+                <li>Managed high-volume meal production for 200+ campers and staff daily across hot line, cold prep, bakery, and dishwashing</li>
+                <li>Assisted with food ordering, vendor coordination, and inventory management throughout the season</li>
+                <li>Maintained zero health code violations through rigorous food safety and sanitation protocols</li>
+                <li>Trained kitchen staff-in-training on food safety procedures and kitchen operations</li>
+            </ul>
+        </div>
 
-            <!-- The 99 Restaurant -->
-            <div class="exp-block">
-                <div class="item-row">
-                    <div class="item-title">First Chef &amp; Line Cook</div>
-                    <div class="item-date">September 2020 &ndash; June 2021</div>
-                </div>
-                <div class="item-org">The 99 Restaurant &amp; Pub</div>
-                <div class="item-location">Milford, MA</div>
-                <ul>
-                    <li>Maintained proficiency across multiple kitchen stations including grill, saut&eacute;, fry, pantry, and salad during high-volume service</li>
-                    <li>Upheld food safety, temperature control, and sanitation standards consistently across all stations</li>
-                    <li>Collaborated with takeout and delivery coordination during peak operational periods</li>
-                </ul>
+        <div class="entry">
+            <div class="entry-row">
+                <span class="entry-title">First Chef &amp; Line Cook</span>
+                <span class="entry-date">September 2020 &ndash; June 2021</span>
             </div>
+            <div class="entry-row">
+                <span class="entry-org">The 99 Restaurant &amp; Pub</span>
+                <span class="entry-loc">Milford, MA</span>
+            </div>
+            <ul>
+                <li>Maintained proficiency across multiple kitchen stations including grill, saut&eacute;, fry, pantry, and salad during high-volume service</li>
+                <li>Upheld food safety, temperature control, and sanitation standards consistently across all stations</li>
+                <li>Collaborated with takeout and delivery coordination during peak operational periods</li>
+            </ul>
+        </div>
 
-            <!-- The Corner Market -->
-            <div class="exp-block">
-                <div class="item-row">
-                    <div class="item-title">Shift Manager &amp; Multi-Role Specialist</div>
-                    <div class="item-date">January 2015 &ndash; September 2020</div>
-                </div>
-                <div class="item-org">The Corner Market</div>
-                <div class="item-location">Holliston, MA</div>
-                <ul>
-                    <li>Supervised 30+ employees across FOH and BOH roles including hiring, training, scheduling, and performance management</li>
-                    <li>Managed food ordering, vendor deliveries, and driver coordination across all restaurant departments</li>
-                    <li>Maintained proficiency across all kitchen stations: grill, fry, saut&eacute;, sandwich, pizza, and salad</li>
-                    <li>Achieved zero health code violations through consistent inventory control and sanitation compliance</li>
-                </ul>
+        <div class="entry">
+            <div class="entry-row">
+                <span class="entry-title">Shift Manager &amp; Multi-Role Specialist</span>
+                <span class="entry-date">January 2015 &ndash; September 2020</span>
             </div>
+            <div class="entry-row">
+                <span class="entry-org">The Corner Market</span>
+                <span class="entry-loc">Holliston, MA</span>
+            </div>
+            <ul>
+                <li>Supervised 30+ employees across FOH and BOH roles including hiring, training, scheduling, and performance management</li>
+                <li>Managed food ordering, vendor deliveries, and driver coordination across all restaurant departments</li>
+                <li>Maintained proficiency across all kitchen stations: grill, fry, saut&eacute;, sandwich, pizza, and salad</li>
+                <li>Achieved zero health code violations through consistent inventory control and sanitation compliance</li>
+            </ul>
         </div>
 
         <!-- ── RELEVANT ADDITIONAL EXPERIENCE ── -->
-        <div class="section">
-            <div class="section-title">Relevant Additional Experience</div>
+        <div class="section-title">Relevant Additional Experience</div>
 
-            <div class="exp-block">
-                <div class="item-row">
-                    <div class="item-title">PCB Procurement Buyer</div>
-                    <div class="item-date">February 2022 &ndash; April 2024</div>
-                </div>
-                <div class="item-org">Columbia Tech | Coghlin Companies</div>
-                <div class="item-location">Westborough, MA</div>
-                <ul>
-                    <li>Managed 130+ vendor relationships, negotiating orders up to $300,000 &mdash; directly transferable to food vendor coordination and supplier management</li>
-                    <li>Generated, distributed, and analyzed 5&ndash;10 daily reports on supplier performance, market trends, and cost metrics to support purchasing decisions</li>
-                    <li>Reduced material costs by 15% through data-driven procurement analysis, vendor negotiation, and strategic sourcing</li>
-                </ul>
+        <div class="entry">
+            <div class="entry-row">
+                <span class="entry-title">PCB Procurement Buyer</span>
+                <span class="entry-date">February 2022 &ndash; April 2024</span>
             </div>
+            <div class="entry-row">
+                <span class="entry-org">Columbia Tech | Coghlin Companies</span>
+                <span class="entry-loc">Westborough, MA</span>
+            </div>
+            <ul>
+                <li>Managed 130+ vendor relationships, negotiating orders up to $300,000 &mdash; directly transferable to food vendor coordination and supplier management</li>
+                <li>Generated, distributed, and analyzed 5&ndash;10 daily reports on supplier performance, market trends, and cost metrics to support purchasing decisions</li>
+                <li>Reduced material costs by 15% through data-driven procurement analysis, vendor negotiation, and strategic sourcing</li>
+            </ul>
         </div>
 
         <!-- ── HOSPITALITY SKILLS ── -->
-        <div class="section">
-            <div class="section-title">Hospitality Skills</div>
-            <ul class="hosp-skills-list">
+        <div class="section-title">Hospitality Skills</div>
+
+        <div class="entry">
+            <ul>
                 <li>Kitchen stations: Grill, Saut&eacute;, Fry, Pizza, Sandwich, Salad, Cold Prep, Expo, Dish</li>
                 <li>FOH operations: Guest seating, waitlist management, POS systems, cash handling, customer service</li>
                 <li>Management: Shift leadership, staff scheduling, inventory control, quality assurance, process improvement</li>
@@ -451,152 +350,43 @@
         </div>
 
         <!-- ── COMMUNITY & CIVIC ENGAGEMENT ── -->
-        <div class="section">
-            <div class="section-title">Community &amp; Civic Engagement</div>
+        <div class="section-title">Community &amp; Civic Engagement</div>
 
-            <div class="comm-block">
-                <span class="comm-title">Phone Banker</span> &mdash; Vote Save America &nbsp;|&nbsp; Fall 2024<br>
-                Conducted voter outreach and civic education on electoral processes and candidate platforms
-            </div>
-            <div class="comm-block">
-                <span class="comm-title">Big Sister</span> &mdash; Big Brothers Big Sisters of Eastern MA &nbsp;|&nbsp; 2018&ndash;2021<br>
-                Provided one-on-one mentoring, academic support, and personal development guidance to a matched youth
-            </div>
+        <div class="entry">
+            <div class="compact"><strong>Phone Banker</strong> &mdash; Vote Save America | Remote | <em>Fall 2024</em><br>Conducted voter outreach and civic education on electoral processes and candidate platforms</div>
+            <div class="compact" style="margin-top:3pt;"><strong>Big Sister</strong> &mdash; Big Brothers Big Sisters of Eastern MA | <em>2018 &ndash; 2021</em><br>Provided one-on-one mentoring, academic support, and personal development guidance to a matched youth</div>
         </div>
 
-    </div><!-- /resume -->
+    </div>
 
     <script>
         function downloadResume() {
-            const jobTitle = prompt('Enter job title to append to filename (or leave blank for generic):', '');
+            const jobTitle = prompt('Enter job title to append to filename (or leave blank):', '');
             let filename = 'Alyssa Langmeyer - Hospitality Resume';
-            if (jobTitle && jobTitle.trim() !== '') {
-                filename += ' - ' + jobTitle.trim();
-            }
+            if (jobTitle && jobTitle.trim() !== '') filename += ' - ' + jobTitle.trim();
             filename += '.pdf';
 
-            const resumeClone = document.querySelector('.resume').cloneNode(true);
-            const printWindow = window.open('', '_blank');
+            const sourceEl = document.querySelector('.resume');
+            const styleEl = document.querySelector('style');
 
-            printWindow.document.write(`
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>${filename}</title>
-                    <meta charset="UTF-8">
-                    <style>
-                        * { margin: 0; padding: 0; box-sizing: border-box; }
+            const printWin = window.open('', '_blank');
+            printWin.document.write('<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>' +
+                filename + '</title>' + styleEl.outerHTML + '</head><body>');
+            printWin.document.body.appendChild(sourceEl.cloneNode(true));
+            printWin.document.write('</body></html>');
+            printWin.document.close();
 
-                        body {
-                            font-family: Arial, Helvetica, sans-serif;
-                            font-size: 12pt;
-                            line-height: 1.35;
-                            color: #111;
-                            background: white;
-                        }
-
-                        .resume { background: white; }
-
-                        .header {
-                            text-align: center;
-                            border-bottom: 2.5px solid #2e4a6e;
-                            padding-bottom: 7px;
-                            margin-bottom: 9px;
-                        }
-
-                        .name {
-                            font-size: 16pt;
-                            font-weight: 700;
-                            letter-spacing: 4px;
-                            text-transform: uppercase;
-                            color: #1c1c2e;
-                            margin-bottom: 5px;
-                        }
-
-                        .contact-info { font-size: 12pt; color: #444; line-height: 1.45; }
-                        .contact-info a { color: #444; text-decoration: none; }
-
-                        .section { margin-bottom: 7px; }
-
-                        .section-title {
-                            font-size: 10pt;
-                            font-weight: 700;
-                            text-transform: uppercase;
-                            letter-spacing: 1.8px;
-                            border-bottom: 1.5px solid #2e4a6e;
-                            padding-bottom: 2px;
-                            margin-bottom: 5px;
-                            color: #2e4a6e;
-                        }
-
-                        .skills-list { list-style: disc; padding-left: 20px; margin: 0; columns: 2; column-gap: 24px; }
-                        .skills-list li { font-size: 12pt; margin-bottom: 1px; line-height: 1.35; break-inside: avoid; }
-
-                        .hosp-skills-list { list-style: disc; padding-left: 20px; margin: 0; }
-                        .hosp-skills-list li { font-size: 12pt; margin-bottom: 1px; line-height: 1.35; }
-
-                        .edu-block { margin-bottom: 5px; }
-
-                        .item-row {
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: baseline;
-                        }
-
-                        .item-title { font-weight: 700; font-size: 12pt; color: #111; }
-                        .item-date { font-size: 12pt; color: #555; white-space: nowrap; }
-                        .item-org { font-size: 12pt; font-weight: 700; color: #2e4a6e; }
-                        .item-location { font-size: 12pt; color: #555; font-style: italic; }
-
-                        .cert-block { margin: 2px 0 2px 14px; }
-                        .cert-title { font-weight: 700; font-size: 12pt; color: #111; }
-                        .cert-sub { font-size: 12pt; color: #555; }
-
-                        .exp-block { margin-bottom: 7px; }
-                        .exp-block ul { list-style: disc; padding-left: 20px; margin-top: 2px; }
-                        .exp-block ul li { font-size: 12pt; margin-bottom: 2px; line-height: 1.35; }
-
-                        .comm-block { margin-bottom: 4px; font-size: 12pt; line-height: 1.4; }
-                        .comm-title { font-weight: 700; }
-
-                        .no-print { display: none !important; }
-
-                        @media print {
-                            @page { margin: 0.48in 0.6in; size: letter; }
-                            body {
-                                -webkit-print-color-adjust: exact;
-                                print-color-adjust: exact;
-                            }
-                            a { color: #444; text-decoration: none; }
-                        }
-                    </style>
-                </head>
-                <body>
-                    <div class="resume">
-                        ${resumeClone.innerHTML}
-                    </div>
-                    <script>
-                        document.fonts.ready.then(function() {
-                            setTimeout(() => {
-                                window.print();
-                                window.onafterprint = function() { window.close(); };
-                            }, 150);
-                        });
-                    <\/script>
-                </body>
-                </html>
-            `);
-            printWindow.document.close();
+            const trigger = function () {
+                printWin.focus();
+                printWin.print();
+                printWin.onafterprint = function () { printWin.close(); };
+            };
+            if (printWin.document.fonts && printWin.document.fonts.ready) {
+                printWin.document.fonts.ready.then(function () { setTimeout(trigger, 150); });
+            } else {
+                setTimeout(trigger, 400);
+            }
         }
-
-        window.addEventListener('beforeprint', () => {
-            const controls = document.querySelector('.controls');
-            if (controls) controls.style.display = 'none';
-        });
-        window.addEventListener('afterprint', () => {
-            const controls = document.querySelector('.controls');
-            if (controls) controls.style.display = 'flex';
-        });
     </script>
 </body>
 </html>
