@@ -1,0 +1,2015 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Elaborating on models</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Elaborating_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Elaborating_files/libs/quarto-html/quarto.js"></script>
+<script src="Elaborating_files/libs/quarto-html/popper.min.js"></script>
+<script src="Elaborating_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Elaborating_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Elaborating_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Elaborating_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Elaborating_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Elaborating_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Elaborating_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Elaborating on models</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ExPanDaR) <span class="co"># for winsorizing/truncating</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4) <span class="co">#for random effects</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(miceadds) <span class="co"># for lm.cluster</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="initial-steps" class="level1">
+<h1>Initial steps</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#robots_cleaned.csv is obtained by running the file "R/clean_and_truncate.R"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#only step is to treat outliers</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>robots <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"robots_cleaned.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 13453 Columns: 31
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (1): province
+dbl (30): year, hhid, pline, id, Quality, Robot, wage, workhours, age, gende...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<section id="on-treating-outliers" class="level2">
+<h2 class="anchored" data-anchor-id="on-treating-outliers">On treating outliers</h2>
+<p>Their wording is somewhat unclear. Their 99% tail truncation seems to apply only to Quality. It also appears to be censoring rather than truncating the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>robots2 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"datas002.xlsx"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>robots2<span class="sc">$</span>quality_original <span class="ot">&lt;-</span> robots2<span class="sc">$</span>Quality</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>robots2<span class="sc">$</span>quality_trunc <span class="ot">&lt;-</span> <span class="fu">treat_outliers</span>(robots2<span class="sc">$</span>Quality, <span class="at">truncate =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>robots2<span class="sc">$</span>quality_censored <span class="ot">&lt;-</span> <span class="fu">treat_outliers</span>(robots2<span class="sc">$</span>Quality)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>robots2 <span class="ot">&lt;-</span> robots2 <span class="sc">%&gt;%</span> <span class="fu">select</span>(quality_censored, quality_trunc, quality_original)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>selected_variables <span class="ot">&lt;-</span> robots2 <span class="sc">%&gt;%</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(quality_censored, quality_original, quality_trunc)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#get summary statistics</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">mapply</span>(<span class="at">FUN =</span> \(x) <span class="fu">c</span>(<span class="at">N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(x)), <span class="at">mean =</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span><span class="cn">TRUE</span>), </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sd =</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span><span class="cn">TRUE</span>), <span class="at">min =</span> <span class="fu">min</span>(x, <span class="at">na.rm =</span><span class="cn">TRUE</span>), </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                    <span class="at">max =</span> <span class="fu">max</span>(x, <span class="at">na.rm =</span><span class="cn">TRUE</span>)),</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>       selected_variables) <span class="sc">%&gt;%</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     N     mean         sd      min         max
+quality_censored 13453 51.92248  105.34374 3.333333    649.3506
+quality_original 13453 75.08611 1805.08429 0.100000 200000.0045
+quality_trunc    13204 46.28270   87.35993 3.333333    649.3506</code></pre>
+</div>
+</div>
+<p>By censoring (professor’s term) or winsorizing (package’s term) the Quality variable, we were able to replicate their summary statistics.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#select relevant columns</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>selected_variables <span class="ot">&lt;-</span> robots <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Quality, Robot, age, gender, marriage, health, lnGDP, structure, lnaverwage)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#get summary statistics</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mapply</span>(<span class="at">FUN =</span> \(x) <span class="fu">c</span>(<span class="at">N =</span> <span class="fu">length</span>(x), <span class="at">mean =</span> <span class="fu">mean</span>(x), <span class="at">sd =</span> <span class="fu">sd</span>(x), <span class="at">min =</span> <span class="fu">min</span>(x), <span class="at">max =</span> <span class="fu">max</span>(x)),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>       selected_variables) <span class="sc">%&gt;%</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               N       mean          sd        min        max
+Quality    13453 51.9224756 105.3437388  3.3333333 649.350649
+Robot      13453  2.3991275   3.4982871  0.5541379  19.844507
+age        13453 28.5806140   4.2631077 17.0000000  35.000000
+gender     13453  0.5768230   0.4940813  0.0000000   1.000000
+marriage   13453  0.5545975   0.4970286  0.0000000   1.000000
+health     13453  0.9742808   0.1583021  0.0000000   1.000000
+lnGDP      13453 10.2623826   0.8267938  7.8727714  11.586836
+structure  13453  1.3824509   0.6984223  0.8522082   5.169242
+lnaverwage 13453 11.2073749   0.2160024 10.9240482  12.024569</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary statistics for selected variables</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>selected_variables <span class="ot">&lt;-</span> robots <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Quality, Robot, age, gender, marriage, health, lnGDP, structure, lnaverwage)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>summary_table <span class="ot">&lt;-</span> <span class="fu">mapply</span>(</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> \(x) <span class="fu">c</span>(</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">N =</span> <span class="fu">length</span>(x), </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean =</span> <span class="fu">mean</span>(x), </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD =</span> <span class="fu">sd</span>(x), </span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Min =</span> <span class="fu">min</span>(x), </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">Max =</span> <span class="fu">max</span>(x)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  selected_variables</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">3</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(summary_table) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"N"</span>, <span class="st">"Mean"</span>, <span class="st">"SD"</span>, <span class="st">"Min"</span>, <span class="st">"Max"</span>)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>summary_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               N   Mean      SD    Min     Max
+Quality    13453 51.922 105.344  3.333 649.351
+Robot      13453  2.399   3.498  0.554  19.845
+age        13453 28.581   4.263 17.000  35.000
+gender     13453  0.577   0.494  0.000   1.000
+marriage   13453  0.555   0.497  0.000   1.000
+health     13453  0.974   0.158  0.000   1.000
+lnGDP      13453 10.262   0.827  7.873  11.587
+structure  13453  1.382   0.698  0.852   5.169
+lnaverwage 13453 11.207   0.216 10.924  12.025</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="base-models" class="level1">
+<h1>Base models</h1>
+<p>2 main concepts here</p>
+<ul>
+<li><p>Random fixed and mixed effects models</p>
+<ul>
+<li>We did all 3, they have the mixed effects model duplicated in columns 1 and 3</li>
+<li>lme4::lmer (package::function)</li>
+<li>Random effects: for the region, individual, and year variables, we are interested in the variance rather than the coefficients. Uses Maximum Likelihood Estimation rather than OLS</li>
+<li>Fixed effects are what we’ve been doing in class</li>
+<li>I can probably elaborate verbally on why we don’t do individual fixed effects for the model. It didn’t quite match their results either, and it took 20+ minutes to run, and the model object was almost a gigabyte. Most individuals are only in there once, so it was a factor with about 13000 levels, creating about 13000 dummy variables, most of which correspond to only one observation.</li>
+</ul></li>
+<li><p>Robust standard error, clustered by individual</p>
+<ul>
+<li>miceadds::lm.cluster</li>
+</ul></li>
+</ul>
+<p>They use robust standard error for all models. We only use it for the fixed effects models (difficult to combine two different methods).</p>
+<p>They determine with the Hausman test that the fixed effects model is best, so they use fixed effects for the rest of the paper. We do the same, but do not perform the Hausman test.</p>
+<section id="mixed-effects-model-column-1" class="level2">
+<h2 class="anchored" data-anchor-id="mixed-effects-model-column-1">Mixed effects model (column 1)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>me_model <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> robots, <span class="at">formula =</span> Quality <span class="sc">~</span> Robot <span class="sc">+</span> age <span class="sc">+</span> gender <span class="sc">+</span> marriage <span class="sc">+</span> health <span class="sc">+</span> lnGDP</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>     <span class="sc">+</span> structure <span class="sc">+</span> lnaverwage <span class="sc">+</span> <span class="fu">as.factor</span>(year)<span class="sc">+</span> <span class="fu">as.factor</span>(province) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>id))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(me_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Linear mixed model fit by REML ['lmerMod']
+Formula: Quality ~ Robot + age + gender + marriage + health + lnGDP +  
+    structure + lnaverwage + as.factor(year) + as.factor(province) +  
+    (1 | id)
+   Data: robots
+
+REML criterion at convergence: 149795.4
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.2585 -0.1821 -0.0361  0.1148  9.8198 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept)  257.6   16.05   
+ Residual             3811.3   61.74   
+Number of obs: 13453, groups:  id, 13048
+
+Fixed effects:
+                                    Estimate Std. Error t value
+(Intercept)                       -8604.6932   688.2510 -12.502
+Robot                                -3.8255     0.5633  -6.792
+age                                   0.6979     0.1609   4.336
+gender                                6.9442     1.1263   6.165
+marriage                             -0.8881     1.3819  -0.643
+health                                7.3841     3.4884   2.117
+lnGDP                                60.2886    13.5935   4.435
+structure                            66.9559     7.5638   8.852
+lnaverwage                          713.8052    65.8580  10.839
+as.factor(year)2019                  80.0076    11.7707   6.797
+as.factor(province)Beijing         -687.5745    52.2414 -13.161
+as.factor(province)Chongqing        -47.8950     9.8661  -4.855
+as.factor(province)Fujian           -24.0620     4.8858  -4.925
+as.factor(province)Gansu             57.1007    18.5116   3.085
+as.factor(province)Guangdong       -202.2901    17.0136 -11.890
+as.factor(province)Guangxi           24.3649     7.4032   3.291
+as.factor(province)Guizhou          -46.1658    14.1461  -3.264
+as.factor(province)Hainan           -42.9159    28.9746  -1.481
+as.factor(province)Hebei             15.8545     6.1043   2.597
+as.factor(province)Heilongjiang      58.7453    15.0106   3.914
+as.factor(province)Henan             88.4917    15.1752   5.831
+as.factor(province)Hubei            -27.1182     5.6220  -4.824
+as.factor(province)Hunan             -7.5222     6.2960  -1.195
+as.factor(province)Inner Mongolia    10.2496    10.5174   0.975
+as.factor(province)Jiangsu         -137.1632    19.6367  -6.985
+as.factor(province)Jiangxi           63.5134     6.9626   9.122
+as.factor(province)Jilin             71.0707     9.6616   7.356
+as.factor(province)Liaoning          33.4973     6.7561   4.958
+as.factor(province)Ningxia           56.8929    31.1486   1.826
+as.factor(province)Qinghai           23.8517    37.2808   0.640
+as.factor(province)Shaanxi           21.3271     5.5129   3.869
+as.factor(province)Shandong         -95.4285    12.8547  -7.424
+as.factor(province)Shanghai        -537.7085    45.2211 -11.891
+as.factor(province)Shanxi            76.9749     9.2641   8.309
+as.factor(province)Sichuan          -74.3120     6.6920 -11.105
+as.factor(province)Tianjin         -252.8187    27.4769  -9.201
+as.factor(province)Yunnan           -44.0869    10.7465  -4.102
+as.factor(province)Zhejiang        -177.2084    14.5148 -12.209</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Correlation matrix not shown by default, as p = 38 &gt; 12.
+Use print(x, correlation=TRUE)  or
+    vcov(x)        if you need it</code></pre>
+</div>
+</div>
+</section>
+<section id="fixed-effects-model-column-2" class="level2">
+<h2 class="anchored" data-anchor-id="fixed-effects-model-column-2">Fixed effects model (column 2)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fe_model <span class="ot">&lt;-</span> <span class="fu">lm.cluster</span>(<span class="at">data =</span> robots, <span class="at">formula =</span> Quality <span class="sc">~</span> Robot <span class="sc">+</span> age <span class="sc">+</span> gender <span class="sc">+</span> marriage <span class="sc">+</span> health <span class="sc">+</span> lnGDP</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                     <span class="sc">+</span> structure <span class="sc">+</span> lnaverwage <span class="sc">+</span> <span class="fu">as.factor</span>(year) <span class="sc">+</span> <span class="fu">as.factor</span>(province), <span class="at">cluster =</span> <span class="st">"id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required namespace: sandwich</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fe_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R^2= 0.63415 
+
+                                       Estimate   Std. Error    t value
+(Intercept)                       -8620.6252003 1813.8072266 -4.7527792
+Robot                                -3.8171637    1.3484827 -2.8307101
+age                                   0.6989876    0.1591414  4.3922422
+gender                                6.9856033    1.0382601  6.7281821
+marriage                             -0.9062716    1.3545836 -0.6690407
+health                                7.4792741    3.8457341  1.9448235
+lnGDP                                60.2330785   30.4254062  1.9796968
+structure                            66.6028212   19.8915604  3.3482955
+lnaverwage                          715.2955378  171.3881733  4.1735408
+as.factor(year)2019                  79.8049820   30.6506040  2.6037001
+as.factor(province)Beijing         -687.0428949  135.4882279 -5.0708678
+as.factor(province)Chongqing        -47.9839975   21.2443447 -2.2586716
+as.factor(province)Fujian           -23.9231023    7.1833913 -3.3303354
+as.factor(province)Gansu             57.4032589   39.9495824  1.4368926
+as.factor(province)Guangdong       -202.2594181   41.0144712 -4.9314160
+as.factor(province)Guangxi           24.8132167   12.5388306  1.9789099
+as.factor(province)Guizhou          -46.0016580   31.2279508 -1.4730924
+as.factor(province)Hainan           -42.4734188   65.3901324 -0.6495387
+as.factor(province)Hebei             16.0768812   11.0963291  1.4488468
+as.factor(province)Heilongjiang      59.5886896   35.8777184  1.6608829
+as.factor(province)Henan             88.8770984   36.0922030  2.4625013
+as.factor(province)Hubei            -26.9179671    9.1754481 -2.9336951
+as.factor(province)Hunan             -7.1855497   11.5081881 -0.6243858
+as.factor(province)Inner Mongolia    10.3090860   20.3616418  0.5062993
+as.factor(province)Jiangsu         -137.3900135   48.5560997 -2.8295109
+as.factor(province)Jiangxi           63.6988212   11.7681722  5.4128050
+as.factor(province)Jilin             71.2446431   18.4929666  3.8525265
+as.factor(province)Liaoning          33.9691070   13.7684284  2.4671739
+as.factor(province)Ningxia           56.8598084   68.5704193  0.8292177
+as.factor(province)Qinghai           23.8332566   83.6703109  0.2848472
+as.factor(province)Shaanxi           21.3805143    7.3464556  2.9103169
+as.factor(province)Shandong         -95.2878400   28.6242821 -3.3289163
+as.factor(province)Shanghai        -537.6056329  120.3142511 -4.4683454
+as.factor(province)Shanxi            77.3796375   19.2151925  4.0270030
+as.factor(province)Sichuan          -74.2003997   14.3043603 -5.1872575
+as.factor(province)Tianjin         -253.0439632   68.9790143 -3.6684195
+as.factor(province)Yunnan           -44.0282438   22.7034732 -1.9392735
+as.factor(province)Zhejiang        -177.1215701   36.7959089 -4.8136213
+                                      Pr(&gt;|t|)
+(Intercept)                       2.006395e-06
+Robot                             4.644479e-03
+age                               1.121876e-05
+gender                            1.717959e-11
+marriage                          5.034695e-01
+health                            5.179622e-02
+lnGDP                             4.773761e-02
+structure                         8.131028e-04
+lnaverwage                        2.999019e-05
+as.factor(year)2019               9.222340e-03
+as.factor(province)Beijing        3.960057e-07
+as.factor(province)Chongqing      2.390382e-02
+as.factor(province)Fujian         8.674143e-04
+as.factor(province)Gansu          1.507485e-01
+as.factor(province)Guangdong      8.163569e-07
+as.factor(province)Guangxi        4.782615e-02
+as.factor(province)Guizhou        1.407261e-01
+as.factor(province)Hainan         5.159903e-01
+as.factor(province)Hebei          1.473804e-01
+as.factor(province)Heilongjiang   9.673696e-02
+as.factor(province)Henan          1.379717e-02
+as.factor(province)Hubei          3.349531e-03
+as.factor(province)Hunan          5.323742e-01
+as.factor(province)Inner Mongolia 6.126465e-01
+as.factor(province)Jiangsu        4.661921e-03
+as.factor(province)Jiangxi        6.204504e-08
+as.factor(province)Jilin          1.169053e-04
+as.factor(province)Liaoning       1.361842e-02
+as.factor(province)Ningxia        4.069812e-01
+as.factor(province)Qinghai        7.757612e-01
+as.factor(province)Shaanxi        3.610624e-03
+as.factor(province)Shandong       8.718459e-04
+as.factor(province)Shanghai       7.882694e-06
+as.factor(province)Shanxi         5.649232e-05
+as.factor(province)Sichuan        2.134136e-07
+as.factor(province)Tianjin        2.440545e-04
+as.factor(province)Yunnan         5.246804e-02
+as.factor(province)Zhejiang       1.482196e-06</code></pre>
+</div>
+</div>
+</section>
+<section id="random-effects-model-column-3" class="level2">
+<h2 class="anchored" data-anchor-id="random-effects-model-column-3">Random effects model (column 3)</h2>
+<p>Note: in the paper, column 3 is the same as column 1, but the text indicates that it should be the random effects model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>re_model <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> robots, <span class="at">formula =</span> Quality <span class="sc">~</span> Robot <span class="sc">+</span> age <span class="sc">+</span> gender <span class="sc">+</span> marriage <span class="sc">+</span> health <span class="sc">+</span> lnGDP <span class="sc">+</span> structure <span class="sc">+</span> lnaverwage <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>year) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>province) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>id))</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(re_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Linear mixed model fit by REML ['lmerMod']
+Formula: Quality ~ Robot + age + gender + marriage + health + lnGDP +  
+    structure + lnaverwage + (1 | year) + (1 | province) + (1 |      id)
+   Data: robots
+
+REML criterion at convergence: 150175.7
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.1468 -0.1832 -0.0342  0.1156  9.8155 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept)   257.6   16.05  
+ province (Intercept) 22576.0  150.25  
+ year     (Intercept)  5479.5   74.02  
+ Residual              3812.5   61.75  
+Number of obs: 13453, groups:  id, 13048; province, 29; year, 2
+
+Fixed effects:
+              Estimate Std. Error t value
+(Intercept) -7215.4252   637.4791 -11.319
+Robot          -4.0014     0.5605  -7.140
+age             0.6906     0.1610   4.290
+gender          6.9675     1.1265   6.185
+marriage       -0.8925     1.3820  -0.646
+health          7.3161     3.4889   2.097
+lnGDP          62.1644    12.5227   4.964
+structure      62.8622     7.4621   8.424
+lnaverwage    587.3564    59.4019   9.888
+
+Correlation of Fixed Effects:
+           (Intr) Robot  age    gender marrig health lnGDP  strctr
+Robot      -0.179                                                 
+age        -0.016 -0.008                                          
+gender     -0.001  0.014 -0.058                                   
+marriage    0.001 -0.001 -0.575  0.071                            
+health     -0.010 -0.006  0.020 -0.001  0.005                     
+lnGDP       0.171 -0.007 -0.011  0.000  0.017  0.009              
+structure   0.103 -0.241  0.017 -0.018  0.003  0.004  0.015       
+lnaverwage -0.978  0.175  0.011  0.000 -0.002  0.002 -0.351 -0.117</code></pre>
+</div>
+</div>
+</section>
+<section id="formatted-table-3" class="level2">
+<h2 class="anchored" data-anchor-id="formatted-table-3">Formatted Table 3</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(miceadds)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. First ensure all models exist</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>models_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">exists</span>(<span class="st">"me_model"</span>)) models_list[[<span class="st">"Mixed Effects"</span>]] <span class="ot">&lt;-</span> me_model</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">exists</span>(<span class="st">"fe_model"</span>)) models_list[[<span class="st">"Fixed Effects"</span>]] <span class="ot">&lt;-</span> fe_model</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">exists</span>(<span class="st">"re_model"</span>)) models_list[[<span class="st">"Random Effects"</span>]] <span class="ot">&lt;-</span> re_model</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Extract coefficients safely</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>get_coefficients <span class="ot">&lt;-</span> <span class="cf">function</span>(model) {</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">inherits</span>(model, <span class="st">"lmerMod"</span>)) {</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># For mixed/random effects models</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    coefs <span class="ot">&lt;-</span> <span class="fu">summary</span>(model)<span class="sc">$</span>coefficients</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">Variable =</span> <span class="fu">rownames</span>(coefs),</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">Estimate =</span> coefs[,<span class="dv">1</span>],</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">Std_Error =</span> coefs[,<span class="dv">2</span>],</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># For fixed effects models with clustered SE</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">Variable =</span> <span class="fu">names</span>(model<span class="sc">$</span>lm_res<span class="sc">$</span>coefficients),</span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">Estimate =</span> model<span class="sc">$</span>lm_res<span class="sc">$</span>coefficients,</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">Std_Error =</span> <span class="fu">sqrt</span>(<span class="fu">diag</span>(model<span class="sc">$</span>vcov)),</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>all_coefs <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(models_list, get_coefficients, <span class="at">.id =</span> <span class="st">"Model"</span>)</span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Clean and prepare the data</span></span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>variable_order <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Robot"</span>, <span class="st">"Age"</span>, <span class="st">"Gender"</span>, <span class="st">"Marriage"</span>, <span class="st">"Health"</span>,</span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ln(GDP)"</span>, <span class="st">"Structure"</span>, <span class="st">"ln(Avg Wage)"</span>, <span class="st">"Intercept"</span></span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a>cleaned_coefs <span class="ot">&lt;-</span> all_coefs <span class="sc">%&gt;%</span></span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">Variable =</span> <span class="fu">case_when</span>(</span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>      Variable <span class="sc">==</span> <span class="st">"(Intercept)"</span> <span class="sc">~</span> <span class="st">"Intercept"</span>,</span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a>      Variable <span class="sc">==</span> <span class="st">"Robot"</span> <span class="sc">~</span> <span class="st">"Robot"</span>,</span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a>      Variable <span class="sc">==</span> <span class="st">"age"</span> <span class="sc">~</span> <span class="st">"Age"</span>,</span>
+<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a>      Variable <span class="sc">==</span> <span class="st">"gender"</span> <span class="sc">~</span> <span class="st">"Gender"</span>,</span>
+<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a>      Variable <span class="sc">==</span> <span class="st">"marriage"</span> <span class="sc">~</span> <span class="st">"Marriage"</span>,</span>
+<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a>      Variable <span class="sc">==</span> <span class="st">"health"</span> <span class="sc">~</span> <span class="st">"Health"</span>,</span>
+<span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a>      Variable <span class="sc">==</span> <span class="st">"lnGDP"</span> <span class="sc">~</span> <span class="st">"ln(GDP)"</span>,</span>
+<span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a>      Variable <span class="sc">==</span> <span class="st">"structure"</span> <span class="sc">~</span> <span class="st">"Structure"</span>,</span>
+<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a>      Variable <span class="sc">==</span> <span class="st">"lnaverwage"</span> <span class="sc">~</span> <span class="st">"ln(Avg Wage)"</span>,</span>
+<span id="cb19-54"><a href="#cb19-54" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> Variable</span>
+<span id="cb19-55"><a href="#cb19-55" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb19-56"><a href="#cb19-56" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb19-57"><a href="#cb19-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Variable <span class="sc">%in%</span> variable_order) <span class="sc">%&gt;%</span></span>
+<span id="cb19-58"><a href="#cb19-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Variable =</span> <span class="fu">factor</span>(Variable, <span class="at">levels =</span> variable_order))</span>
+<span id="cb19-59"><a href="#cb19-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-60"><a href="#cb19-60" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Create the final table</span></span>
+<span id="cb19-61"><a href="#cb19-61" aria-hidden="true" tabindex="-1"></a>estimate_rows <span class="ot">&lt;-</span> cleaned_coefs <span class="sc">%&gt;%</span></span>
+<span id="cb19-62"><a href="#cb19-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Std_Error) <span class="sc">%&gt;%</span></span>
+<span id="cb19-63"><a href="#cb19-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb19-64"><a href="#cb19-64" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> Model,</span>
+<span id="cb19-65"><a href="#cb19-65" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> Estimate,</span>
+<span id="cb19-66"><a href="#cb19-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_fn =</span> <span class="fu">list</span>(<span class="at">Estimate =</span> mean)</span>
+<span id="cb19-67"><a href="#cb19-67" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb19-68"><a href="#cb19-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-69"><a href="#cb19-69" aria-hidden="true" tabindex="-1"></a>se_rows <span class="ot">&lt;-</span> cleaned_coefs <span class="sc">%&gt;%</span></span>
+<span id="cb19-70"><a href="#cb19-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Estimate) <span class="sc">%&gt;%</span></span>
+<span id="cb19-71"><a href="#cb19-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb19-72"><a href="#cb19-72" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> Model,</span>
+<span id="cb19-73"><a href="#cb19-73" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> Std_Error,</span>
+<span id="cb19-74"><a href="#cb19-74" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_fn =</span> <span class="fu">list</span>(<span class="at">Std_Error =</span> mean)</span>
+<span id="cb19-75"><a href="#cb19-75" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb19-76"><a href="#cb19-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-77"><a href="#cb19-77" aria-hidden="true" tabindex="-1"></a>final_table <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb19-78"><a href="#cb19-78" aria-hidden="true" tabindex="-1"></a>  estimate_rows <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Row_Type =</span> <span class="st">"estimate"</span>),</span>
+<span id="cb19-79"><a href="#cb19-79" aria-hidden="true" tabindex="-1"></a>  se_rows <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Row_Type =</span> <span class="st">"se"</span>)</span>
+<span id="cb19-80"><a href="#cb19-80" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-81"><a href="#cb19-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Variable, Row_Type) <span class="sc">%&gt;%</span></span>
+<span id="cb19-82"><a href="#cb19-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb19-83"><a href="#cb19-83" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">ifelse</span>(</span>
+<span id="cb19-84"><a href="#cb19-84" aria-hidden="true" tabindex="-1"></a>      Row_Type <span class="sc">==</span> <span class="st">"estimate"</span>,</span>
+<span id="cb19-85"><a href="#cb19-85" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sprintf</span>(<span class="st">"%.3f"</span>, .),</span>
+<span id="cb19-86"><a href="#cb19-86" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sprintf</span>(<span class="st">"(%.3f)"</span>, .)</span>
+<span id="cb19-87"><a href="#cb19-87" aria-hidden="true" tabindex="-1"></a>    )),</span>
+<span id="cb19-88"><a href="#cb19-88" aria-hidden="true" tabindex="-1"></a>    <span class="at">Variable =</span> <span class="fu">ifelse</span>(Row_Type <span class="sc">==</span> <span class="st">"se"</span>, <span class="st">""</span>, <span class="fu">as.character</span>(Variable))</span>
+<span id="cb19-89"><a href="#cb19-89" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb19-90"><a href="#cb19-90" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Row_Type)</span>
+<span id="cb19-91"><a href="#cb19-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-92"><a href="#cb19-92" aria-hidden="true" tabindex="-1"></a><span class="co"># Add fixed effects indicators</span></span>
+<span id="cb19-93"><a href="#cb19-93" aria-hidden="true" tabindex="-1"></a>fe_rows <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb19-94"><a href="#cb19-94" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> <span class="fu">c</span>(<span class="st">"Region FE"</span>, <span class="st">"Year FE"</span>),</span>
+<span id="cb19-95"><a href="#cb19-95" aria-hidden="true" tabindex="-1"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb19-96"><a href="#cb19-96" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-97"><a href="#cb19-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-98"><a href="#cb19-98" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (model_name <span class="cf">in</span> <span class="fu">names</span>(models_list)) {</span>
+<span id="cb19-99"><a href="#cb19-99" aria-hidden="true" tabindex="-1"></a>  fe_rows[[model_name]] <span class="ot">&lt;-</span> <span class="st">"Yes"</span></span>
+<span id="cb19-100"><a href="#cb19-100" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-101"><a href="#cb19-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-102"><a href="#cb19-102" aria-hidden="true" tabindex="-1"></a>final_table <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(final_table, fe_rows)</span>
+<span id="cb19-103"><a href="#cb19-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-104"><a href="#cb19-104" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Print the table</span></span>
+<span id="cb19-105"><a href="#cb19-105" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb19-106"><a href="#cb19-106" aria-hidden="true" tabindex="-1"></a>  final_table,</span>
+<span id="cb19-107"><a href="#cb19-107" aria-hidden="true" tabindex="-1"></a>  <span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>, <span class="fu">rep</span>(<span class="st">"r"</span>, <span class="fu">length</span>(models_list))),</span>
+<span id="cb19-108"><a href="#cb19-108" aria-hidden="true" tabindex="-1"></a>  <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Variable"</span>, <span class="fu">names</span>(models_list)),</span>
+<span id="cb19-109"><a href="#cb19-109" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Regression Results"</span></span>
+<span id="cb19-110"><a href="#cb19-110" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Regression Results</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: right;">Mixed Effects</th>
+<th style="text-align: right;">Fixed Effects</th>
+<th style="text-align: right;">Random Effects</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Robot</td>
+<td style="text-align: right;">-3.826</td>
+<td style="text-align: right;">-3.817</td>
+<td style="text-align: right;">-4.001</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;">(0.563)</td>
+<td style="text-align: right;">(1.348)</td>
+<td style="text-align: right;">(0.560)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Age</td>
+<td style="text-align: right;">0.698</td>
+<td style="text-align: right;">0.699</td>
+<td style="text-align: right;">0.691</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;">(0.161)</td>
+<td style="text-align: right;">(0.159)</td>
+<td style="text-align: right;">(0.161)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gender</td>
+<td style="text-align: right;">6.944</td>
+<td style="text-align: right;">6.986</td>
+<td style="text-align: right;">6.967</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;">(1.126)</td>
+<td style="text-align: right;">(1.038)</td>
+<td style="text-align: right;">(1.126)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Marriage</td>
+<td style="text-align: right;">-0.888</td>
+<td style="text-align: right;">-0.906</td>
+<td style="text-align: right;">-0.892</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;">(1.382)</td>
+<td style="text-align: right;">(1.355)</td>
+<td style="text-align: right;">(1.382)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Health</td>
+<td style="text-align: right;">7.384</td>
+<td style="text-align: right;">7.479</td>
+<td style="text-align: right;">7.316</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;">(3.488)</td>
+<td style="text-align: right;">(3.846)</td>
+<td style="text-align: right;">(3.489)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ln(GDP)</td>
+<td style="text-align: right;">60.289</td>
+<td style="text-align: right;">60.233</td>
+<td style="text-align: right;">62.164</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;">(13.594)</td>
+<td style="text-align: right;">(30.425)</td>
+<td style="text-align: right;">(12.523)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Structure</td>
+<td style="text-align: right;">66.956</td>
+<td style="text-align: right;">66.603</td>
+<td style="text-align: right;">62.862</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;">(7.564)</td>
+<td style="text-align: right;">(19.892)</td>
+<td style="text-align: right;">(7.462)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ln(Avg Wage)</td>
+<td style="text-align: right;">713.805</td>
+<td style="text-align: right;">715.296</td>
+<td style="text-align: right;">587.356</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;">(65.858)</td>
+<td style="text-align: right;">(171.388)</td>
+<td style="text-align: right;">(59.402)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Intercept</td>
+<td style="text-align: right;">-8604.693</td>
+<td style="text-align: right;">-8620.625</td>
+<td style="text-align: right;">-7215.425</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;">(688.251)</td>
+<td style="text-align: right;">(1813.807)</td>
+<td style="text-align: right;">(637.479)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Region FE</td>
+<td style="text-align: right;">Yes</td>
+<td style="text-align: right;">Yes</td>
+<td style="text-align: right;">Yes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Year FE</td>
+<td style="text-align: right;">Yes</td>
+<td style="text-align: right;">Yes</td>
+<td style="text-align: right;">Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="tables-4-and-6" class="level1">
+<h1>Tables 4 and 6</h1>
+<p>We did not replicate these.</p>
+<p>They did several robustness tests including 2 stage linear regression and substituting several variables for table 4.</p>
+<p>For table 6, they used bootstrap.</p>
+</section>
+<section id="tables-578" class="level1">
+<h1>Tables 5,7,8</h1>
+<section id="table-5-heterogeneity" class="level2">
+<h2 class="anchored" data-anchor-id="table-5-heterogeneity">Table 5: Heterogeneity</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Gender</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>man <span class="ot">&lt;-</span> <span class="fu">filter</span>(robots, gender <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>woman <span class="ot">&lt;-</span> <span class="fu">filter</span>(robots, gender <span class="sc">==</span><span class="dv">0</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Education</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(robots<span class="sc">$</span>education)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(robots, education)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="dv">690</span> <span class="sc">+</span> <span class="dv">4763</span> <span class="co"># 0 and 1 are primary</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 is middle</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 3 is university</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>primary <span class="ot">&lt;-</span> <span class="fu">filter</span>(robots, education <span class="sc">==</span> <span class="dv">0</span> <span class="sc">|</span> education <span class="sc">==</span><span class="dv">1</span>)</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>middle <span class="ot">&lt;-</span> <span class="fu">filter</span>(robots, education <span class="sc">==</span> <span class="dv">2</span>)</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>university <span class="ot">&lt;-</span> <span class="fu">filter</span>(robots, education <span class="sc">==</span><span class="dv">3</span>)</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co">#Age groups</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>age_1 <span class="ot">&lt;-</span> <span class="fu">filter</span>(robots, age <span class="sc">&gt;=</span> <span class="dv">17</span> <span class="sc">&amp;</span> age <span class="sc">&lt;=</span> <span class="dv">25</span>)</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>age_2 <span class="ot">&lt;-</span> <span class="fu">filter</span>(robots, age <span class="sc">&gt;=</span> <span class="dv">26</span> <span class="sc">&amp;</span> age <span class="sc">&lt;=</span> <span class="dv">35</span>)</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Regional employment</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>large <span class="ot">&lt;-</span> <span class="fu">filter</span>(robots, reg_labor <span class="sc">&gt;</span> <span class="fu">mean</span>(reg_labor))</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>small <span class="ot">&lt;-</span> <span class="fu">filter</span>(robots, reg_labor <span class="sc">&lt;=</span> <span class="fu">mean</span>(reg_labor))</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a><span class="co">#temp</span></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>fit_fe_model <span class="ot">&lt;-</span> <span class="cf">function</span>(dataset){</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">&lt;-</span> <span class="fu">lm.cluster</span>(<span class="at">data =</span> dataset, <span class="at">formula =</span> Quality <span class="sc">~</span> Robot <span class="sc">+</span> age <span class="sc">+</span> gender <span class="sc">+</span> marriage <span class="sc">+</span> health <span class="sc">+</span> lnGDP</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>             <span class="sc">+</span> structure <span class="sc">+</span> lnaverwage <span class="sc">+</span> <span class="fu">as.factor</span>(year) <span class="sc">+</span> <span class="fu">as.factor</span>(province),</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>             <span class="at">cluster =</span> <span class="st">"id"</span>)</span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>  model_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(model)</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(model_summary[<span class="dv">2</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a><span class="co">#fit_fe_model(large)</span></span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="at">.x =</span> <span class="fu">list</span>(man,woman,primary,middle,university,large,small), <span class="at">.f =</span> fit_fe_model) <span class="sc">%&gt;%</span></span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tbl) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Man"</span>, <span class="st">"Woman"</span>, <span class="st">"Primary"</span>, <span class="st">"Middle"</span>, <span class="st">"University"</span>, <span class="st">"Large"</span>, <span class="st">"Small"</span>)</span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tbl)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"Estimate (Robot)"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>tbl5 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">t</span>(tbl))</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tbl5) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Estimate"</span>, <span class="st">"Std_Error"</span>, <span class="st">"t_value"</span>, <span class="st">"p_value"</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>tbl5<span class="sc">$</span>Group <span class="ot">&lt;-</span> <span class="fu">rownames</span>(tbl5)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>tbl5 <span class="ot">&lt;-</span> tbl5 <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Group, Estimate, Std_Error, t_value,  p_value) <span class="sc">%&gt;%</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span><span class="fu">round</span>(., <span class="dv">3</span>)))   <span class="sc">%&gt;%</span><span class="fu">t</span>()</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a> tbl5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Man       Woman     Primary   Middle    University   Large    
+Group     "Man"     "Woman"   "Primary" "Middle"  "University" "Large"  
+Estimate  " -4.794" " -0.697" " -2.039" " -4.443" "-11.260"    "  1.476"
+Std_Error "1.619"   "1.865"   "1.231"   "1.771"   "2.720"      "1.505"  
+t_value   "-2.960"  "-0.374"  "-1.656"  "-2.509"  "-4.139"     " 0.981" 
+p_value   "0.003"   "0.709"   "0.098"   "0.012"   "0.000"      "0.327"  
+          Small    
+Group     "Small"  
+Estimate  "-27.255"
+Std_Error "9.956"  
+t_value   "-2.738" 
+p_value   "0.006"  </code></pre>
+</div>
+</div>
+</section>
+<section id="table-7-regulatory-effect" class="level2">
+<h2 class="anchored" data-anchor-id="table-7-regulatory-effect">Table 7: Regulatory effect</h2>
+<p>Modeled with interaction effects between policies and Robot variable.</p>
+<ul>
+<li>note to team members: I ran the models but did not format the tables to match</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(miceadds)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>model.<span class="fl">7.1</span> <span class="ot">&lt;-</span> <span class="fu">lm.cluster</span>(<span class="at">data =</span> robots, <span class="at">formula =</span> Quality <span class="sc">~</span> Robot <span class="sc">+</span> Robot<span class="sc">*</span>reg_edu  <span class="sc">+</span> age <span class="sc">+</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                          gender <span class="sc">+</span> marriage <span class="sc">+</span> health <span class="sc">+</span> lnGDP <span class="sc">+</span> structure <span class="sc">+</span> lnaverwage <span class="sc">+</span> </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">as.factor</span>(year) <span class="sc">+</span> <span class="fu">as.factor</span>(province), <span class="at">cluster =</span> <span class="st">"id"</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model.<span class="fl">7.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R^2= 0.64282 
+
+                                       Estimate   Std. Error     t value
+(Intercept)                       -5742.1269522 1975.3555328 -2.90688276
+Robot                               -92.4222619   38.7144296 -2.38728202
+reg_edu                            1788.8658443  752.7894852  2.37631619
+age                                   0.7578990    0.1574765  4.81277474
+gender                                6.7755056    1.0266167  6.59983978
+marriage                             -0.7122253    1.3244659 -0.53774533
+health                                7.4963707    3.7419985  2.00330672
+lnGDP                                16.3008844   32.4418457  0.50246476
+structure                            47.4356752   21.2825926  2.22884853
+lnaverwage                          472.4355404  193.6078967  2.44016669
+as.factor(year)2019                 139.5759363   36.8736292  3.78525085
+as.factor(province)Beijing         -384.4444866  170.4357822 -2.25565595
+as.factor(province)Chongqing         20.2383749   28.1858386  0.71803345
+as.factor(province)Fujian           -47.8475579    9.7147480 -4.92524953
+as.factor(province)Gansu            -11.9409600   42.6570054 -0.27992964
+as.factor(province)Guangdong       -102.2062410   43.4319439 -2.35325044
+as.factor(province)Guangxi          -45.6672435   17.4896429 -2.61110211
+as.factor(province)Guizhou         -119.2072337   31.8864201 -3.73849537
+as.factor(province)Hainan           -62.7238556   79.1848548 -0.79211935
+as.factor(province)Hebei            -52.3998380   22.5245511 -2.32634327
+as.factor(province)Heilongjiang     105.7492685   44.1391362  2.39581645
+as.factor(province)Henan             28.4592689   46.2954975  0.61473081
+as.factor(province)Hubei              2.4041554    9.7790257  0.24584815
+as.factor(province)Hunan             -0.9031321   10.9200325 -0.08270416
+as.factor(province)Inner Mongolia    75.3573267   43.2471245  1.74248178
+as.factor(province)Jiangsu          -79.3615997   48.1668693 -1.64763874
+as.factor(province)Jiangxi          -13.0981634   19.5143346 -0.67120728
+as.factor(province)Jilin             98.0394052   24.3617992  4.02430890
+as.factor(province)Liaoning          97.9078143   19.9797424  4.90035419
+as.factor(province)Ningxia           65.9323186   86.9519100  0.75826188
+as.factor(province)Qinghai           47.7489163  105.0115250  0.45470167
+as.factor(province)Shaanxi           -8.9077536    8.2383836 -1.08125016
+as.factor(province)Shandong        -136.3744648   38.3237933 -3.55848033
+as.factor(province)Shanghai        -161.6643383  145.3743485 -1.11205546
+as.factor(province)Shanxi            27.8816835   20.3991780  1.36680427
+as.factor(province)Sichuan          -25.8843205   16.9851309 -1.52394001
+as.factor(province)Tianjin         -101.1379876   92.3724914 -1.09489293
+as.factor(province)Yunnan           -68.8586062   24.4871561 -2.81202953
+as.factor(province)Zhejiang        -152.3048190   36.4011398 -4.18406731
+Robot:reg_edu                       471.7905878  208.3438181  2.26448086
+                                      Pr(&gt;|t|)
+(Intercept)                       3.650500e-03
+Robot                             1.697346e-02
+reg_edu                           1.748647e-02
+age                               1.488490e-06
+gender                            4.116024e-11
+marriage                          5.907529e-01
+health                            4.514438e-02
+lnGDP                             6.153406e-01
+structure                         2.582398e-02
+lnaverwage                        1.468049e-02
+as.factor(year)2019               1.535536e-04
+as.factor(province)Beijing        2.409219e-02
+as.factor(province)Chongqing      4.727367e-01
+as.factor(province)Fujian         8.425277e-07
+as.factor(province)Gansu          7.795315e-01
+as.factor(province)Guangdong      1.861010e-02
+as.factor(province)Guangxi        9.025094e-03
+as.factor(province)Guizhou        1.851249e-04
+as.factor(province)Hainan         4.282911e-01
+as.factor(province)Hebei          2.000025e-02
+as.factor(province)Heilongjiang   1.658339e-02
+as.factor(province)Henan          5.387325e-01
+as.factor(province)Hubei          8.057998e-01
+as.factor(province)Hunan          9.340868e-01
+as.factor(province)Inner Mongolia 8.142418e-02
+as.factor(province)Jiangsu        9.942683e-02
+as.factor(province)Jiangxi        5.020885e-01
+as.factor(province)Jilin          5.714287e-05
+as.factor(province)Liaoning       9.566403e-07
+as.factor(province)Ningxia        4.482942e-01
+as.factor(province)Qinghai        6.493239e-01
+as.factor(province)Shaanxi        2.795859e-01
+as.factor(province)Shandong       3.730067e-04
+as.factor(province)Shanghai       2.661143e-01
+as.factor(province)Shanxi         1.716867e-01
+as.factor(province)Sichuan        1.275237e-01
+as.factor(province)Tianjin        2.735635e-01
+as.factor(province)Yunnan         4.922998e-03
+as.factor(province)Zhejiang       2.863393e-05
+Robot:reg_edu                     2.354456e-02</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>model.<span class="fl">7.2</span> <span class="ot">&lt;-</span> <span class="fu">lm.cluster</span>(<span class="at">data =</span> robots, <span class="at">formula =</span> Quality <span class="sc">~</span> Robot <span class="sc">+</span> Robot<span class="sc">*</span>skill  <span class="sc">+</span> age <span class="sc">+</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                          gender <span class="sc">+</span> marriage <span class="sc">+</span> health <span class="sc">+</span> lnGDP <span class="sc">+</span> structure <span class="sc">+</span> lnaverwage <span class="sc">+</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">as.factor</span>(year) <span class="sc">+</span> <span class="fu">as.factor</span>(province), <span class="at">cluster =</span> <span class="st">"id"</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model.<span class="fl">7.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R^2= 0.63719 
+
+                                       Estimate   Std. Error    t value
+(Intercept)                       -1.173166e+04 2.080648e+03 -5.6384649
+Robot                             -5.904559e+01 1.371373e+01 -4.3055825
+skill                             -8.816710e-04 2.361173e-04 -3.7340378
+age                                7.057705e-01 1.588427e-01  4.4432041
+gender                             6.947875e+00 1.033414e+00  6.7232258
+marriage                          -7.756611e-01 1.350248e+00 -0.5744581
+health                             7.770405e+00 3.745520e+00  2.0745864
+lnGDP                             -1.811755e+01 3.344038e+01 -0.5417866
+structure                          1.024968e+02 2.158671e+01  4.7481419
+lnaverwage                         1.082931e+03 1.980418e+02  5.4681942
+as.factor(year)2019                8.809089e+00 3.471457e+01  0.2537577
+as.factor(province)Beijing        -1.150382e+03 1.613745e+02 -7.1286454
+as.factor(province)Chongqing      -1.743307e+02 3.834298e+01 -4.5466136
+as.factor(province)Fujian         -9.013535e+01 2.658249e+01 -3.3907794
+as.factor(province)Gansu          -1.512274e+02 6.454352e+01 -2.3430301
+as.factor(province)Guangdong      -2.252338e+02 4.353226e+01 -5.1739505
+as.factor(province)Guangxi        -6.826472e+01 3.000738e+01 -2.2749309
+as.factor(province)Guizhou        -2.116643e+02 4.534599e+01 -4.6677622
+as.factor(province)Hainan         -4.007357e+02 1.008276e+02 -3.9744642
+as.factor(province)Hebei           1.370915e+01 2.216607e+01  0.6184745
+as.factor(province)Heilongjiang   -9.518406e+01 6.648224e+01 -1.4317216
+as.factor(province)Henan           1.928820e+02 4.271276e+01  4.5157943
+as.factor(province)Hubei          -8.534432e+01 3.123161e+01 -2.7326260
+as.factor(province)Hunan          -3.761585e+01 2.281812e+01 -1.6485082
+as.factor(province)Inner Mongolia -1.805261e+02 5.216334e+01 -3.4607857
+as.factor(province)Jiangsu        -1.605402e+02 4.935708e+01 -3.2526264
+as.factor(province)Jiangxi        -4.051731e+01 4.383778e+01 -0.9242554
+as.factor(province)Jilin          -7.503950e+01 5.323161e+01 -1.4096792
+as.factor(province)Liaoning       -5.934903e+01 4.449400e+01 -1.3338659
+as.factor(province)Ningxia        -2.740471e+02 9.453813e+01 -2.8987996
+as.factor(province)Qinghai        -3.576103e+02 1.096469e+02 -3.2614725
+as.factor(province)Shaanxi        -8.700293e+01 3.602792e+01 -2.4148752
+as.factor(province)Shandong       -6.228544e+01 3.030020e+01 -2.0556115
+as.factor(province)Shanghai       -8.475877e+02 1.289049e+02 -6.5752928
+as.factor(province)Shanxi         -4.034606e+01 4.298521e+01 -0.9386034
+as.factor(province)Sichuan        -4.767054e+01 2.359747e+01 -2.0201546
+as.factor(province)Tianjin        -5.560711e+02 8.885440e+01 -6.2582283
+as.factor(province)Yunnan         -2.039019e+02 4.230823e+01 -4.8194379
+as.factor(province)Zhejiang       -2.283631e+02 3.758100e+01 -6.0765586
+Robot:skill                        2.847586e-04 7.045327e-05  4.0418076
+                                      Pr(&gt;|t|)
+(Intercept)                       1.715727e-08
+Robot                             1.665469e-05
+skill                             1.884342e-04
+age                               8.862902e-06
+gender                            1.777448e-11
+marriage                          5.656578e-01
+health                            3.802488e-02
+lnGDP                             5.879655e-01
+structure                         2.052940e-06
+lnaverwage                        4.546435e-08
+as.factor(year)2019               7.996828e-01
+as.factor(province)Beijing        1.013615e-12
+as.factor(province)Chongqing      5.451596e-06
+as.factor(province)Fujian         6.969417e-04
+as.factor(province)Gansu          1.912784e-02
+as.factor(province)Guangdong      2.291955e-07
+as.factor(province)Guangxi        2.291008e-02
+as.factor(province)Guizhou        3.044980e-06
+as.factor(province)Hainan         7.053787e-05
+as.factor(province)Hebei          5.362626e-01
+as.factor(province)Heilongjiang   1.522235e-01
+as.factor(province)Henan          6.307988e-06
+as.factor(province)Hubei          6.283163e-03
+as.factor(province)Hunan          9.924844e-02
+as.factor(province)Inner Mongolia 5.386014e-04
+as.factor(province)Jiangsu        1.143437e-03
+as.factor(province)Jiangxi        3.553533e-01
+as.factor(province)Jilin          1.586344e-01
+as.factor(province)Liaoning       1.822478e-01
+as.factor(province)Ningxia        3.745942e-03
+as.factor(province)Qinghai        1.108352e-03
+as.factor(province)Shaanxi        1.574060e-02
+as.factor(province)Shandong       3.981998e-02
+as.factor(province)Shanghai       4.855753e-11
+as.factor(province)Shanxi         3.479344e-01
+as.factor(province)Sichuan        4.336736e-02
+as.factor(province)Tianjin        3.893754e-10
+as.factor(province)Yunnan         1.439632e-06
+as.factor(province)Zhejiang       1.227892e-09
+Robot:skill                       5.304075e-05</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>model.<span class="fl">7.3</span> <span class="ot">&lt;-</span> <span class="fu">lm.cluster</span>(<span class="at">data =</span> robots, <span class="at">formula =</span> Quality <span class="sc">~</span> Robot <span class="sc">+</span> Robot<span class="sc">*</span>entrepreneurship  <span class="sc">+</span> age <span class="sc">+</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                          gender <span class="sc">+</span> marriage <span class="sc">+</span> health <span class="sc">+</span> lnGDP <span class="sc">+</span> structure <span class="sc">+</span> lnaverwage <span class="sc">+</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">as.factor</span>(year) <span class="sc">+</span> <span class="fu">as.factor</span>(province), <span class="at">cluster =</span> <span class="st">"id"</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model.<span class="fl">7.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R^2= 0.6342 
+
+                                       Estimate   Std. Error    t value
+(Intercept)                       -8626.9023109 1813.8028662 -4.7562513
+Robot                                -3.8540066    1.3483263 -2.8583634
+entrepreneurship                      1.5685455    1.4663903  1.0696644
+age                                   0.7084894    0.1599246  4.4301469
+gender                                7.0411030    1.0389727  6.7769857
+marriage                             -0.9303702    1.3554406 -0.6863969
+health                                7.3569152    3.8480039  1.9118783
+lnGDP                                60.1284373   30.4249972  1.9762841
+structure                            66.5287234   19.8940868  3.3441456
+lnaverwage                          715.9295007  171.3833604  4.1773571
+as.factor(year)2019                  79.8313116   30.6538788  2.6042809
+as.factor(province)Beijing         -687.1031351  135.5035861 -5.0707376
+as.factor(province)Chongqing        -47.9914969   21.2447221 -2.2589845
+as.factor(province)Fujian           -23.9689983    7.1841516 -3.3363714
+as.factor(province)Gansu             57.3853900   39.9510439  1.4363928
+as.factor(province)Guangdong       -202.2200753   41.0200727 -4.9297834
+as.factor(province)Guangxi           24.7581219   12.5398743  1.9743517
+as.factor(province)Guizhou          -46.2030364   31.2252470 -1.4796692
+as.factor(province)Hainan           -42.5975492   65.3911369 -0.6514270
+as.factor(province)Hebei             16.1843704   11.0948672  1.4587259
+as.factor(province)Heilongjiang      59.7510859   35.8784636  1.6653747
+as.factor(province)Henan             89.0969856   36.0887263  2.4688315
+as.factor(province)Hubei            -26.8775109    9.1765897 -2.9289215
+as.factor(province)Hunan             -7.1829764   11.5085277 -0.6241438
+as.factor(province)Inner Mongolia    10.2213288   20.3619101  0.5019828
+as.factor(province)Jiangsu         -137.3187486   48.5612759 -2.8277418
+as.factor(province)Jiangxi           63.5721257   11.7721048  5.4002345
+as.factor(province)Jilin             71.2405175   18.4952580  3.8518261
+as.factor(province)Liaoning          34.0416548   13.7684133  2.4724457
+as.factor(province)Ningxia           56.6146077   68.5675282  0.8256767
+as.factor(province)Qinghai           23.5083956   83.6654880  0.2809808
+as.factor(province)Shaanxi           21.4017162    7.3477433  2.9126924
+as.factor(province)Shandong         -95.2008308   28.6258127 -3.3256988
+as.factor(province)Shanghai        -537.7518189  120.3201930 -4.4693397
+as.factor(province)Shanxi            77.4000084   19.2166549  4.0277566
+as.factor(province)Sichuan          -74.1670166   14.3076883 -5.1837177
+as.factor(province)Tianjin         -253.1974339   68.9794606 -3.6706207
+as.factor(province)Yunnan           -44.0348279   22.7054127 -1.9393978
+as.factor(province)Zhejiang        -177.2851833   36.7983552 -4.8177475
+Robot:entrepreneurship                0.1704397    0.1549998  1.0996127
+                                      Pr(&gt;|t|)
+(Intercept)                       1.972209e-06
+Robot                             4.258324e-03
+entrepreneurship                  2.847704e-01
+age                               9.416891e-06
+gender                            1.227090e-11
+marriage                          4.924629e-01
+health                            5.589180e-02
+lnGDP                             4.812261e-02
+structure                         8.253640e-04
+lnaverwage                        2.949158e-05
+as.factor(year)2019               9.206726e-03
+as.factor(province)Beijing        3.962767e-07
+as.factor(province)Chongqing      2.388435e-02
+as.factor(province)Fujian         8.487968e-04
+as.factor(province)Gansu          1.508906e-01
+as.factor(province)Guangdong      8.232082e-07
+as.factor(province)Guangxi        4.834177e-02
+as.factor(province)Guizhou        1.389615e-01
+as.factor(province)Hainan         5.147709e-01
+as.factor(province)Hebei          1.446406e-01
+as.factor(province)Heilongjiang   9.583802e-02
+as.factor(province)Henan          1.355550e-02
+as.factor(province)Hubei          3.401403e-03
+as.factor(province)Hunan          5.325331e-01
+as.factor(province)Inner Mongolia 6.156796e-01
+as.factor(province)Jiangsu        4.687760e-03
+as.factor(province)Jiangxi        6.655386e-08
+as.factor(province)Jilin          1.172403e-04
+as.factor(province)Liaoning       1.341921e-02
+as.factor(province)Ningxia        4.089875e-01
+as.factor(province)Qinghai        7.787251e-01
+as.factor(province)Shaanxi        3.583274e-03
+as.factor(province)Shandong       8.819718e-04
+as.factor(province)Shanghai       7.846142e-06
+as.factor(province)Shanxi         5.631160e-05
+as.factor(province)Sichuan        2.175061e-07
+as.factor(province)Tianjin        2.419622e-04
+as.factor(province)Yunnan         5.245292e-02
+as.factor(province)Zhejiang       1.451880e-06
+Robot:entrepreneurship            2.715009e-01</code></pre>
+</div>
+</div>
+</section>
+<section id="table-8-effectiveness-of-employment-promotion-measures" class="level2">
+<h2 class="anchored" data-anchor-id="table-8-effectiveness-of-employment-promotion-measures">Table 8: Effectiveness of employment promotion measures</h2>
+<p>Also modeled with interaction effect between policies and Robot variable. They split the data by level of education.</p>
+<ul>
+<li>note to team members: I ran the models but did not format the tables to match</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>primary <span class="ot">&lt;-</span> <span class="fu">filter</span>(robots, education <span class="sc">==</span> <span class="dv">0</span> <span class="sc">|</span> education <span class="sc">==</span><span class="dv">1</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>middle <span class="ot">&lt;-</span> <span class="fu">filter</span>(robots, education <span class="sc">==</span> <span class="dv">2</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>university <span class="ot">&lt;-</span> <span class="fu">filter</span>(robots, education <span class="sc">==</span><span class="dv">3</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>fit_ed_model <span class="ot">&lt;-</span> <span class="cf">function</span>(dataset){</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">&lt;-</span> <span class="fu">lm.cluster</span>(<span class="at">data =</span> dataset, <span class="at">formula =</span> Quality <span class="sc">~</span> Robot <span class="sc">+</span> Robot<span class="sc">*</span>reg_edu <span class="sc">+</span> age <span class="sc">+</span> gender <span class="sc">+</span> marriage <span class="sc">+</span> health <span class="sc">+</span> lnGDP</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>                      <span class="sc">+</span> structure <span class="sc">+</span> lnaverwage <span class="sc">+</span> <span class="fu">as.factor</span>(year) <span class="sc">+</span> <span class="fu">as.factor</span>(province),</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">cluster =</span> <span class="st">"id"</span>)</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  model_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(model)</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(model)</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>fit_skill_model <span class="ot">&lt;-</span> <span class="cf">function</span>(dataset){</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">&lt;-</span> <span class="fu">lm.cluster</span>(<span class="at">data =</span> dataset, <span class="at">formula =</span> Quality <span class="sc">~</span> Robot <span class="sc">+</span> Robot<span class="sc">*</span>skill <span class="sc">+</span> age <span class="sc">+</span> gender <span class="sc">+</span> marriage <span class="sc">+</span> health <span class="sc">+</span> lnGDP</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>                      <span class="sc">+</span> structure <span class="sc">+</span> lnaverwage <span class="sc">+</span> <span class="fu">as.factor</span>(year) <span class="sc">+</span> <span class="fu">as.factor</span>(province),</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>                      <span class="at">cluster =</span> <span class="st">"id"</span>)</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>  model_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(model)</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(model)</span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>ed_models <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="at">.f =</span> fit_ed_model, <span class="at">.x =</span> <span class="fu">list</span>(primary, middle, university))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R^2= 0.63965 
+
+                                       Estimate   Std. Error     t value
+(Intercept)                       -1.809788e+03 2558.0721061 -0.70748130
+Robot                              7.170055e+00   47.0978068  0.15223756
+reg_edu                            2.586979e+03  852.8426498  3.03336078
+age                               -4.856031e-02    0.1506577 -0.32232211
+gender                             6.676658e+00    0.9115467  7.32453794
+marriage                           2.141886e+00    1.3875712  1.54362244
+health                             5.822337e+00    2.2137137  2.63012195
+lnGDP                             -6.181183e+00   42.1733727 -0.14656601
+structure                         -5.639127e+01   27.2737152 -2.06760503
+lnaverwage                         1.361632e+02  250.9713701  0.54254462
+as.factor(year)2019                1.589853e+02   46.9130694  3.38893334
+as.factor(province)Beijing         1.564105e+02  207.4935253  0.75380914
+as.factor(province)Chongqing       4.451087e+01   34.4626707  1.29156772
+as.factor(province)Fujian         -4.286864e+01   12.9836126 -3.30175006
+as.factor(province)Gansu           2.958706e+00   53.2234445  0.05559028
+as.factor(province)Guangdong      -9.531571e+00   56.5016088 -0.16869556
+as.factor(province)Guangxi        -5.329773e+01   19.6162496 -2.71701925
+as.factor(province)Guizhou        -9.100161e+01   40.2624337 -2.26021146
+as.factor(province)Hainan          8.559281e+01   97.1190208  0.88131866
+as.factor(province)Hebei          -5.979741e+01   27.6553229 -2.16223882
+as.factor(province)Heilongjiang    1.848958e+02   51.9105763  3.56181416
+as.factor(province)Henan          -2.056580e+01   59.5094306 -0.34558900
+as.factor(province)Hubei           1.460434e+01   12.5930743  1.15971235
+as.factor(province)Hunan           2.407263e+01   14.2453138  1.68986333
+as.factor(province)Inner Mongolia  1.128810e+02   52.0281167  2.16961575
+as.factor(province)Jiangsu        -6.416872e+00   57.6932689 -0.11122393
+as.factor(province)Jiangxi        -4.937522e+01   21.7829186 -2.26669465
+as.factor(province)Jilin           7.623008e+01   30.7291974  2.48070532
+as.factor(province)Liaoning        1.073775e+02   22.4869446  4.77510443
+as.factor(province)Ningxia         7.726200e+01  112.4950954  0.68680330
+as.factor(province)Qinghai         6.639604e+01  135.8769506  0.48864832
+as.factor(province)Shaanxi        -3.023599e+01    9.3345347 -3.23915318
+as.factor(province)Shandong       -9.435991e+01   50.8428062 -1.85591466
+as.factor(province)Shanghai        1.174620e+02  179.1770597  0.65556364
+as.factor(province)Shanxi          1.295400e+01   25.1724646  0.51461003
+as.factor(province)Sichuan         2.527171e+01   20.4624286  1.23502970
+as.factor(province)Tianjin         6.200477e+01  114.6873354  0.54064183
+as.factor(province)Yunnan         -2.512992e+01   31.2081780 -0.80523497
+as.factor(province)Zhejiang       -5.104869e+01   48.0865974 -1.06159913
+Robot:reg_edu                     -5.531384e+01  253.2670829 -0.21840121
+                                      Pr(&gt;|t|)
+(Intercept)                       4.792674e-01
+Robot                             8.789996e-01
+reg_edu                           2.418463e-03
+age                               7.472087e-01
+gender                            2.397232e-13
+marriage                          1.226798e-01
+health                            8.535425e-03
+lnGDP                             8.834746e-01
+structure                         3.867718e-02
+lnaverwage                        5.874434e-01
+as.factor(year)2019               7.016507e-04
+as.factor(province)Beijing        4.509638e-01
+as.factor(province)Chongqing      1.965069e-01
+as.factor(province)Fujian         9.608365e-04
+as.factor(province)Gansu          9.556682e-01
+as.factor(province)Guangdong      8.660361e-01
+as.factor(province)Guangxi        6.587278e-03
+as.factor(province)Guizhou        2.380813e-02
+as.factor(province)Hainan         3.781454e-01
+as.factor(province)Hebei          3.059977e-02
+as.factor(province)Heilongjiang   3.683010e-04
+as.factor(province)Henan          7.296516e-01
+as.factor(province)Hubei          2.461659e-01
+as.factor(province)Hunan          9.105411e-02
+as.factor(province)Inner Mongolia 3.003597e-02
+as.factor(province)Jiangsu        9.114388e-01
+as.factor(province)Jiangxi        2.340889e-02
+as.factor(province)Jilin          1.311227e-02
+as.factor(province)Liaoning       1.796140e-06
+as.factor(province)Ningxia        4.922067e-01
+as.factor(province)Qinghai        6.250907e-01
+as.factor(province)Shaanxi        1.198852e-03
+as.factor(province)Shandong       6.346572e-02
+as.factor(province)Shanghai       5.121049e-01
+as.factor(province)Shanxi         6.068256e-01
+as.factor(province)Sichuan        2.168195e-01
+as.factor(province)Tianjin        5.887545e-01
+as.factor(province)Yunnan         4.206841e-01
+as.factor(province)Zhejiang       2.884177e-01
+Robot:reg_edu                     8.271165e-01
+R^2= 0.66624 
+
+                                       Estimate   Std. Error    t value
+(Intercept)                       -1904.2698901 2496.9438568 -0.7626403
+Robot                              -100.6369385   46.2490130 -2.1759802
+reg_edu                            1864.7932668  963.0455131  1.9363501
+age                                   1.3217536    0.2542651  5.1983297
+gender                               10.2467600    1.4941052  6.8581250
+marriage                             -0.4807357    1.9011836 -0.2528613
+health                               -2.8311108    9.3529059 -0.3026985
+lnGDP                                61.5603072   41.8953699  1.4693821
+structure                            14.3730494   26.2922369  0.5466651
+lnaverwage                           85.2091462  246.4276473  0.3457775
+as.factor(year)2019                 233.3047833   47.0612719  4.9574687
+as.factor(province)Beijing           -2.3938737  216.8815785 -0.0110377
+as.factor(province)Chongqing         84.5276692   36.7748638  2.2985175
+as.factor(province)Fujian           -36.2374998   13.0251295 -2.7821220
+as.factor(province)Gansu             65.2690320   54.6334784  1.1946710
+as.factor(province)Guangdong        -59.1893109   54.6134840 -1.0837857
+as.factor(province)Guangxi          -23.5360589   23.2130965 -1.0139129
+as.factor(province)Guizhou          -41.6200771   41.3473008 -1.0065972
+as.factor(province)Hainan            93.1348288  101.3993459  0.9184954
+as.factor(province)Hebei            -73.9385082   29.6453853 -2.4940984
+as.factor(province)Heilongjiang     124.0965829   55.4455194  2.2381715
+as.factor(province)Henan            -55.2778251   60.0432720 -0.9206331
+as.factor(province)Hubei              8.3852980   13.5006472  0.6211034
+as.factor(province)Hunan             -5.7315305   14.7599310 -0.3883169
+as.factor(province)Inner Mongolia   132.1957187   55.8767219  2.3658460
+as.factor(province)Jiangsu          -42.4881503   61.6625836 -0.6890427
+as.factor(province)Jiangxi          -19.2315081   25.6168642 -0.7507362
+as.factor(province)Jilin            114.6720312   31.9285529  3.5915198
+as.factor(province)Liaoning         100.5118824   26.0893932  3.8525956
+as.factor(province)Ningxia          199.5394665  112.9367336  1.7668252
+as.factor(province)Qinghai          238.6981978  136.3445214  1.7506989
+as.factor(province)Shaanxi            4.8784844   11.4164117  0.4273220
+as.factor(province)Shandong        -160.0037615   49.7598419 -3.2155199
+as.factor(province)Shanghai         161.4448500  183.7770577  0.8784821
+as.factor(province)Shanxi            34.6606958   26.0010006  1.3330524
+as.factor(province)Sichuan            6.9161111   22.1514852  0.3122188
+as.factor(province)Tianjin           83.2445868  118.9566951  0.6997890
+as.factor(province)Yunnan            -5.9299457   31.6633425 -0.1872811
+as.factor(province)Zhejiang         -81.0093870   45.9101152 -1.7645215
+Robot:reg_edu                       513.2323403  249.2670073  2.0589662
+                                      Pr(&gt;|t|)
+(Intercept)                       4.456780e-01
+Robot                             2.955674e-02
+reg_edu                           5.282484e-02
+age                               2.010872e-07
+gender                            6.977021e-12
+marriage                          8.003754e-01
+health                            7.621196e-01
+lnGDP                             1.417292e-01
+structure                         5.846088e-01
+lnaverwage                        7.295099e-01
+as.factor(year)2019               7.141754e-07
+as.factor(province)Beijing        9.911934e-01
+as.factor(province)Chongqing      2.153235e-02
+as.factor(province)Fujian         5.400473e-03
+as.factor(province)Gansu          2.322156e-01
+as.factor(province)Guangdong      2.784598e-01
+as.factor(province)Guangxi        3.106243e-01
+as.factor(province)Guizhou        3.141284e-01
+as.factor(province)Hainan         3.583596e-01
+as.factor(province)Hebei          1.262775e-02
+as.factor(province)Heilongjiang   2.520987e-02
+as.factor(province)Henan          3.572420e-01
+as.factor(province)Hubei          5.345316e-01
+as.factor(province)Hunan          6.977815e-01
+as.factor(province)Inner Mongolia 1.798893e-02
+as.factor(province)Jiangsu        4.907964e-01
+as.factor(province)Jiangxi        4.528114e-01
+as.factor(province)Jilin          3.287551e-04
+as.factor(province)Liaoning       1.168723e-04
+as.factor(province)Ningxia        7.725751e-02
+as.factor(province)Qinghai        7.999780e-02
+as.factor(province)Shaanxi        6.691448e-01
+as.factor(province)Shandong       1.302085e-03
+as.factor(province)Shanghai       3.796822e-01
+as.factor(province)Shanxi         1.825146e-01
+as.factor(province)Sichuan        7.548742e-01
+as.factor(province)Tianjin        4.840591e-01
+as.factor(province)Yunnan         8.514402e-01
+as.factor(province)Zhejiang       7.764421e-02
+Robot:reg_edu                     3.949748e-02
+R^2= 0.81127 
+
+                                       Estimate  Std. Error     t value
+(Intercept)                       -2.780446e+04 9072.405591 -3.06472806
+Robot                             -1.045266e+02  213.193876 -0.49028909
+reg_edu                            1.449087e+03 4219.136032  0.34345577
+age                                2.867345e-01    2.145331  0.13365517
+gender                             1.638008e+01    8.387488  1.95291906
+marriage                          -2.041084e+00   12.149555 -0.16799660
+health                             2.895968e+01   52.501547  0.55159665
+lnGDP                             -2.179416e+02  212.664018 -1.02481654
+structure                          2.397156e+00   81.283368  0.02949135
+lnaverwage                         2.685734e+03  977.069739  2.74876385
+as.factor(year)2019               -1.250240e+02  185.572250 -0.67372137
+as.factor(province)Beijing        -1.762025e+03  856.716153 -2.05672007
+as.factor(province)Chongqing      -2.264517e+02  172.436454 -1.31324708
+as.factor(province)Fujian         -4.664894e+01   61.032982 -0.76432343
+as.factor(province)Gansu          -1.927685e+02  270.768832 -0.71193029
+as.factor(province)Guangdong      -1.604905e+02  200.863421 -0.79900334
+as.factor(province)Guangxi        -1.304987e+01   85.167421 -0.15322608
+as.factor(province)Hainan         -4.973584e+02  520.199450 -0.95609177
+as.factor(province)Hebei           1.334920e+02  147.570139  0.90460038
+as.factor(province)Heilongjiang    3.515659e+02  226.806726  1.55006810
+as.factor(province)Henan           5.127488e+02  291.803783  1.75716968
+as.factor(province)Hubei           1.093999e+02   67.845692  1.61248053
+as.factor(province)Hunan           1.266399e+02   68.553954  1.84730246
+as.factor(province)Inner Mongolia -1.301542e+02  274.896103 -0.47346702
+as.factor(province)Jiangsu        -1.659854e+01  199.432948 -0.08322868
+as.factor(province)Jiangxi         6.201293e+01  112.983333  0.54886792
+as.factor(province)Jilin           9.310712e+01  144.571778  0.64402005
+as.factor(province)Liaoning        2.439970e+02   94.820744  2.57324486
+as.factor(province)Qinghai        -8.111786e+02  701.611352 -1.15616517
+as.factor(province)Shaanxi        -2.203051e+01   49.824303 -0.44216393
+as.factor(province)Shandong        5.158879e+01  252.407829  0.20438665
+as.factor(province)Shanghai       -1.565031e+03  724.011856 -2.16161022
+as.factor(province)Shanxi          1.365614e+02  109.779648  1.24395913
+as.factor(province)Sichuan        -1.376923e+01   82.310621 -0.16728371
+as.factor(province)Tianjin        -9.693193e+02  519.194152 -1.86696881
+as.factor(province)Yunnan         -2.206570e+02  158.365906 -1.39333662
+as.factor(province)Zhejiang       -4.183118e+02  130.104043 -3.21520979
+Robot:reg_edu                      5.004465e+02 1143.486725  0.43764958
+                                     Pr(&gt;|t|)
+(Intercept)                       0.002178680
+Robot                             0.623929345
+reg_edu                           0.731255613
+age                               0.893675258
+gender                            0.050829187
+marriage                          0.866585956
+health                            0.581224732
+lnGDP                             0.305449763
+structure                         0.976472721
+lnaverwage                        0.005982047
+as.factor(year)2019               0.500488470
+as.factor(province)Beijing        0.039713161
+as.factor(province)Chongqing      0.189099706
+as.factor(province)Fujian         0.444674525
+as.factor(province)Gansu          0.476507942
+as.factor(province)Guangdong      0.424288477
+as.factor(province)Guangxi        0.878219990
+as.factor(province)Hainan         0.339025874
+as.factor(province)Hebei          0.365677132
+as.factor(province)Heilongjiang   0.121125172
+as.factor(province)Henan          0.078888892
+as.factor(province)Hubei          0.106857413
+as.factor(province)Hunan          0.064703317
+as.factor(province)Inner Mongolia 0.635880024
+as.factor(province)Jiangsu        0.933669706
+as.factor(province)Jiangxi        0.583096094
+as.factor(province)Jilin          0.519562431
+as.factor(province)Liaoning       0.010074990
+as.factor(province)Qinghai        0.247613604
+as.factor(province)Shaanxi        0.658370585
+as.factor(province)Shandong       0.838051365
+as.factor(province)Shanghai       0.030648233
+as.factor(province)Shanxi         0.213514605
+as.factor(province)Sichuan        0.867146823
+as.factor(province)Tianjin        0.061905943
+as.factor(province)Yunnan         0.163518022
+as.factor(province)Zhejiang       0.001303492
+Robot:reg_edu                     0.661640322</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>skill_models <span class="ot">&lt;-</span>  <span class="fu">map</span>(<span class="at">.f =</span> fit_skill_model, <span class="at">.x =</span> <span class="fu">list</span>(primary, middle, university))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R^2= 0.63126 
+
+                                       Estimate   Std. Error    t value
+(Intercept)                       -7.056309e+03 2.917485e+03 -2.4186274
+Robot                             -2.703252e+01 1.946653e+01 -1.3886662
+skill                             -3.910833e-04 2.708828e-04 -1.4437364
+age                               -7.203437e-02 1.516755e-01 -0.4749243
+gender                             6.742622e+00 9.245142e-01  7.2931517
+marriage                           2.056141e+00 1.401124e+00  1.4674941
+health                             6.065115e+00 2.275434e+00  2.6654758
+lnGDP                             -4.424443e+01 4.387038e+01 -1.0085262
+structure                         -2.700927e+01 2.898650e+01 -0.9317877
+lnaverwage                         6.883578e+02 2.816480e+02  2.4440355
+as.factor(year)2019                4.515784e+01 4.970797e+01  0.9084628
+as.factor(province)Beijing        -4.215204e+02 2.297981e+02 -1.8343072
+as.factor(province)Chongqing      -9.391959e+01 4.839101e+01 -1.9408480
+as.factor(province)Fujian         -4.289645e+01 3.183333e+01 -1.3475327
+as.factor(province)Gansu          -7.253545e+01 7.486697e+01 -0.9688578
+as.factor(province)Guangdong      -7.522061e+01 5.795985e+01 -1.2978055
+as.factor(province)Guangxi        -3.377519e+01 3.354385e+01 -1.0068965
+as.factor(province)Guizhou        -1.304145e+02 5.924613e+01 -2.2012324
+as.factor(province)Hainan         -1.453716e+02 1.223021e+02 -1.1886269
+as.factor(province)Hebei           2.238935e+01 2.827444e+01  0.7918581
+as.factor(province)Heilongjiang    5.179438e+01 7.490088e+01  0.6915056
+as.factor(province)Henan           1.346688e+02 6.087054e+01  2.2123808
+as.factor(province)Hubei          -2.489128e+01 3.720590e+01 -0.6690144
+as.factor(province)Hunan           1.265081e+01 2.744447e+01  0.4609603
+as.factor(province)Inner Mongolia -9.014164e+01 6.218836e+01 -1.4494939
+as.factor(province)Jiangsu        -4.878044e+01 5.946058e+01 -0.8203828
+as.factor(province)Jiangxi        -2.272938e+01 4.888817e+01 -0.4649260
+as.factor(province)Jilin          -3.941369e+01 5.931923e+01 -0.6644336
+as.factor(province)Liaoning        5.528038e+00 5.028482e+01  0.1099345
+as.factor(province)Ningxia        -2.058437e+02 1.211862e+02 -1.6985731
+as.factor(province)Qinghai        -2.759251e+02 1.445210e+02 -1.9092381
+as.factor(province)Shaanxi        -5.960724e+01 4.110293e+01 -1.4501944
+as.factor(province)Shandong        5.906206e+00 3.988853e+01  0.1480678
+as.factor(province)Shanghai       -4.152449e+02 1.852135e+02 -2.2419794
+as.factor(province)Shanxi         -1.095176e+01 4.705818e+01 -0.2327282
+as.factor(province)Sichuan        -2.837579e+00 2.798627e+01 -0.1013918
+as.factor(province)Tianjin        -2.983287e+02 1.261789e+02 -2.3643314
+as.factor(province)Yunnan         -1.038396e+02 5.264601e+01 -1.9724124
+as.factor(province)Zhejiang       -9.981070e+01 5.284554e+01 -1.8887251
+Robot:skill                        1.280494e-04 9.977226e-05  1.2834169
+                                      Pr(&gt;|t|)
+(Intercept)                       1.557919e-02
+Robot                             1.649343e-01
+skill                             1.488131e-01
+age                               6.348409e-01
+gender                            3.027867e-13
+marriage                          1.422417e-01
+health                            7.687947e-03
+lnGDP                             3.132019e-01
+structure                         3.514462e-01
+lnaverwage                        1.452400e-02
+as.factor(year)2019               3.636338e-01
+as.factor(province)Beijing        6.660840e-02
+as.factor(province)Chongqing      5.227672e-02
+as.factor(province)Fujian         1.778087e-01
+as.factor(province)Gansu          3.326161e-01
+as.factor(province)Guangdong      1.943542e-01
+as.factor(province)Guangxi        3.139845e-01
+as.factor(province)Guizhou        2.771957e-02
+as.factor(province)Hainan         2.345865e-01
+as.factor(province)Hebei          4.284434e-01
+as.factor(province)Heilongjiang   4.892478e-01
+as.factor(province)Henan          2.694036e-02
+as.factor(province)Hubei          5.034863e-01
+as.factor(province)Hunan          6.448271e-01
+as.factor(province)Inner Mongolia 1.471997e-01
+as.factor(province)Jiangsu        4.119979e-01
+as.factor(province)Jiangxi        6.419844e-01
+as.factor(province)Jilin          5.064128e-01
+as.factor(province)Liaoning       9.124613e-01
+as.factor(province)Ningxia        8.939965e-02
+as.factor(province)Qinghai        5.623139e-02
+as.factor(province)Shaanxi        1.470043e-01
+as.factor(province)Shandong       8.822893e-01
+as.factor(province)Shanghai       2.496270e-02
+as.factor(province)Shanxi         8.159725e-01
+as.factor(province)Sichuan        9.192394e-01
+as.factor(province)Tianjin        1.806265e-02
+as.factor(province)Yunnan         4.856255e-02
+as.factor(province)Zhejiang       5.892868e-02
+Robot:skill                       1.993461e-01
+R^2= 0.66077 
+
+                                       Estimate   Std. Error     t value
+(Intercept)                       -8.425101e+03 2.554653e+03 -3.29794364
+Robot                             -6.763577e+01 1.612900e+01 -4.19342631
+skill                             -9.379993e-04 3.112594e-04 -3.01356091
+age                                1.267222e+00 2.587452e-01  4.89756821
+gender                             1.046747e+01 1.501426e+00  6.97168617
+marriage                          -6.692244e-01 1.963557e+00 -0.34082242
+health                            -2.187491e+00 9.148468e+00 -0.23911011
+lnGDP                              2.243214e+01 4.300565e+01  0.52160912
+structure                          7.690231e+01 2.618377e+01  2.93702240
+lnaverwage                         7.492621e+02 2.430666e+02  3.08253877
+as.factor(year)2019                9.214750e+01 4.255417e+01  2.16541628
+as.factor(province)Beijing        -8.304306e+02 1.985962e+02 -4.18150375
+as.factor(province)Chongqing      -1.172401e+02 5.149171e+01 -2.27687225
+as.factor(province)Fujian         -7.664687e+01 3.595534e+01 -2.13172416
+as.factor(province)Gansu          -8.235368e+01 8.530145e+01 -0.96544295
+as.factor(province)Guangdong      -1.914848e+02 5.492163e+01 -3.48650892
+as.factor(province)Guangxi        -4.747625e+01 4.044330e+01 -1.17389657
+as.factor(province)Guizhou        -1.409940e+02 5.952330e+01 -2.36871905
+as.factor(province)Hainan         -2.723767e+02 1.306512e+02 -2.08476168
+as.factor(province)Hebei           6.617634e-01 2.876942e+01  0.02300232
+as.factor(province)Heilongjiang   -8.857260e+01 8.627170e+01 -1.02667038
+as.factor(province)Henan           1.220254e+02 5.336241e+01  2.28673034
+as.factor(province)Hubei          -7.974766e+01 4.169645e+01 -1.91257705
+as.factor(province)Hunan          -4.083068e+01 3.002989e+01 -1.35966818
+as.factor(province)Inner Mongolia -1.367695e+02 6.921207e+01 -1.97609247
+as.factor(province)Jiangsu        -1.298749e+02 6.349439e+01 -2.04545486
+as.factor(province)Jiangxi        -4.268132e+01 5.888109e+01 -0.72487324
+as.factor(province)Jilin          -6.348897e+01 7.135588e+01 -0.88975117
+as.factor(province)Liaoning       -6.062463e+01 5.881979e+01 -1.03068416
+as.factor(province)Ningxia        -1.617509e+02 1.239394e+02 -1.30508071
+as.factor(province)Qinghai        -1.937022e+02 1.426660e+02 -1.35773270
+as.factor(province)Shaanxi        -7.320694e+01 4.865829e+01 -1.50451112
+as.factor(province)Shandong       -7.926106e+01 3.927672e+01 -2.01801624
+as.factor(province)Shanghai       -5.691965e+02 1.594530e+02 -3.56968157
+as.factor(province)Shanxi         -3.506815e+01 5.686292e+01 -0.61671377
+as.factor(province)Sichuan        -2.088890e+01 3.112071e+01 -0.67122188
+as.factor(province)Tianjin        -4.015088e+02 1.125389e+02 -3.56773462
+as.factor(province)Yunnan         -1.490563e+02 5.560028e+01 -2.68085420
+as.factor(province)Zhejiang       -1.601353e+02 4.747038e+01 -3.37337193
+Robot:skill                        3.270483e-04 8.313807e-05  3.93379788
+                                      Pr(&gt;|t|)
+(Intercept)                       9.739568e-04
+Robot                             2.747724e-05
+skill                             2.582012e-03
+age                               9.702996e-07
+gender                            3.131645e-12
+marriage                          7.332373e-01
+health                            8.110202e-01
+lnGDP                             6.019425e-01
+structure                         3.313802e-03
+lnaverwage                        2.052430e-03
+as.factor(year)2019               3.035582e-02
+as.factor(province)Beijing        2.895875e-05
+as.factor(province)Chongqing      2.279386e-02
+as.factor(province)Fujian         3.302953e-02
+as.factor(province)Gansu          3.343230e-01
+as.factor(province)Guangdong      4.893691e-04
+as.factor(province)Guangxi        2.404365e-01
+as.factor(province)Guizhou        1.784981e-02
+as.factor(province)Hainan         3.709094e-02
+as.factor(province)Hebei          9.816484e-01
+as.factor(province)Heilongjiang   3.045757e-01
+as.factor(province)Henan          2.221157e-02
+as.factor(province)Hubei          5.580222e-02
+as.factor(province)Hunan          1.739350e-01
+as.factor(province)Inner Mongolia 4.814430e-02
+as.factor(province)Jiangsu        4.081004e-02
+as.factor(province)Jiangxi        4.685298e-01
+as.factor(province)Jilin          3.735995e-01
+as.factor(province)Liaoning       3.026890e-01
+as.factor(province)Ningxia        1.918654e-01
+as.factor(province)Qinghai        1.745485e-01
+as.factor(province)Shaanxi        1.324498e-01
+as.factor(province)Shandong       4.358957e-02
+as.factor(province)Shanghai       3.574154e-04
+as.factor(province)Shanxi         5.374235e-01
+as.factor(province)Sichuan        5.020792e-01
+as.factor(province)Tianjin        3.600809e-04
+as.factor(province)Yunnan         7.343450e-03
+as.factor(province)Zhejiang       7.425358e-04
+Robot:skill                       8.361410e-05
+R^2= 0.81517 
+
+                                       Estimate   Std. Error    t value
+(Intercept)                       -1.390128e+04 1.020648e+04 -1.3620043
+Robot                              4.212537e+01 6.843563e+01  0.6155473
+skill                             -1.606747e-03 1.332869e-03 -1.2054807
+age                                7.417401e-01 2.057365e+00  0.3605291
+gender                             1.729969e+01 8.482982e+00  2.0393408
+marriage                          -2.730805e+00 1.150315e+01 -0.2373962
+health                             5.509198e+01 5.082015e+01  1.0840577
+lnGDP                             -7.549561e+01 1.848716e+02 -0.4083678
+structure                          6.948541e+01 8.276985e+01  0.8395014
+lnaverwage                         1.347477e+03 1.008973e+03  1.3354935
+as.factor(year)2019                5.636877e+01 1.595549e+02  0.3532876
+as.factor(province)Beijing        -1.570135e+03 6.475071e+02 -2.4248919
+as.factor(province)Chongqing      -4.638424e+02 1.964999e+02 -2.3605227
+as.factor(province)Fujian         -2.511765e+02 1.539041e+02 -1.6320319
+as.factor(province)Gansu          -4.328826e+02 3.512109e+02 -1.2325432
+as.factor(province)Guangdong      -7.428195e+01 1.790013e+02 -0.4149800
+as.factor(province)Guangxi        -1.671483e+02 1.741704e+02 -0.9596827
+as.factor(province)Hainan         -7.217550e+02 5.351597e+02 -1.3486721
+as.factor(province)Hebei          -3.975415e+01 1.449079e+02 -0.2743408
+as.factor(province)Heilongjiang   -2.691922e+02 3.954109e+02 -0.6807912
+as.factor(province)Henan           2.722655e+02 2.427203e+02  1.1217252
+as.factor(province)Hubei          -2.347392e+02 1.935302e+02 -1.2129332
+as.factor(province)Hunan          -1.041583e+02 1.506044e+02 -0.6916023
+as.factor(province)Inner Mongolia -4.529200e+02 2.877135e+02 -1.5742048
+as.factor(province)Jiangsu         6.475032e+01 1.804264e+02  0.3588739
+as.factor(province)Jiangxi        -2.649455e+02 2.550540e+02 -1.0387822
+as.factor(province)Jilin          -3.790143e+02 3.004856e+02 -1.2613393
+as.factor(province)Liaoning       -2.658552e+02 2.742399e+02 -0.9694255
+as.factor(province)Qinghai        -7.874808e+02 5.808274e+02 -1.3557915
+as.factor(province)Shaanxi        -2.898130e+02 2.049872e+02 -1.4138100
+as.factor(province)Shandong       -2.173820e+01 1.695988e+02 -0.1281742
+as.factor(province)Shanghai       -1.417179e+03 5.285993e+02 -2.6810074
+as.factor(province)Shanxi         -1.660005e+02 2.488471e+02 -0.6670780
+as.factor(province)Sichuan         1.586367e+02 1.239404e+02  1.2799437
+as.factor(province)Tianjin        -9.342403e+02 4.069665e+02 -2.2956195
+as.factor(province)Yunnan         -3.117395e+02 2.374020e+02 -1.3131291
+as.factor(province)Zhejiang       -3.564599e+02 1.244011e+02 -2.8654071
+Robot:skill                       -2.870630e-04 3.484747e-04 -0.8237701
+                                     Pr(&gt;|t|)
+(Intercept)                       0.173196519
+Robot                             0.538193313
+skill                             0.228017802
+age                               0.718451473
+gender                            0.041416026
+marriage                          0.812349402
+health                            0.278339236
+lnGDP                             0.683003683
+structure                         0.401187983
+lnaverwage                        0.181714876
+as.factor(year)2019               0.723872856
+as.factor(province)Beijing        0.015312944
+as.factor(province)Chongqing      0.018249203
+as.factor(province)Fujian         0.102672764
+as.factor(province)Gansu          0.217746256
+as.factor(province)Guangdong      0.678156523
+as.factor(province)Guangxi        0.337214920
+as.factor(province)Hainan         0.177442298
+as.factor(province)Hebei          0.783822709
+as.factor(province)Heilongjiang   0.496003616
+as.factor(province)Henan          0.261979281
+as.factor(province)Hubei          0.225155380
+as.factor(province)Hunan          0.489187135
+as.factor(province)Inner Mongolia 0.115440109
+as.factor(province)Jiangsu        0.719689402
+as.factor(province)Jiangxi        0.298906033
+as.factor(province)Jilin          0.207186618
+as.factor(province)Liaoning       0.332332931
+as.factor(province)Qinghai        0.175165506
+as.factor(province)Shaanxi        0.157417691
+as.factor(province)Shandong       0.898011088
+as.factor(province)Shanghai       0.007340090
+as.factor(province)Shanxi         0.504722320
+as.factor(province)Sichuan        0.200564927
+as.factor(province)Tianjin        0.021697649
+as.factor(province)Yunnan         0.189139449
+as.factor(province)Zhejiang       0.004164735
+Robot:skill                       0.410070198</code></pre>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

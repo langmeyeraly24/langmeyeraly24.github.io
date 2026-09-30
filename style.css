@@ -159,13 +159,17 @@ a:hover { color: var(--accent-2); }
 }
 .entry-title.large { font-size: 25px; font-weight: 500; }
 .entry-meta { font-style: italic; color: var(--muted); font-size: 16px; margin-bottom: 8px; }
-.entry-main p:not(.entry-meta):not(.entry-links):not(.kicker) { max-width: 68ch; }
-.entry-links { margin: 6px 0 0; }
+.entry-course { font-style: italic; color: var(--muted); font-size: 16px; margin: 0 0 8px; }
+.entry-desc { max-width: 68ch; }
+.entry-tools {
+  font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: 0.03em;
+  color: var(--muted); margin: 2px 0 0;
+}
+.entry-links { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 8px 0 0; }
 .entry-links a {
   font-family: var(--sans); font-size: 13px; font-weight: 600; text-decoration: none;
   border-bottom: 1px solid currentColor;
 }
-.entry-links a::after { content: " \2192"; }
 
 .entry.feature {
   background: var(--tint); border-left: 3px solid var(--accent);
@@ -196,6 +200,23 @@ a:hover { color: var(--accent-2); }
 .role-title { margin-bottom: 2px; }
 .role-main p:not(.role-title) { color: var(--muted); font-size: 16.5px; max-width: 70ch; margin-bottom: 0; }
 
+/* Hospitality dropdown */
+.role-group { margin: 0; }
+.role-group > summary { list-style: none; cursor: pointer; }
+.role-group > summary::-webkit-details-marker { display: none; }
+.toggle-hint {
+  font-family: var(--sans); font-size: 12.5px; font-weight: 600; color: var(--accent);
+  white-space: nowrap; margin-left: 4px;
+}
+.toggle-hint::after { content: " \25BE"; }
+.role-group[open] .toggle-hint { font-size: 0; }
+.role-group[open] .toggle-hint::before { content: "Hide roles"; font-size: 12.5px; }
+.role-group[open] .toggle-hint::after { content: " \25B4"; font-size: 12.5px; }
+.role-group > summary:hover .toggle-hint { color: var(--accent-2); }
+.role-sub { margin: 2px 0 8px 118px; padding-left: 18px; border-left: 2px solid var(--rule); }
+.role-sub .role { grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding: 7px 0; }
+.role-sub .role-title { font-size: 17px; }
+
 /* Skills */
 .skills { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 8px 22px; margin: 10px 0 0; }
 .skills dt {
@@ -223,6 +244,8 @@ a:hover { color: var(--accent-2); }
   .entry, .papers li, .role, .skills { grid-template-columns: 1fr; gap: 2px; }
   .entry-date, .role-date, .paper-date { padding-top: 0; }
   .entry.feature { padding: 16px; }
+  .role-sub { margin-left: 0; padding-left: 14px; }
+  .role-sub .role { grid-template-columns: 1fr; gap: 2px; }
 }
 
 @media print {

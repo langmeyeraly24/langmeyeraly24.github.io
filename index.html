@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Libre+Franklin:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
 <script>
   try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
 </script>
@@ -66,9 +66,15 @@
         <div class="entry-date">May 2026</div>
         <div class="entry-main">
           <h3 class="entry-title">Voter Targeting and Partisan Scoring for a Georgia U.S. Senate Campaign</h3>
-          <p class="entry-meta">GOVT-520 Campaign Management Institute &middot; Python, Excel, Quarto</p>
-          <p>County-level targeting model built from six election cycles (2018 to 2024), May 2026 registration, and turnout data for all 159 Georgia counties. Sized a mobilization universe of 602,753 low-propensity Republicans and a persuasion universe of about 356,606 split-ticket voters, set vote targets at 50%+1 and 52%, and benchmarked the model against eight Collins vs. Ossoff polls.</p>
-          <p class="entry-links"><a href="https://github.com/langmeyeraly24/GitHub-Portfolio/tree/main/ga-senate-2026-targeting">Code and charts</a></p>
+          <p class="entry-course">GOVT-520 Campaign Management Institute, American University</p>
+          <p class="entry-desc">County-level targeting model built from six election cycles (2018 to 2024), May 2026 registration, and turnout data for all 159 Georgia counties. Sized a mobilization universe of 602,753 low-propensity Republicans and a persuasion universe of about 356,606 split-ticket voters, set vote targets at 50%+1 and 52%, and benchmarked the model against eight Collins vs. Ossoff polls. I wrote the targeting section and built the charts for a six-person group campaign plan.</p>
+          <p class="entry-tools">Python &middot; pandas &middot; geopandas &middot; Excel &middot; Quarto</p>
+          <p class="entry-links">
+            <a href="https://github.com/langmeyeraly24/GitHub-Portfolio/tree/main/ga-senate-2026-targeting">Code</a>
+            <a href="projects/targeting_section.pdf">Targeting section (PDF)</a>
+            <a href="projects/data_methodology.pdf">Data methodology (PDF)</a>
+            <a href="projects/collins_senate_2026_campaign_plan.pdf">Full campaign plan (PDF)</a>
+          </p>
         </div>
       </article>
 
@@ -76,9 +82,14 @@
         <div class="entry-date">Apr 2026</div>
         <div class="entry-main">
           <h3 class="entry-title">Media Bias Detection in Political News</h3>
-          <p class="entry-meta">CSC-680 Introduction to Data Mining &middot; Python, scikit-learn</p>
-          <p>Text classifier trained on 40,945 articles from 91 outlets using TF-IDF features and class-balanced logistic regression (ROC-AUC 0.82). Outlet names were stripped so the model learned writing style, not source identity. The highest-scoring outlets spanned the political spectrum, suggesting the model picks up opinionated versus neutral writing.</p>
-          <p class="entry-links"><a href="https://github.com/langmeyeraly24/GitHub-Portfolio/tree/main/media-bias-detection">Code and notebook</a></p>
+          <p class="entry-course">CSC-680 Introduction to Data Mining, American University</p>
+          <p class="entry-desc">Text classifier trained on 40,945 articles from 91 outlets using TF-IDF features and class-balanced logistic regression (ROC-AUC 0.82). Outlet names were stripped so the model learned writing style, not source identity. The highest-scoring outlets spanned the political spectrum, suggesting the model picks up opinionated versus neutral writing.</p>
+          <p class="entry-tools">Python &middot; scikit-learn &middot; pandas</p>
+          <p class="entry-links">
+            <a href="https://github.com/langmeyeraly24/GitHub-Portfolio/tree/main/media-bias-detection">Code</a>
+            <a href="projects/media_bias_final_paper.pdf">Paper (PDF)</a>
+            <a href="projects/media_bias_presentation.pdf">Slides (PDF)</a>
+          </p>
         </div>
       </article>
 
@@ -86,8 +97,13 @@
         <div class="entry-date">Fall 2025</div>
         <div class="entry-main">
           <h3 class="entry-title">Cyber Vulnerabilities Outlook Dashboard</h3>
-          <p class="entry-meta">DATA-613 Data Science, team of four &middot; R, Shiny</p>
-          <p>Interactive dashboard for national security analysts exploring global cyber vulnerability patterns. Built the underlying dataset of 303,522 records (1988 to 2025) through authenticated National Vulnerability Database API pulls, tidyverse cleaning, and manual vendor-country labeling for the top 500 vendors.</p>
+          <p class="entry-course">DATA-613 Data Science, American University (team of four)</p>
+          <p class="entry-desc">Interactive dashboard for national security analysts exploring global cyber vulnerability patterns. I built the underlying dataset of 303,522 records (1988 to 2025) through authenticated National Vulnerability Database API pulls, tidyverse cleaning, and manual vendor-country labeling for the top 500 vendors.</p>
+          <p class="entry-tools">R &middot; Shiny &middot; httr2 &middot; leaflet</p>
+          <p class="entry-links">
+            <a href="https://github.com/langmeyeraly24/GitHub-Portfolio/tree/main/cyber-vulnerabilities-dashboard">Code</a>
+            <a href="projects/cyber-vulnerabilities-dashboard.html">Project write-up</a>
+          </p>
         </div>
       </article>
 
@@ -95,9 +111,41 @@
         <div class="entry-date">Summer 2025</div>
         <div class="entry-main">
           <h3 class="entry-title">Replication: Robotization and Youth Employment Quality in China</h3>
-          <p class="entry-meta">STAT-615 Regression, team of three &middot; R</p>
-          <p>Replicated Liang &amp; Liu's panel models (13,453 observations) with mixed, fixed, and random effects and clustered standard errors. Found that the paper's outlier treatment was censoring rather than truncation, documented where its tables diverged from its text, and extended the analysis with subgroup and policy interaction models.</p>
-          <p class="entry-links"><a href="https://github.com/langmeyeraly24/GitHub-Portfolio/tree/main/ms-data-science-coursework">Coursework repository</a></p>
+          <p class="entry-course">STAT-615 Regression, American University (team of three)</p>
+          <p class="entry-desc">Replicated Liang &amp; Liu's panel models (13,453 observations) with mixed, fixed, and random effects and clustered standard errors. Found that the paper's outlier treatment was censoring rather than truncation, documented where its tables diverged from its text, and extended the analysis with subgroup and policy interaction models.</p>
+          <p class="entry-tools">R &middot; lme4 &middot; Quarto</p>
+          <p class="entry-links">
+            <a href="https://github.com/langmeyeraly24/GitHub-Portfolio/tree/main/robotization-replication">Code</a>
+            <a href="projects/robotization/">Analysis</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-date">Spring 2025</div>
+        <div class="entry-main">
+          <h3 class="entry-title">Gender Disparities in American Labor Markets</h3>
+          <p class="entry-course">DATA-612 Statistical Programming in R, American University</p>
+          <p class="entry-desc">Combined three Department of Labor datasets to track women's share of the labor force since 1948, participation by age group, and the earnings gap by race and ethnicity since 1987. Includes interactive charts and a regression analysis of trends over time.</p>
+          <p class="entry-tools">R &middot; tidyverse &middot; ggplot2 &middot; plotly</p>
+          <p class="entry-links">
+            <a href="https://github.com/langmeyeraly24/GitHub-Portfolio/tree/main/gender-disparities-labor-markets">Code</a>
+            <a href="projects/gender-disparities.html">Report</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-date">Spring 2025</div>
+        <div class="entry-main">
+          <h3 class="entry-title">Applied Statistical Methods: Final Analysis</h3>
+          <p class="entry-course">STAT-614 Statistical Methods, American University</p>
+          <p class="entry-desc">Four applied problems, each answered with the right test after checking normality and equal variance: one-way ANOVA with Bonferroni comparisons, a paired t-test comparing two measurement devices, ANOVA across product models, and a multiple regression comparing East and West Coast cyclists during COVID.</p>
+          <p class="entry-tools">R &middot; R Markdown</p>
+          <p class="entry-links">
+            <a href="https://github.com/langmeyeraly24/GitHub-Portfolio/tree/main/ms-data-science-coursework/statistical-methods">Code</a>
+            <a href="projects/stat614-final.html">Report</a>
+          </p>
         </div>
       </article>
 
@@ -105,8 +153,9 @@
         <div class="entry-date">Apr 2025</div>
         <div class="entry-main">
           <h3 class="entry-title">Smith Analytics Consortium Datathon, 4th of 41 Teams</h3>
-          <p class="entry-meta">UMD Robert H. Smith School of Business with Deloitte &middot; R</p>
-          <p>Fifteen-day competition on a cross-university team. Recommended the most profitable artist lineup for a six-hour concert at Capital One Arena using streaming statistics, concert trends, and ticket pricing data.</p>
+          <p class="entry-course">UMD Robert H. Smith School of Business with Deloitte</p>
+          <p class="entry-desc">Fifteen-day competition on a cross-university team. Recommended the most profitable artist lineup for a six-hour concert at Capital One Arena using streaming statistics, concert trends, and ticket pricing data.</p>
+          <p class="entry-tools">R</p>
         </div>
       </article>
 
@@ -123,50 +172,87 @@
         <div class="entry-main">
           <p class="kicker">Published</p>
           <h3 class="entry-title large">Your Body, Their Data: Reproductive Surveillance and the Long Project of American Control</h3>
-          <p class="entry-meta"><em>The Public Purpose</em>, Vol. XXIV &middot; American University School of Public Affairs</p>
-          <p>How data brokers, algorithmic inference, and post-<em>Dobbs</em> trigger bans enable reproductive health surveillance, traced back through a longer history of state control over bodies. Proposes the Digital Bodyguard Act, a federal standard that makes reproductive health data prohibited by default, to close the gaps HIPAA leaves open.</p>
+          <p class="entry-course"><em>The Public Purpose</em>, Vol. XXIV &middot; American University School of Public Affairs</p>
+          <p class="entry-desc">How data brokers, algorithmic inference, and post-<em>Dobbs</em> trigger bans enable reproductive health surveillance, traced back through a longer history of state control over bodies. Proposes the Digital Bodyguard Act, a federal standard that makes reproductive health data prohibited by default, to close the gaps HIPAA leaves open.</p>
           <p class="entry-links"><a href="Writing%20Samples/Your%20Body%2C%20Their%20Data%20-%20Published%20Version%2C%20The%20Public%20Purpose.pdf">Read the article (PDF)</a></p>
         </div>
       </article>
 
       <h3 class="subhead">Research papers</h3>
-      <ul class="papers">
-        <li>
-          <span class="paper-date">2025</span>
-          <span class="paper-main"><a href="Writing%20Samples/The%20Backlash%20Equation%20-%20Research%20Paper%20-%20GOVT650%20%20(1).pdf">The Backlash Equation: Rising Women's Employment + Male Resentment = Authoritarian Gains</a>
-          <span class="paper-note">GOVT-650 Political Analysis. Time-series cross-sectional design testing whether women's labor force participation predicts Republican vote share among men. <a href="Writing%20Samples/The%20Backlash%20Equation_%20GOVT650%20Research%20Paper%20Presentation%20(1).pdf">Slides</a></span></span>
-        </li>
-        <li>
-          <span class="paper-date">2025</span>
-          <span class="paper-main"><a href="Writing%20Samples/Your%20Body%2C%20Their%20Data%20-%20Policy%20Brief%20Full.pdf">Your Body, Their Data: Digital Surveillance and the New Frontier of Reproductive Control</a>
-          <span class="paper-note">Policy brief, GOVT-620 Applied Politics &amp; American Public Policy. The original proposal for the Digital Bodyguard Act.</span></span>
-        </li>
-        <li>
-          <span class="paper-date">2020</span>
-          <span class="paper-main"><a href="Writing%20Samples/400-01%20Civil%20Rights%20Research%20Paper.pdf">Money and Power, Blood and Terror</a>
-          <span class="paper-note">Senior seminar, UMass Dartmouth. How slavery, Jim Crow, and New Deal policy built racial gaps in wages and voting access.</span></span>
-        </li>
-        <li>
-          <span class="paper-date">2019</span>
-          <span class="paper-main"><a href="Writing%20Samples/A%20Night%20Devoid%20of%20Stars_%20Terrorism%20Paper.pdf">A Night Devoid of Stars</a>
-          <span class="paper-note">African Political Systems. How al-Shabaab's recruitment and financing exploit weak governance in Somalia and Kenya.</span></span>
-        </li>
-        <li>
-          <span class="paper-date">2019</span>
-          <span class="paper-main"><a href="Writing%20Samples/Arrogance%20and%20Avarice%20and%20a%20Lust%20For%20Power_%20MENA%20Paper%20%20(1).pdf">Arrogance and Avarice and a Lust for Power</a>
-          <span class="paper-note">Government &amp; Politics of the Middle East. U.S. arms sales and the war in Yemen.</span></span>
-        </li>
-        <li>
-          <span class="paper-date">2019</span>
-          <span class="paper-main"><a href="Writing%20Samples/18%20Million%20Cracks%20and%20Counting_%20Labor%20Force%20Paper.pdf">18 Million Cracks and Counting</a>
-          <span class="paper-note">Principles of Macroeconomics. Gender bias in pay, promotion, and unpaid work, using BLS labor force data.</span></span>
-        </li>
-        <li>
-          <span class="paper-date">2018</span>
-          <span class="paper-main"><a href="Writing%20Samples/WGS%20Final%20Research%20Paper%20(1).pdf">Gender, Race &amp; Political Representation</a>
-          <span class="paper-note">Demographic differences between Democratic and Republican members-elect after the 2018 midterms.</span></span>
-        </li>
-      </ul>
+
+      <article class="entry">
+        <div class="entry-date">Fall 2025</div>
+        <div class="entry-main">
+          <h3 class="entry-title">Your Body, Their Data: Digital Surveillance and the New Frontier of Reproductive Control</h3>
+          <p class="entry-course">Policy brief, GOVT-620 Applied Politics &amp; American Public Policy, American University</p>
+          <p class="entry-desc">Diagnoses how state trigger bans, an unregulated data broker industry, and algorithmic inference have turned location history and period-tracking apps into evidence against people seeking reproductive care, and why HIPAA does not stop it. Drawing on case law, reported prosecutions, and a technical risk assessment, it proposes the Digital Bodyguard Act: a prohibited-by-default federal standard with FTC enforcement and a private right of action. This brief became the basis for the published article.</p>
+          <p class="entry-links"><a href="Writing%20Samples/Your%20Body%2C%20Their%20Data%20-%20Policy%20Brief%20Full.pdf">Read (PDF)</a></p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-date">Mar 2025</div>
+        <div class="entry-main">
+          <h3 class="entry-title">The Backlash Equation: Rising Women's Employment + Male Resentment = Authoritarian Gains</h3>
+          <p class="entry-course">GOVT-650 Political Analysis, American University (presented April 22, 2025)</p>
+          <p class="entry-desc">Women now earn most college and graduate degrees and make up a growing share of the workforce, yet 2024 produced some of the widest gender gaps in vote choice on record. This paper asks whether men's political shift tracks women's economic gains, designing a time-series cross-sectional study that tests whether rising women's labor force participation predicts Republican vote share among men. It uses BLS labor force data (1948 to 2025) and national exit polls (1980 to 2024), with controls for male unemployment, education, and religiosity.</p>
+          <p class="entry-links">
+            <a href="Writing%20Samples/The%20Backlash%20Equation%20-%20Research%20Paper%20-%20GOVT650%20%20(1).pdf">Read (PDF)</a>
+            <a href="Writing%20Samples/The%20Backlash%20Equation_%20GOVT650%20Research%20Paper%20Presentation%20(1).pdf">Slides (PDF)</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-date">Dec 2020</div>
+        <div class="entry-main">
+          <h3 class="entry-title">Money and Power, Blood and Terror</h3>
+          <p class="entry-course">PSC 400 Seminar in American Politics &amp; Policy (Civil Rights), UMass Dartmouth</p>
+          <p class="entry-desc">Traces how slavery, Jim Crow, and New Deal era policy built racial disparities in wages, occupations, and voting access, and argues these are structural features of American policymaking rather than relics of the past. Connects that history to modern voter suppression and the growth of white supremacist violence, and proposes policy remedies to dismantle systemic inequality.</p>
+          <p class="entry-links"><a href="Writing%20Samples/400-01%20Civil%20Rights%20Research%20Paper.pdf">Read (PDF)</a></p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-date">Dec 2019</div>
+        <div class="entry-main">
+          <h3 class="entry-title">A Night Devoid of Stars</h3>
+          <p class="entry-course">African Political Systems, UMass Dartmouth</p>
+          <p class="entry-desc">Examines how al-Shabaab recruits, finances, and sustains itself by exploiting weak governance in Somalia and Kenya, drawing on Human Rights Watch testimony from people coerced to join. Frames the conflict through Huntington's Clash of Civilizations and democratic peace theory, and considers what the group's persistence says about the limits of the liberal international order.</p>
+          <p class="entry-links"><a href="Writing%20Samples/A%20Night%20Devoid%20of%20Stars_%20Terrorism%20Paper.pdf">Read (PDF)</a></p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-date">Nov 2019</div>
+        <div class="entry-main">
+          <h3 class="entry-title">Arrogance and Avarice and a Lust for Power</h3>
+          <p class="entry-course">Government &amp; Politics of the Middle East, UMass Dartmouth</p>
+          <p class="entry-desc">Treats the Yemen civil war as both a humanitarian crisis and a source of profit, tracing the conflict from Yemen's failed Arab Spring uprising through the Saudi-led, U.S.-backed air campaign. Documents the role of U.S. arms sales and defense contractors, and recommends that Congress suspend arms transfers to the Saudi-led coalition through the NDAA.</p>
+          <p class="entry-links"><a href="Writing%20Samples/Arrogance%20and%20Avarice%20and%20a%20Lust%20For%20Power_%20MENA%20Paper%20%20(1).pdf">Read (PDF)</a></p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-date">Nov 2019</div>
+        <div class="entry-main">
+          <h3 class="entry-title">18 Million Cracks and Counting</h3>
+          <p class="entry-course">ECO 232 Principles of Macroeconomics, UMass Dartmouth</p>
+          <p class="entry-desc">Calculates the October 2019 U.S. labor force participation rate from Bureau of Labor Statistics data and walks through how the measure is built. Then analyzes how institutional sexism, including gaps in pay and promotion and the unequal burden of unpaid domestic work, holds down women's participation.</p>
+          <p class="entry-links"><a href="Writing%20Samples/18%20Million%20Cracks%20and%20Counting_%20Labor%20Force%20Paper.pdf">Read (PDF)</a></p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-date">Nov 2018</div>
+        <div class="entry-main">
+          <h3 class="entry-title">Gender, Race &amp; Political Representation</h3>
+          <p class="entry-course">Introduction to Women and Gender Studies, UMass Dartmouth</p>
+          <p class="entry-desc">Compares the gender, race, sexuality, age, education, and religion of Democratic and Republican House members-elect after the 2018 midterms, and of the voters who elected them. Argues that each party's makeup reflects its policies: a younger, more diverse Democratic caucus against a Republican freshman class that was almost entirely white and male.</p>
+          <p class="entry-links"><a href="Writing%20Samples/WGS%20Final%20Research%20Paper%20(1).pdf">Read (PDF)</a></p>
+        </div>
+      </article>
+
     </div>
   </section>
 
@@ -231,13 +317,59 @@
           <p>Negotiated purchase orders up to $300,000 across 130+ global suppliers for robotics, semiconductor, medical, and defense accounts. Analyzed supplier cost, risk, and lead-time data in Excel to inform sourcing decisions that cut material costs by 15%.</p>
         </div>
       </div>
-      <div class="role">
-        <div class="role-date">2015 to present</div>
-        <div class="role-main">
-          <p class="role-title"><strong>Hospitality management and service</strong>, Massachusetts and Washington, DC</p>
-          <p>Currently Server, Support at The Pendry (Michelin Key hotel). Previously Shift Manager at 2D Noodles, leading a front-of-house team of 10, and earlier roles managing teams of up to 30 in restaurant and retail operations.</p>
+      <details class="role-group">
+        <summary class="role">
+          <div class="role-date">2015 to present</div>
+          <div class="role-main">
+            <p class="role-title"><strong>Hospitality management and service</strong>, Massachusetts and Washington, DC</p>
+            <p>Ten years in hotels, restaurants, and retail, including more than five managing and training teams of up to 30. ServSafe certified. <span class="toggle-hint">Show all six roles</span></p>
+          </div>
+        </summary>
+        <div class="role-sub">
+          <div class="role">
+            <div class="role-date">Jul 2026 to present</div>
+            <div class="role-main">
+              <p class="role-title"><strong>Server, Support</strong>, The Pendry, Washington, DC</p>
+              <p>Guest service at a Michelin Key hotel across Moonraker, its fine dining restaurant, and its luxury pool venue, for a high-volume VIP clientele.</p>
+            </div>
+          </div>
+          <div class="role">
+            <div class="role-date">May 2025 to Jun 2026</div>
+            <div class="role-main">
+              <p class="role-title"><strong>Shift Manager</strong>, 2D Noodles, Washington, DC</p>
+              <p>Led front-of-house operations for a team of 10 in a restaurant serving 200+ guests daily, and trained 15+ new hires on POS systems, service protocols, and food safety.</p>
+            </div>
+          </div>
+          <div class="role">
+            <div class="role-date">Sep 2021 to Feb 2022</div>
+            <div class="role-main">
+              <p class="role-title"><strong>Front-of-House Manager &amp; Server</strong>, Doragon Ramen, Ashland, MA</p>
+              <p>Trained and supervised 10+ front-of-house staff and resolved customer inquiries and complaints.</p>
+            </div>
+          </div>
+          <div class="role">
+            <div class="role-date">Jun to Aug 2021</div>
+            <div class="role-main">
+              <p class="role-title"><strong>Assistant Kitchen Manager &amp; Cook</strong>, Camp Haiastan, Franklin, MA</p>
+              <p>Directed meal planning and production for 200+ campers and staff daily with attention to dietary needs, oversaw all kitchen stations, and trained staff on food safety.</p>
+            </div>
+          </div>
+          <div class="role">
+            <div class="role-date">Sep 2020 to Jun 2021</div>
+            <div class="role-main">
+              <p class="role-title"><strong>First Chef &amp; Line Cook</strong>, The 99 Restaurant &amp; Pub, Milford, MA</p>
+              <p>Worked grill, saut&eacute;, fry, pantry, and salad stations during peak hours and coordinated takeout and delivery orders.</p>
+            </div>
+          </div>
+          <div class="role">
+            <div class="role-date">Jan 2015 to Sep 2020</div>
+            <div class="role-main">
+              <p class="role-title"><strong>Shift Manager &amp; Multi-Role Specialist</strong>, The Corner Market, Holliston, MA</p>
+              <p>Managed daily operations and a team of 30+, handling hiring, training, performance management, ordering, vendor deliveries, and inventory control.</p>
+            </div>
+          </div>
         </div>
-      </div>
+      </details>
 
       <h3 class="subhead">Volunteer</h3>
       <div class="role">
@@ -299,6 +431,6 @@
   </div></div>
 </footer>
 
-<script src="script.js?v=2"></script>
+<script src="script.js?v=3"></script>
 </body>
 </html>
