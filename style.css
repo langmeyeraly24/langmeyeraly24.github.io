@@ -160,6 +160,7 @@ a:hover { color: var(--accent-2); }
 .entry-title.large { font-size: 25px; font-weight: 500; }
 .entry-meta { font-style: italic; color: var(--muted); font-size: 16px; margin-bottom: 8px; }
 .entry-course { font-style: italic; color: var(--muted); font-size: 16px; margin: 0 0 8px; }
+.entry-course + .entry-course { margin-top: -6px; }
 .entry-desc { max-width: 68ch; }
 .entry-tools {
   font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: 0.03em;
@@ -218,9 +219,10 @@ a:hover { color: var(--accent-2); }
 .role-sub .role-title { font-size: 17px; }
 
 /* Skills */
-.skills { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 8px 22px; margin: 10px 0 0; }
+.skills { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 12px 22px; margin: 2px 0 0; }
+.skills dd { font-size: 16.5px; line-height: 1.5; }
 .skills dt {
-  font-family: var(--sans); font-size: 12.5px; font-weight: 500; color: var(--muted); padding-top: 3px;
+  font-family: var(--sans); font-size: 12.5px; font-weight: 600; color: var(--ink); padding-top: 3px; line-height: 1.35;
 }
 .skills dd { margin: 0; }
 
